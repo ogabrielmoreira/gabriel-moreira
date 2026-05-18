@@ -1,0 +1,6 @@
+.DS_Store
+Thumbs.db
+*.log
+
+# Working uploads (assets/ is the canonical source for the site)
+uploads/

@@ -1,0 +1,587 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Gabriel Moreira — Design Engineer · IA · Product</title>
+  <meta name="description" content="Design Engineer especializado em IA, Product Design e construção de experiências digitais de alta performance. 9+ anos." />
+  <meta name="theme-color" content="#fbbc04" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ============================================================
+       HEADER
+       ============================================================ -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="Gabriel Moreira">
+        <img src="assets/logo.png" alt="Gabriel Moreira" />
+      </a>
+
+      <nav class="nav" aria-label="Primary">
+        <a href="#projects" data-i18n="nav.work">Projetos</a>
+        <a href="#expertise" data-i18n="nav.expertise">Expertise</a>
+        <a href="#about" data-i18n="nav.about">Sobre</a>
+        <a href="#contact" data-i18n="nav.contact">Contato</a>
+      </nav>
+
+      <div class="header-actions">
+        <div class="lang-toggle" data-lang="pt" role="tablist" aria-label="Idioma">
+          <span class="pill" aria-hidden="true"></span>
+          <button data-l="pt" class="active" role="tab" aria-selected="true">PT</button>
+          <button data-l="en" role="tab" aria-selected="false">EN</button>
+        </div>
+        <a class="btn btn--yellow btn--sm btn--cta" href="https://wa.me/5511984116812" target="_blank" rel="noopener">
+          <span data-i18n="cta.talk">Falar comigo</span>
+          <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       HERO
+       ============================================================ -->
+  <section id="top" class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <div class="hero-headline reveal">
+          <span class="ola" data-i18n="hero.hi">Olá, prazer.</span>
+          <h1>
+            <span class="nome" data-i18n="hero.name">Sou Gabriel Moreira</span><span class="dot" aria-hidden="true"></span>
+          </h1>
+          <p class="hero-sub" data-i18n="hero.sub"><strong>Design Engineer</strong> especializado em Inteligência Artificial, Product Design e construção de experiências digitais de alta performance.</p>
+          <p class="hero-note" data-i18n="hero.note">Há mais de 9 anos desenvolvendo soluções digitais que unem design, engenharia, automação e estratégia de negócio.</p>
+
+          <div class="hero-ctas">
+            <a class="btn btn--yellow" href="#projects">
+              <span data-i18n="hero.cta.work">Ver projetos</span>
+              <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+            <a class="btn btn--ghost" href="https://drive.google.com/file/d/1idj5GgL47Y8AOI8UXgnjcZkf2C4d6XNM/view?usp=sharing" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+              <span data-i18n="hero.cta.cv">Baixar currículo</span>
+            </a>
+            <a class="btn btn--ghost" href="https://wa.me/5511984116812" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+              <span data-i18n="hero.cta.wa">WhatsApp</span>
+            </a>
+          </div>
+        </div>
+
+        <aside class="hero-aside reveal" aria-hidden="true">
+          <div class="hero-blob"></div>
+          <img class="hero-avatar" src="assets/avatar.png" alt="" />
+        </aside>
+      </div>
+
+      <div class="hero-pills reveal-stagger">
+        <span class="pill"><span class="dot-y"></span>IA Generativa</span>
+        <span class="pill"><span class="dot-y"></span>LLMs</span>
+        <span class="pill"><span class="dot-y"></span>UX Engineering</span>
+        <span class="pill"><span class="dot-y"></span>Front-end Architecture</span>
+        <span class="pill"><span class="dot-y"></span>Design Systems</span>
+        <span class="pill"><span class="dot-y"></span>Automação</span>
+        <span class="pill"><span class="dot-y"></span>Performance</span>
+        <span class="pill"><span class="dot-y"></span>Estratégia digital</span>
+      </div>
+    </div>
+
+    <span class="scroll-hint" data-i18n="hero.scroll">role para explorar</span>
+  </section>
+
+  <!-- ============================================================
+       COMPANIES MARQUEE
+       ============================================================ -->
+  <section class="companies" aria-label="Companies">
+    <div class="container">
+      <div class="companies-head reveal">
+        <span class="eyebrow" data-i18n="companies.eyebrow">Trabalho de quem confia</span>
+        <h2 data-i18n="companies.title">Marcas e produtos onde atuei como Design Engineer, consultor e parceiro estratégico.</h2>
+      </div>
+    </div>
+    <div class="marquee">
+      <div class="marquee-track">
+        <img src="assets/companies/bradesco.png" alt="Bradesco" />
+        <img src="assets/companies/natura.png" alt="Natura" />
+        <img src="assets/companies/brb.png" alt="BRB" />
+        <img src="assets/companies/toyota.png" alt="Toyota" />
+        <img src="assets/companies/bradesco.png" alt="" aria-hidden="true" />
+        <img src="assets/companies/natura.png" alt="" aria-hidden="true" />
+        <img src="assets/companies/brb.png" alt="" aria-hidden="true" />
+        <img src="assets/companies/toyota.png" alt="" aria-hidden="true" />
+        <!-- duplicate for seamless loop -->
+        <img src="assets/companies/bradesco.png" alt="" aria-hidden="true" />
+        <img src="assets/companies/natura.png" alt="" aria-hidden="true" />
+        <img src="assets/companies/brb.png" alt="" aria-hidden="true" />
+        <img src="assets/companies/toyota.png" alt="" aria-hidden="true" />
+        <img src="assets/companies/bradesco.png" alt="" aria-hidden="true" />
+        <img src="assets/companies/natura.png" alt="" aria-hidden="true" />
+        <img src="assets/companies/brb.png" alt="" aria-hidden="true" />
+        <img src="assets/companies/toyota.png" alt="" aria-hidden="true" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       ABOUT
+       ============================================================ -->
+  <section id="about" class="about section-pad">
+    <div class="container">
+      <div class="section-head reveal">
+        <div>
+          <span class="eyebrow" data-i18n="about.eyebrow">Sobre</span>
+          <h2 class="h-section" style="margin-top:16px; max-width: 18ch;" data-i18n="about.title">Designer que pensa como engenheiro. Engenheiro que pensa como produto.</h2>
+        </div>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-photo reveal">
+          <img src="assets/photo.jpg" alt="Gabriel Moreira" />
+        </div>
+
+        <div class="about-body reveal">
+          <blockquote class="about-pull" data-i18n="about.right">Atuo no ponto exato onde design, código e IA convergem — onde uma decisão visual é também uma decisão de arquitetura.</blockquote>
+          <p data-i18n="about.p1">Comecei em código. Aprendi a construir antes de aprender a pintar pixel. Quando descobri UX/UI, levei comigo a disciplina de quem escreve software de verdade — versionamento, testes, revisões, performance, sistemas escaláveis.</p>
+          <p data-i18n="about.p2">Hoje opero como <strong>Design Engineer</strong>: lidero design systems, prototipagem inteligente com LLMs, arquitetura front-end e estratégia de produto em projetos que precisam entregar resultado de negócio mensurável — não só telas bonitas.</p>
+          <p data-i18n="about.p3">Trabalhei em produtos de bancos, varejo cosmético global, indústria automotiva e tecnologia. E mantenho consultoria própria para times que querem unir IA, design e engenharia com responsabilidade.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       EXPERTISE
+       ============================================================ -->
+  <section id="expertise" class="section-pad">
+    <div class="container">
+      <div class="section-head reveal">
+        <div>
+          <span class="eyebrow" data-i18n="expertise.eyebrow">Expertise</span>
+          <h2 class="h-section" style="margin-top:16px" data-i18n="expertise.title">Doze frentes. Um sistema de pensamento.</h2>
+        </div>
+        <blockquote class="right" data-i18n="expertise.right">Cada disciplina abaixo é parte da mesma engrenagem: ideia → sistema → produto → resultado.</blockquote>
+      </div>
+
+      <div class="expertise-grid reveal-stagger">
+        <!-- 1 -->
+        <article class="xcard">
+          <span class="num">001</span>
+          <span class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+          </span>
+          <h3 data-i18n="x.1.t">IA Generativa</h3>
+          <p data-i18n="x.1.d">Aplicação prática de modelos generativos em produto, design e operação.</p>
+        </article>
+        <!-- 2 -->
+        <article class="xcard">
+          <span class="num">002</span>
+          <span class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 10l-3 2 3 2M16 10l3 2-3 2M14 8l-4 8"/></svg>
+          </span>
+          <h3 data-i18n="x.2.t">LLM Engineering</h3>
+          <p data-i18n="x.2.d">Arquitetura de prompts, RAG, agentes, avaliação e custo de tokens em produção.</p>
+        </article>
+        <!-- 3 -->
+        <article class="xcard">
+          <span class="num">003</span>
+          <span class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </span>
+          <h3 data-i18n="x.3.t">UX Engineering</h3>
+          <p data-i18n="x.3.d">Implementação fiel de design system com performance e acessibilidade reais.</p>
+        </article>
+        <!-- 4 -->
+        <article class="xcard">
+          <span class="num">004</span>
+          <span class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1"/></svg>
+          </span>
+          <h3 data-i18n="x.4.t">Product Design</h3>
+          <p data-i18n="x.4.d">Pesquisa, fluxos, prototipação e validação de produto end-to-end.</p>
+        </article>
+        <!-- 5 -->
+        <article class="xcard">
+          <span class="num">005</span>
+          <span class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          </span>
+          <h3 data-i18n="x.5.t">Design Systems</h3>
+          <p data-i18n="x.5.d">Token, componente, documentação e governança em escala corporativa.</p>
+        </article>
+        <!-- 6 -->
+        <article class="xcard">
+          <span class="num">006</span>
+          <span class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17l6-6-6-6M12 19h8"/></svg>
+          </span>
+          <h3 data-i18n="x.6.t">Front-end Architecture</h3>
+          <p data-i18n="x.6.d">React, Next, TypeScript, Storybook e arquitetura modular escalável.</p>
+        </article>
+        <!-- 7 -->
+        <article class="xcard">
+          <span class="num">007</span>
+          <span class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          </span>
+          <h3 data-i18n="x.7.t">Automação</h3>
+          <p data-i18n="x.7.d">Pipelines, scripts e fluxos que eliminam trabalho manual repetitivo.</p>
+        </article>
+        <!-- 8 -->
+        <article class="xcard">
+          <span class="num">008</span>
+          <span class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+          </span>
+          <h3 data-i18n="x.8.t">Prototipação Inteligente</h3>
+          <p data-i18n="x.8.d">Protótipos funcionais com IA para validar hipóteses em horas, não semanas.</p>
+        </article>
+        <!-- 9 -->
+        <article class="xcard">
+          <span class="num">009</span>
+          <span class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3-9 4 18 3-9h4"/></svg>
+          </span>
+          <h3 data-i18n="x.9.t">Sistemas Escaláveis</h3>
+          <p data-i18n="x.9.d">Arquitetura preparada para crescer sem reescrita: do MVP ao enterprise.</p>
+        </article>
+        <!-- 10 -->
+        <article class="xcard">
+          <span class="num">010</span>
+          <span class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </span>
+          <h3 data-i18n="x.10.t">Experiência do Usuário</h3>
+          <p data-i18n="x.10.d">Pesquisa qualitativa, jornada e métricas que prevêem comportamento real.</p>
+        </article>
+        <!-- 11 -->
+        <article class="xcard">
+          <span class="num">011</span>
+          <span class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </span>
+          <h3 data-i18n="x.11.t">Estratégia de Produto</h3>
+          <p data-i18n="x.11.d">Roadmap, OKRs e priorização orientados por impacto, não por opinião.</p>
+        </article>
+        <!-- 12 -->
+        <article class="xcard">
+          <span class="num">012</span>
+          <span class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </span>
+          <h3 data-i18n="x.12.t">Performance Digital</h3>
+          <p data-i18n="x.12.d">Core Web Vitals, bundle size, render path e otimização contínua.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       RESULTS
+       ============================================================ -->
+  <section class="results section-pad">
+    <div class="container">
+      <div class="section-head reveal" style="margin-bottom: 56px;">
+        <div>
+          <span class="eyebrow" data-i18n="results.eyebrow">Impacto</span>
+          <h2 class="h-section" style="margin-top:16px" data-i18n="results.title">Design que aparece no P&L.</h2>
+        </div>
+      </div>
+
+      <div class="results-grid reveal-stagger">
+        <div class="stat">
+          <span class="key" data-i18n="r.roi.k">01 / ROI</span>
+          <div class="big" data-i18n="r.roi.v">+144%</div>
+          <div class="label" data-i18n="r.roi.l">ROI gerado em case corporativo com integração entre design system, IA e operação.</div>
+        </div>
+        <div class="stat">
+          <span class="key" data-i18n="r.save.k">02 / Economia</span>
+          <div class="big" data-i18n="r.save.v">~US$ 2M</div>
+          <div class="label" data-i18n="r.save.l">Economia operacional acumulada em projeto global de design + automação.</div>
+        </div>
+        <div class="stat">
+          <span class="key" data-i18n="r.years.k">03 / Experiência</span>
+          <div class="big" data-i18n="r.years.v">9+</div>
+          <div class="label" data-i18n="r.years.l">Anos entregando produtos digitais que unem engenharia, design e estratégia.</div>
+        </div>
+      </div>
+
+      <div class="results-foot">
+        <p data-i18n="results.note">Métricas reais de projetos sob NDA. Cases detalhados disponíveis em conversa.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PROJECTS / CASES
+       ============================================================ -->
+  <section id="projects" class="cases section-pad">
+    <div class="container">
+      <div class="section-head reveal">
+        <div>
+          <span class="eyebrow" data-i18n="cases.eyebrow">Projetos selecionados</span>
+          <h2 class="h-section" style="margin-top:16px" data-i18n="cases.title">Casos onde design, engenharia e IA andaram juntos.</h2>
+        </div>
+        <blockquote class="right" data-i18n="cases.right">Recorte de 3 projetos. Documentação técnica e estudos completos sob solicitação.</blockquote>
+      </div>
+
+      <!-- CASE 1 — OTTO VIGILANT -->
+      <article class="case reveal">
+        <div class="case-art case-otto">
+          <span class="badge">001 / OTTO</span>
+          <img class="case-cover" src="assets/cases/otto.jpg" alt="OTTO Vigilant — painel embarcado em veículo" loading="lazy" />
+        </div>
+        <div class="case-body">
+          <div class="case-meta">
+            <span data-i18n="case.otto.cat">IA · Mobility · Safety</span>
+          </div>
+          <h3 data-i18n="case.otto.title">OTTO Vigilant — Copiloto inteligente de prevenção de fadiga e estresse para motoristas.</h3>
+          <p data-i18n="case.otto.body">Sistema de IA embarcado que monitora sinais de fadiga, stress e desatenção em tempo real, intervindo com microinterações de áudio e visuais para reduzir risco operacional em frotas.</p>
+          <div class="case-tags">
+            <span class="case-tag">Computer Vision</span>
+            <span class="case-tag">LLM</span>
+            <span class="case-tag">Edge AI</span>
+            <span class="case-tag">Real-time UX</span>
+            <span class="case-tag">Driver Safety</span>
+          </div>
+          <div class="case-actions">
+            <a class="btn btn--ghost btn--sm" href="https://medium.com/@gabrieltechdesign/ux-concept-otto-vigilant-copiloto-inteligente-de-preven%C3%A7%C3%A3o-de-fadiga-e-estresse-para-motoristas-47c60a9a7bac" target="_blank" rel="noopener"><span data-i18n="case.otto.cta1">Medium</span><svg class="arrow" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+          </div>
+        </div>
+      </article>
+
+      <!-- CASE 2 — GAYA -->
+      <article class="case reveal">
+        <div class="case-art case-gaya">
+          <span class="badge">002 / GAYA</span>
+          <img class="case-cover" src="assets/cases/gaya.png" alt="GaYa Design System — Natura" loading="lazy" />
+        </div>
+        <div class="case-body">
+          <div class="case-meta">
+            <span data-i18n="case.gaya.cat">Design System · Cosmetics · Global</span>
+          </div>
+          <h3 data-i18n="case.gaya.title">GaYa — Design System do Grupo Natura &Co.</h3>
+          <p data-i18n="case.gaya.body">Co-construção de um design system multimarca para Natura, Avon e Casa &Co. Tokens, componentes, documentação, governança e acessibilidade aplicados em produtos de e-commerce e operação de consultoria.</p>
+          <div class="case-tags">
+            <span class="case-tag">Design Tokens</span>
+            <span class="case-tag">Storybook</span>
+            <span class="case-tag">Multi-brand</span>
+            <span class="case-tag">WCAG 2.2</span>
+            <span class="case-tag">Governance</span>
+          </div>
+          <div class="case-actions">
+            <a class="btn btn--ghost btn--sm" href="https://ds.natura.design/0013acde3/p/7973f5-componentes-copy" target="_blank" rel="noopener"><span data-i18n="case.gaya.cta1">Storybook</span><svg class="arrow" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+          </div>
+        </div>
+      </article>
+
+      <!-- CASE 3 — LUMEN -->
+      <article class="case reveal">
+        <div class="case-art case-lumen">
+          <span class="badge">003 / LUMEN</span>
+          <img class="case-cover" src="assets/cases/lumen.jpg" alt="Lumen Design System — Storybook" loading="lazy" />
+        </div>
+        <div class="case-body">
+          <div class="case-meta">
+            <span data-i18n="case.lumen.cat">Design System · Architecture · Open</span>
+          </div>
+          <h3 data-i18n="case.lumen.title">Lumen Design System — Arquitetura Storybook inspirada em DS global.</h3>
+          <p data-i18n="case.lumen.body">Design system autoral com arquitetura modular em Storybook, token-first, padrões de acessibilidade WCAG 2.2 e referência direta aos sistemas de design da Apple, IBM e Atlassian.</p>
+          <div class="case-tags">
+            <span class="case-tag">Tokens Studio</span>
+            <span class="case-tag">React</span>
+            <span class="case-tag">TypeScript</span>
+            <span class="case-tag">Storybook</span>
+            <span class="case-tag">A11y</span>
+          </div>
+          <div class="case-actions">
+            <a class="btn btn--ghost btn--sm" href="https://ogabrielmoreira.github.io/Lumen-Design-System/" target="_blank" rel="noopener"><span data-i18n="case.lumen.cta1">Storybook</span><svg class="arrow" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       TESTIMONIALS
+       ============================================================ -->
+  <section class="testimonials section-pad">
+    <div class="container">
+      <div class="section-head reveal">
+        <div>
+          <span class="eyebrow" data-i18n="t.eyebrow">Depoimentos</span>
+          <h2 class="h-section" style="margin-top:16px" data-i18n="t.title">Pessoas que construíram coisas comigo.</h2>
+        </div>
+      </div>
+
+      <div class="t-track reveal">
+
+        <article class="tcard tall">
+          <p class="quote">Gabriel, thank you for seeing what no one wanted to acknowledge and still choosing to act. You didn't wait for authorization, nor hid behind your scope. You had the courage to do what was right, with strategic silence, technical foundation, and deep respect for brand identity. What you delivered wasn't just a color system. It was a mature, generous, and rare decision. If I may give you one piece of advice: never lose the restlessness that drives you. It's what turns an ordinary designer into a reference. You're going far!</p>
+          <div class="who">
+            <span class="avatar"><img src="assets/people/natura.jpg" alt="Natura" /></span>
+            <div>
+              <div class="name">Diretoria Natura</div>
+              <div class="role">Leadership · Natura &Co.</div>
+            </div>
+            <span class="lang-flag">EN</span>
+          </div>
+        </article>
+
+        <article class="tcard tall">
+          <p class="quote">Gabriel is a very studious and helpful design leader who is always updated with the latest trends and tools and ready to provide support to other designers and bring results to the business. A professional with a holistic Design System vision (from tokens to governance and practice), capable of connecting design and business, getting economy, avoiding remakes, and bringing ROI. He has natural leadership, conducts projects with autonomy, and manages stakeholders very well. Always with sympathy and beautiful presentations, it's easy to work with him. I appreciate our conversations very much. It was a pleasure to work together at Natura GaYa Design System.</p>
+          <div class="who">
+            <span class="avatar"><img src="assets/people/adriano.jpg" alt="Adriano Ricci" /></span>
+            <div>
+              <div class="name">Adriano Ricci</div>
+              <div class="role">Design Leader · Natura &Co.</div>
+            </div>
+            <span class="lang-flag">EN</span>
+          </div>
+        </article>
+
+        <article class="tcard">
+          <p class="quote">Trabalhar com o Gabriel foi uma experiência muito boa. Ele é um designer talentoso, domina o Figma e lidera com criatividade, sempre trazendo um olhar inovador com sua paixão por inteligência artificial. Tem boa habilidade em estruturar Design Systems claros e eficientes, além de ser estudioso, atualizado e sempre disposto a compartilhar conhecimento com o time. Recomendo!</p>
+          <div class="who">
+            <span class="avatar"><img src="assets/people/giovane.jpg" alt="Giovane de Loredo" /></span>
+            <div>
+              <div class="name">Giovane de Loredo</div>
+              <div class="role">Tech Lead · Natura</div>
+            </div>
+            <span class="lang-flag">PT</span>
+          </div>
+        </article>
+
+        <article class="tcard">
+          <p class="quote">Eu tive a oportunidade de trabalhar com Gabriel como um UI/UX Designer. Durante o tempo que trabalhamos juntos, ele foi capaz de criar designs que melhoraram a experiência do usuário e demonstrou ser uma pessoa dedicada e comprometida em sua função.</p>
+          <div class="who">
+            <span class="avatar"><img src="assets/people/alex.jpg" alt="Alex Souza" /></span>
+            <div>
+              <div class="name">Alex Souza</div>
+              <div class="role">Tech Lead · Parceiro de projeto</div>
+            </div>
+            <span class="lang-flag">PT</span>
+          </div>
+        </article>
+
+        <article class="tcard">
+          <p class="quote">Trabalhei com o Gabriel no Bradesco, ele atuou como UI Designer, durante a fase de prototipação mostrou amplo conhecimento na área de design visual e no uso das ferramentas como Adobe XD. Além disso, é um profissional dedicado, atencioso aos detalhes e com excelentes insights no quesito visual, usabilidade e programação front-end.</p>
+          <div class="who">
+            <span class="avatar"><img src="assets/people/samuel.jpg" alt="Samuel Souza" /></span>
+            <div>
+              <div class="name">Samuel Souza</div>
+              <div class="role">Designer · Bradesco</div>
+            </div>
+            <span class="lang-flag">PT</span>
+          </div>
+        </article>
+
+      </div>
+
+      <div class="t-nav">
+        <button class="t-prev" aria-label="Anterior">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        </button>
+        <button class="t-next" aria-label="Próximo">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CV
+       ============================================================ -->
+  <section class="cv section-pad">
+    <div class="container">
+      <div class="cv-card reveal">
+        <div>
+          <span class="eyebrow" data-i18n="cv.eyebrow">Currículo</span>
+          <h3 style="margin-top:18px" data-i18n="cv.title">Versão completa, em PDF.</h3>
+          <p data-i18n="cv.body">Histórico profissional detalhado, stack técnica, projetos e certificações em um único documento pronto para download.</p>
+          <a class="btn btn--yellow" href="https://drive.google.com/file/d/1idj5GgL47Y8AOI8UXgnjcZkf2C4d6XNM/view?usp=sharing" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+            <span data-i18n="cv.cta">Baixar currículo completo</span>
+          </a>
+          <p style="margin-top:18px; font-family: var(--font-mono); font-size: 12px; color: var(--muted-2);" data-i18n="cv.note">PDF · ~ atualizado mensalmente</p>
+        </div>
+        <div class="cv-doc" aria-hidden="true">
+          <div class="row title"></div>
+          <div class="row w70"></div>
+          <div class="row w90"></div>
+          <div class="row w50"></div>
+          <div class="row title" style="width:40%"></div>
+          <div class="row w90"></div>
+          <div class="row w70"></div>
+          <div class="row w90"></div>
+          <div class="row w50"></div>
+          <div class="row title" style="width:50%"></div>
+          <div class="row w70"></div>
+          <div class="row w90"></div>
+          <div class="row w50"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CONTACT
+       ============================================================ -->
+  <section id="contact" class="contact section-pad">
+    <div class="container">
+      <h2 class="contact-cta reveal" data-i18n="contact.cta">Vamos construir <span class="y">algo</span> juntos.</h2>
+      <p class="lead reveal" data-i18n="contact.intro">Aberto para consultoria, projetos pontuais e oportunidades full-time onde design, engenharia e IA precisem caminhar lado a lado.</p>
+
+      <div class="contact-actions reveal">
+        <a class="contact-primary" href="https://wa.me/5511984116812" target="_blank" rel="noopener" aria-label="WhatsApp">
+          <span class="ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413"/></svg>
+          </span>
+          <span class="txt">
+            <span class="lbl" data-i18n="contact.wa.label">WHATSAPP · DIRETO</span>
+            <span data-i18n="contact.wa.h">Conversar no WhatsApp</span>
+          </span>
+          <svg class="arrow" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M7 7h10v10"/></svg>
+        </a>
+
+        <a class="contact-email" href="mailto:design.gabrielmoreira@gmail.com" aria-label="E-mail">
+          <span class="lbl" data-i18n="contact.em.label">E-MAIL</span>
+          <span class="val">design.gabrielmoreira@gmail.com</span>
+          <svg class="ico-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M7 7h10v10"/></svg>
+        </a>
+
+        <div class="contact-social">
+          <span class="label" data-i18n="contact.social.label">SOCIAL</span>
+          <a class="icon-btn" href="https://www.linkedin.com/in/ogabriel-moreira/" target="_blank" rel="noopener" aria-label="LinkedIn" data-name="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+          </a>
+          <a class="icon-btn" href="https://github.com/ogabrielmoreira" target="_blank" rel="noopener" aria-label="GitHub" data-name="GitHub">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="site-footer">
+    <div class="container">
+      <h2 class="foot-mark">gabriel moreira<span class="dot" aria-hidden="true"></span></h2>
+      <div class="foot-row">
+        <span data-i18n="foot.tag">Design Engineer · IA · Product · São Paulo, BR</span>
+        <span data-i18n="foot.rights">© 2026 Gabriel Moreira. Todos os direitos reservados.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
