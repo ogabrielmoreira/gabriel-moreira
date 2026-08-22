@@ -90,7 +90,7 @@
 
       'cases.eyebrow': 'Projetos selecionados',
       'cases.title': 'Casos onde design, engenharia e IA andaram juntos.',
-      'cases.right': 'Recorte de 3 projetos. Documentação técnica e estudos completos sob solicitação.',
+      'cases.right': 'Recorte de 4 projetos. Documentação técnica e estudos completos sob solicitação.',
 
       'case.otto.cat': 'IA · Mobility · Safety',
       'case.otto.year': '2024 — em curso',
@@ -111,6 +111,11 @@
       'case.lumen.body': 'Design system autoral com arquitetura modular em Storybook, token-first, padrões de acessibilidade WCAG 2.2 e referência direta aos sistemas de design da Apple, IBM e Atlassian.',
       'case.lumen.cta1': 'Storybook',
       'case.lumen.cta2': 'Medium',
+
+      'case.grao.cat': 'Product Design · Fintech · Agro',
+      'case.grao.title': 'Grão Capital — Loyalty como estratégia de dados no agronegócio.',
+      'case.grao.body': 'App de fidelidade para uma fintech de crédito rural: o produtor cadastra suas notas fiscais de venda (café, soja) e acumula pontos que troca por taxa de crédito menor, defensivos e benefícios dentro da cooperativa. Onboarding sem fricção com enriquecimento cadastral via CPF, validação KYC simulada, carteira de pontos separada do status e ranking regional por cooperativa — protótipo navegável construído em React, testado com Playwright.',
+      'case.grao.cta1': 'Ver protótipo',
 
       'cases.cta': 'Ver todos os projetos',
 
@@ -215,7 +220,7 @@
 
       'cases.eyebrow': 'Selected work',
       'cases.title': 'Cases where design, engineering and AI walked together.',
-      'cases.right': 'Three projects, cut short. Full technical docs and case studies on request.',
+      'cases.right': 'Four projects, cut short. Full technical docs and case studies on request.',
 
       'case.otto.cat': 'AI · Mobility · Safety',
       'case.otto.year': '2024 — ongoing',
@@ -236,6 +241,11 @@
       'case.lumen.body': 'My own design system with modular Storybook architecture, token-first, WCAG 2.2 accessibility patterns and direct references to Apple, IBM and Atlassian design systems.',
       'case.lumen.cta1': 'Storybook',
       'case.lumen.cta2': 'Medium',
+
+      'case.grao.cat': 'Product Design · Fintech · Agro',
+      'case.grao.title': 'Grão Capital — Loyalty as a data strategy in agribusiness.',
+      'case.grao.body': 'Loyalty app for a rural credit fintech: producers register sales invoices (coffee, soy) and earn points redeemable for lower credit rates, crop protection products and cooperative benefits. Frictionless onboarding with CPF-based data enrichment, simulated KYC validation, a points wallet separate from status and regional cooperative ranking — navigable React prototype tested with Playwright.',
+      'case.grao.cta1': 'View prototype',
 
       'cases.cta': 'See all projects',
 

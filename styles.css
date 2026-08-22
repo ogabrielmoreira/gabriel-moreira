@@ -907,6 +907,9 @@ blockquote.about-pull {
 .case-lumen {
   background: linear-gradient(135deg, var(--yellow) 0%, #ffd84d 100%);
 }
+.case-grao {
+  background: linear-gradient(135deg, #1b4332 0%, #2d6a4f 55%, #d4a017 100%);
+}
 
 .case-illu {
   position: absolute;
