@@ -390,9 +390,135 @@
     let saved = 'pt';
     try { saved = localStorage.getItem('gm-lang') || 'pt'; } catch (e) {}
     applyLang(saved);
+    // A troca de idioma e uma mudanca de estado: o texto sai e volta junto
+    // com a pilula, em vez de trocar seco no meio da frase.
+    const reduce = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let swapping = false;
     document.querySelectorAll('.lang-toggle button').forEach((b) => {
-      b.addEventListener('click', () => applyLang(b.dataset.l));
+      b.addEventListener('click', () => {
+        const next = b.dataset.l;
+        const t = document.querySelector('.lang-toggle');
+        if (swapping || (t && t.dataset.lang === next)) return;
+        if (reduce()) { applyLang(next); return; }
+        swapping = true;
+        document.body.classList.add('lang-swapping');
+        setTimeout(() => {
+          applyLang(next);
+          document.body.classList.remove('lang-swapping');
+          swapping = false;
+        }, 170);
+      });
     });
+  }
+
+  // ===== Hero: campo de gradiente ===================================
+  // O campo desfoca conforme a pagina rola. O blur e quantizado em passos
+  // de 0.5px para nao forcar um repaint a cada pixel de scroll.
+  function initHeroField() {
+    const bg = document.querySelector('.hero-bg');
+    const hero = document.querySelector('.hero');
+    if (!bg || !hero) return;
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const MAX_BLUR = 26;
+    let last = -1, ticking = false, idle = 0;
+
+    const apply = () => {
+      const h = hero.offsetHeight || 1;
+      const p = Math.min(Math.max(window.scrollY / h, 0), 1);
+      const blur = reduce ? 0 : Math.round(p * MAX_BLUR * 2) / 2;
+      const fade = +(1 - p * 0.5).toFixed(3);
+      if (blur === last) { bg.style.setProperty('--hero-fade', fade); return; }
+      last = blur;
+      bg.style.setProperty('--hero-blur', blur + 'px');
+      bg.style.setProperty('--hero-fade', fade);
+    };
+
+    const onScroll = () => {
+      // promove a camada so enquanto o valor esta mudando
+      bg.style.willChange = 'filter, opacity';
+      clearTimeout(idle);
+      idle = setTimeout(() => { bg.style.willChange = 'auto'; }, 220);
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => { apply(); ticking = false; });
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    apply();
+
+    // Loop nao essencial: pausa quando o hero sai da tela.
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver((es) => {
+        es.forEach((e) => bg.classList.toggle('is-idle', !e.isIntersecting));
+      }, { threshold: 0 }).observe(hero);
+    }
+
+    // Blob que segue o cursor, com suavizacao. Só em ponteiro fino
+    // (num toque nao existe hover) e fora de reduced motion.
+    const dot = bg.querySelector('.hb-pointer');
+    if (!dot || reduce || !window.matchMedia('(pointer: fine)').matches) return;
+    let tx = 0, ty = 0, cx = 0, cy = 0, raf = 0, alive = false;
+    const loop = () => {
+      cx += (tx - cx) * 0.06;
+      cy += (ty - cy) * 0.06;
+      dot.style.setProperty('--px', cx.toFixed(1) + 'px');
+      dot.style.setProperty('--py', cy.toFixed(1) + 'px');
+      if (Math.abs(tx - cx) > 0.6 || Math.abs(ty - cy) > 0.6) { raf = requestAnimationFrame(loop); }
+      else { raf = 0; }
+    };
+    hero.addEventListener('pointermove', (e) => {
+      const r = hero.getBoundingClientRect();
+      tx = e.clientX - r.left;
+      ty = e.clientY - r.top;
+      if (!alive) { alive = true; cx = tx; cy = ty; }
+      if (!raf) raf = requestAnimationFrame(loop);
+    }, { passive: true });
+  }
+
+  // ===== Nav: secao atual ===========================================
+  // O menu nao tinha estado ativo. A lozenge de vidro se move para a secao
+  // em que o visitante esta, reaproveitando o mesmo material do hover.
+  function initNavState() {
+    const links = [...document.querySelectorAll('.nav a[href^="#"]')];
+    if (!links.length) return;
+    const map = new Map();
+    links.forEach((a) => {
+      const s = document.querySelector(a.getAttribute('href'));
+      if (s) map.set(s, a);
+    });
+    if (!map.size) return;
+
+    const setCurrent = (a) => {
+      links.forEach((l) => l.classList.toggle('is-current', l === a));
+    };
+
+    if (!('IntersectionObserver' in window)) {
+      // Sem IO: uma varredura direta no scroll, sem depender de rAF.
+      const sync = () => {
+        const line = window.innerHeight * 0.34;
+        let found = null;
+        map.forEach((a, s) => {
+          const r = s.getBoundingClientRect();
+          if (r.top <= line && r.bottom > line) found = a;
+        });
+        setCurrent(found);
+      };
+      window.addEventListener('scroll', sync, { passive: true });
+      window.addEventListener('resize', sync);
+      sync();
+      return;
+    }
+
+    // rootMargin transforma o viewport numa linha fina a 34% da altura:
+    // a secao que cruza essa linha e a secao atual.
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) setCurrent(map.get(e.target));
+        else if (map.get(e.target).classList.contains('is-current')) setCurrent(null);
+      });
+    }, { rootMargin: '-34% 0px -66% 0px', threshold: 0 });
+    map.forEach((a, s) => io.observe(s));
   }
 
   // ===== Header scroll state ========================================
@@ -471,7 +597,13 @@
     const cur = document.querySelector('.t-cur');
     let i = 0;
     const show = (n) => {
-      i = (n + panels.length) % panels.length;
+      const next = (n + panels.length) % panels.length;
+      // De onde o painel entra: a direcao do movimento explica o controle usado.
+      let dir = next > i ? 1 : -1;
+      if (i === panels.length - 1 && next === 0) dir = 1;
+      if (i === 0 && next === panels.length - 1) dir = -1;
+      stage.style.setProperty('--dir', String(dir));
+      i = next;
       panels.forEach((p, k) => {
         p.classList.toggle('is-active', k === i);
         p.setAttribute('aria-hidden', k === i ? 'false' : 'true');
@@ -540,6 +672,8 @@
   document.addEventListener('DOMContentLoaded', () => {
     initLang();
     initHeader();
+    initNavState();
+    initHeroField();
     initReveal();
     initMotion();
     initCountUp();

@@ -1433,7 +1433,7 @@ blockquote.about-pull {
 .case.in .case-art .badge{opacity:1;transform:none}
 
 /* expertise: icon pops after the card */
-.xcard .icon{transform:scale(.72);opacity:0;transition:transform .6s cubic-bezier(.34,1.4,.5,1),opacity .5s ease}
+.xcard .icon{transform:scale(.72);opacity:0;transition:transform .6s cubic-bezier(.16,1,.3,1),opacity .5s ease}
 .reveal-stagger.in .xcard .icon{transform:none;opacity:1}
 .reveal-stagger.in>*:nth-child(1) .icon{transition-delay:.16s}
 .reveal-stagger.in>*:nth-child(2) .icon{transition-delay:.22s}
@@ -1482,3 +1482,958 @@ blockquote.about-pull {
 .stat::before,.contact-cta::before,.eyebrow::before{transform:none!important}
 .scroll-progress{display:none}
 }
+
+/* =========================================================
+   LIQUID GLASS
+   Camada visual: superfícies flutuantes, translúcidas,
+   com brilho especular nas bordas (estilo Apple Liquid Glass).
+   Só afeta aparência — nenhuma mudança de conteúdo/estrutura.
+   ========================================================= */
+
+:root {
+  /* Vidro claro */
+  --glass-bg: linear-gradient(155deg, rgba(255,255,255,0.72) 0%, rgba(255,255,255,0.42) 48%, rgba(255,255,255,0.58) 100%);
+  --glass-bg-strong: linear-gradient(155deg, rgba(255,255,255,0.86) 0%, rgba(255,255,255,0.62) 48%, rgba(255,255,255,0.74) 100%);
+  --glass-blur: saturate(180%) blur(22px);
+  --glass-blur-lg: saturate(190%) blur(34px);
+  --glass-edge: linear-gradient(150deg, rgba(255,255,255,0.98) 0%, rgba(255,255,255,0.30) 26%, rgba(255,255,255,0.06) 52%, rgba(255,255,255,0.45) 78%, rgba(255,255,255,0.90) 100%);
+  --glass-inner: inset 0 1px 0 rgba(255,255,255,0.85), inset 0 -1px 0 rgba(255,255,255,0.30);
+  --glass-lift: 0 2px 6px rgba(10,10,10,0.04), 0 18px 40px -20px rgba(10,10,10,0.22);
+  --glass-lift-lg: 0 4px 12px rgba(10,10,10,0.05), 0 40px 80px -36px rgba(10,10,10,0.30);
+
+  /* Vidro escuro (seções ink) */
+  --glass-bg-dark: linear-gradient(155deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.035) 50%, rgba(255,255,255,0.07) 100%);
+  --glass-edge-dark: linear-gradient(150deg, rgba(255,255,255,0.42) 0%, rgba(255,255,255,0.10) 30%, rgba(255,255,255,0.02) 55%, rgba(255,255,255,0.16) 80%, rgba(255,255,255,0.34) 100%);
+  --glass-inner-dark: inset 0 1px 0 rgba(255,255,255,0.14), inset 0 -1px 0 rgba(255,255,255,0.05);
+}
+
+/* Aro especular reutilizável -------------------------------------------- */
+.site-header .header-inner::after,
+.hero-pills .pill::after,
+.xcard::after,
+.fact::after,
+.cv-card::after,
+.case-tag::after,
+.icon-btn::before,
+.scroll-hint::after,
+.lang-toggle::after,
+.case-art .badge::after,
+.t-stage::after,
+.t-nav button::after,
+.marquee-rail::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: var(--glass-edge);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+          mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  pointer-events: none;
+  z-index: 3;
+}
+.t-stage::after,
+.t-nav button::after,
+.marquee-rail::after,
+.case-art .badge::after { background: var(--glass-edge-dark); }
+
+/* =========================================================
+   Ambiente — campos de cor suaves para o vidro ter o que refratar
+   ========================================================= */
+body {
+  background-color: var(--paper);
+  background-image:
+    radial-gradient(48vw 48vw at 82% 1%,   rgba(251,188,4,0.30),  rgba(251,188,4,0) 62%),
+    radial-gradient(44vw 44vw at 0% 16%,   rgba(126,146,255,0.20), rgba(126,146,255,0) 64%),
+    radial-gradient(56vw 46vw at 100% 46%, rgba(255,138,96,0.18),  rgba(255,138,96,0) 64%),
+    radial-gradient(48vw 48vw at 6% 72%,   rgba(160,120,255,0.17), rgba(160,120,255,0) 64%),
+    radial-gradient(52vw 42vw at 68% 98%,  rgba(251,188,4,0.24),   rgba(251,188,4,0) 64%);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+/* Seções claras ficam translúcidas para o ambiente aparecer */
+.cases,
+.contact { background: transparent; }
+.cv { background: linear-gradient(180deg, rgba(250,250,247,0.60), rgba(250,250,247,0.25)); }
+.about { background: transparent; }
+
+/* =========================================================
+   Header flutuante — cápsula de vidro
+   ========================================================= */
+.site-header {
+  padding: clamp(10px, 1.4vw, 18px) var(--gutter);
+  background: none;
+  box-shadow: none;
+  transition: padding 0.45s var(--ease-out);
+}
+.site-header.scrolled {
+  background: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  box-shadow: none;
+  padding-top: clamp(8px, 1vw, 12px);
+  padding-bottom: clamp(8px, 1vw, 12px);
+}
+
+.site-header .header-inner {
+  position: relative;
+  max-width: calc(var(--max) - var(--gutter) * 2);
+  margin: 0 auto;
+  padding: 10px 12px 10px 20px;
+  border-radius: 999px;
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: var(--glass-blur-lg);
+          backdrop-filter: var(--glass-blur-lg);
+  box-shadow: var(--glass-inner), var(--glass-lift);
+  transition:
+    background 0.5s var(--ease-out),
+    box-shadow 0.5s var(--ease-out),
+    transform 0.5s var(--ease-out),
+    max-width 0.5s var(--ease-out),
+    padding 0.5s var(--ease-out);
+}
+/* Brilho líquido que atravessa a cápsula */
+.site-header .header-inner::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  border-radius: inherit;
+  background: linear-gradient(105deg, transparent 18%, rgba(255,255,255,0.55) 42%, rgba(255,255,255,0.10) 56%, transparent 74%);
+  opacity: 0.55;
+  pointer-events: none;
+  z-index: 0;
+}
+.site-header .header-inner > * { position: relative; z-index: 2; }
+
+.site-header.scrolled .header-inner {
+  max-width: calc(var(--max) - var(--gutter) * 2 - 96px);
+  background: var(--glass-bg-strong);
+  box-shadow:
+    var(--glass-inner),
+    0 2px 8px rgba(10,10,10,0.05),
+    0 24px 48px -22px rgba(10,10,10,0.28);
+}
+
+/* Navegação dentro do vidro */
+.nav { gap: 4px; }
+.nav a {
+  padding: 8px 14px;
+  border-radius: 999px;
+  isolation: isolate;
+}
+.nav a::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(160deg, rgba(255,255,255,0.95), rgba(255,255,255,0.45));
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.9), 0 4px 12px -6px rgba(10,10,10,0.30);
+  opacity: 0;
+  transform: scale(0.86);
+  transition: opacity 0.3s var(--ease-out), transform 0.4s var(--ease-out);
+  z-index: -1;
+}
+.nav a:hover::before { opacity: 1; transform: scale(1); }
+.nav a::after {
+  left: 50%;
+  bottom: 3px;
+  width: 18px;
+  height: 2px;
+  border-radius: 2px;
+  transform: translateX(-50%) scaleX(0);
+  transform-origin: center;
+  transition: transform 0.4s var(--ease-out);
+}
+.nav a:hover::after { width: 18px; transform: translateX(-50%) scaleX(1); }
+
+/* Toggle de idioma em vidro */
+.lang-toggle {
+  position: relative;
+  background: linear-gradient(155deg, rgba(255,255,255,0.55), rgba(255,255,255,0.18));
+  border-color: rgba(255,255,255,0.55);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.7), inset 0 -1px 2px rgba(10,10,10,0.05);
+  -webkit-backdrop-filter: blur(8px);
+          backdrop-filter: blur(8px);
+}
+.lang-toggle .pill {
+  background: linear-gradient(160deg, rgba(255,255,255,0.98), rgba(255,255,255,0.78));
+  box-shadow: 0 1px 2px rgba(10,10,10,0.14), inset 0 1px 0 rgba(255,255,255,1);
+}
+.lang-toggle button { position: relative; z-index: 2; }
+
+/* CTA do header com profundidade de vidro */
+.site-header .btn--cta {
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.65),
+    0 6px 18px -8px var(--yellow-glow);
+}
+
+@media (max-width: 880px) {
+  .site-header .header-inner { padding: 8px 10px 8px 16px; }
+  .site-header.scrolled .header-inner { max-width: calc(var(--max) - var(--gutter) * 2); }
+}
+
+/* Barra de progresso amarela do topo: removida */
+.scroll-progress { display: none !important; }
+
+/* =========================================================
+   Hero — pills e dica de rolagem em vidro
+   ========================================================= */
+.hero-pills .pill {
+  position: relative;
+  background: var(--glass-bg);
+  border-color: rgba(255,255,255,0.6);
+  -webkit-backdrop-filter: var(--glass-blur);
+          backdrop-filter: var(--glass-blur);
+  box-shadow: var(--glass-inner), 0 8px 20px -14px rgba(10,10,10,0.35);
+}
+.hero-pills .pill:hover {
+  border-color: rgba(255,255,255,0.9);
+  background: var(--glass-bg-strong);
+  box-shadow: var(--glass-inner), 0 14px 28px -16px rgba(10,10,10,0.40);
+}
+
+.scroll-hint {
+  position: absolute;
+  padding: 8px 16px 8px 14px;
+  border-radius: 999px;
+  background: var(--glass-bg);
+  border: 1px solid rgba(255,255,255,0.55);
+  -webkit-backdrop-filter: var(--glass-blur);
+          backdrop-filter: var(--glass-blur);
+  box-shadow: var(--glass-inner), var(--glass-lift);
+}
+.scroll-hint::before { height: 26px; }
+
+/* Blob do hero mais líquido */
+.hero-blob {
+  background: radial-gradient(circle at 46% 40%, rgba(255,236,160,0.95) 0%, var(--yellow) 30%, rgba(251,188,4,0.50) 55%, transparent 74%);
+  filter: blur(44px);
+  opacity: 0.62;
+}
+
+/* =========================================================
+   Cards de conteúdo flutuando em vidro
+   ========================================================= */
+.xcard {
+  background: var(--glass-bg);
+  border-color: rgba(255,255,255,0.55);
+  -webkit-backdrop-filter: var(--glass-blur);
+          backdrop-filter: var(--glass-blur);
+  box-shadow: var(--glass-inner), var(--glass-lift);
+  border-radius: var(--r-lg);
+}
+.xcard:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255,255,255,0.95);
+  background: var(--glass-bg-strong);
+  box-shadow: var(--glass-inner), var(--glass-lift-lg);
+}
+.xcard .icon {
+  background: linear-gradient(160deg, rgba(255,255,255,0.95), rgba(255,255,255,0.5));
+  box-shadow: inset 0 1px 0 rgba(255,255,255,1), 0 6px 14px -8px rgba(10,10,10,0.35);
+  border-radius: 14px;
+}
+.xcard:hover .icon {
+  background: linear-gradient(160deg, #ffd75c, var(--yellow));
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.8), 0 10px 20px -10px var(--yellow-glow);
+}
+
+/* Fatos (sobre) */
+.facts-grid {
+  background: transparent;
+  border-color: rgba(255,255,255,0.55);
+  border-radius: var(--r-lg);
+  gap: 10px;
+  padding: 10px;
+  -webkit-backdrop-filter: var(--glass-blur);
+          backdrop-filter: var(--glass-blur);
+  background-image: var(--glass-bg);
+  box-shadow: var(--glass-inner), var(--glass-lift);
+  overflow: visible;
+}
+.fact {
+  position: relative;
+  background: linear-gradient(160deg, rgba(255,255,255,0.70), rgba(255,255,255,0.30));
+  border-radius: calc(var(--r-md) - 2px);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.8);
+  transition: transform 0.4s var(--ease-out), background 0.3s;
+}
+.fact:hover {
+  transform: translateY(-3px);
+  background: linear-gradient(160deg, rgba(255,255,255,0.92), rgba(255,255,255,0.55));
+}
+
+/* Foto do sobre com moldura de vidro */
+.about-photo img { border-radius: var(--r-lg); }
+
+/* =========================================================
+   Cases — arte flutuante e tags de vidro
+   ========================================================= */
+.case { border-top-color: rgba(10,10,10,0.07); }
+.case-art {
+  box-shadow: var(--glass-lift-lg);
+  border: 1px solid rgba(255,255,255,0.5);
+}
+.case-art:hover { transform: translateY(-8px); }
+.case-art .badge {
+  position: absolute;
+  background: linear-gradient(155deg, rgba(20,20,20,0.62), rgba(20,20,20,0.42));
+  -webkit-backdrop-filter: saturate(160%) blur(14px);
+          backdrop-filter: saturate(160%) blur(14px);
+  box-shadow: var(--glass-inner-dark), 0 8px 20px -12px rgba(0,0,0,0.6);
+}
+.case-tag {
+  position: relative;
+  background: var(--glass-bg);
+  border-radius: 999px;
+  padding: 6px 12px;
+  -webkit-backdrop-filter: blur(12px);
+          backdrop-filter: blur(12px);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.8), 0 4px 10px -8px rgba(10,10,10,0.4);
+}
+
+/* =========================================================
+   Faixa de empresas — trilho de vidro escuro
+   ========================================================= */
+.companies { position: relative; }
+.marquee {
+  position: relative;
+  padding: 22px 0;
+  margin-inline: var(--gutter);
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 4%, #000 96%, transparent 100%);
+          mask-image: linear-gradient(90deg, transparent 0, #000 4%, #000 96%, transparent 100%);
+  border-radius: 999px;
+  background: var(--glass-bg-dark);
+  -webkit-backdrop-filter: saturate(150%) blur(16px);
+          backdrop-filter: saturate(150%) blur(16px);
+  box-shadow: var(--glass-inner-dark), 0 20px 50px -30px rgba(0,0,0,0.9);
+}
+.marquee::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: var(--glass-edge-dark);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+          mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+          mask-composite: exclude;
+  pointer-events: none;
+  z-index: 3;
+}
+/* =========================================================
+   Depoimentos — palco e controles em vidro escuro
+   ========================================================= */
+.t-stage {
+  position: relative;
+  background: var(--glass-bg-dark);
+  border-color: rgba(255,255,255,0.10);
+  border-radius: var(--r-lg);
+  -webkit-backdrop-filter: saturate(150%) blur(20px);
+          backdrop-filter: saturate(150%) blur(20px);
+  box-shadow: var(--glass-inner-dark), 0 40px 80px -50px rgba(0,0,0,0.9);
+}
+.tperson {
+  position: relative;
+  border-radius: 14px;
+  transition: background 0.3s, border-color 0.3s, transform 0.35s var(--ease-out);
+}
+.tperson:hover {
+  background: var(--glass-bg-dark);
+  border-color: rgba(255,255,255,0.16);
+  box-shadow: var(--glass-inner-dark);
+  transform: translateX(2px);
+}
+.tperson.is-active,
+.tperson.is-active:hover {
+  background: linear-gradient(155deg, rgba(251,188,4,0.16) 0%, rgba(251,188,4,0.05) 55%, rgba(251,188,4,0.10) 100%);
+  border-color: rgba(251,188,4,0.34);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.18), 0 8px 20px -14px rgba(251,188,4,0.6);
+  transform: translateX(2px);
+}
+.t-nav button {
+  position: relative;
+  background: var(--glass-bg-dark);
+  border-color: rgba(255,255,255,0.14);
+  -webkit-backdrop-filter: blur(12px);
+          backdrop-filter: blur(12px);
+  box-shadow: var(--glass-inner-dark);
+}
+
+/* =========================================================
+   CV — cartão flutuante
+   ========================================================= */
+.cv-card {
+  position: relative;
+  background: var(--glass-bg);
+  border-color: rgba(255,255,255,0.6);
+  -webkit-backdrop-filter: var(--glass-blur-lg);
+          backdrop-filter: var(--glass-blur-lg);
+  box-shadow: var(--glass-inner), var(--glass-lift-lg);
+  border-radius: var(--r-xl);
+}
+.cv-card > * { position: relative; z-index: 2; }
+.cv-doc {
+  background: linear-gradient(160deg, rgba(255,255,255,0.96), rgba(255,255,255,0.80));
+  border-color: rgba(255,255,255,0.8);
+  box-shadow: var(--glass-inner), var(--glass-lift-lg);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+}
+
+/* =========================================================
+   Contato — botões de vidro
+   ========================================================= */
+.contact-primary {
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.7),
+    inset 0 -1px 0 rgba(255,255,255,0.25),
+    0 14px 34px -14px var(--yellow-glow);
+}
+.contact-primary .ico {
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.5);
+}
+.icon-btn {
+  background: var(--glass-bg);
+  border-color: rgba(255,255,255,0.6);
+  -webkit-backdrop-filter: var(--glass-blur);
+          backdrop-filter: var(--glass-blur);
+  box-shadow: var(--glass-inner), 0 10px 22px -14px rgba(10,10,10,0.45);
+}
+.icon-btn svg { position: relative; z-index: 4; }
+.icon-btn:hover {
+  background: linear-gradient(160deg, var(--ink-3), var(--ink));
+  border-color: rgba(255,255,255,0.25);
+  box-shadow: var(--glass-inner-dark), 0 16px 30px -14px rgba(10,10,10,0.6);
+}
+.icon-btn:hover::before { background: var(--glass-edge-dark); }
+.icon-btn::after { z-index: 4; }
+
+/* =========================================================
+   Faixas de largura total viram lajes flutuantes
+   ========================================================= */
+.companies,
+.results,
+.testimonials {
+  border-radius: clamp(24px, 3vw, 44px);
+  margin-inline: var(--gutter);
+  overflow: hidden;
+  isolation: isolate;
+  box-shadow: 0 30px 70px -46px rgba(10,10,10,0.55);
+}
+.results { box-shadow: 0 30px 70px -44px rgba(251,188,4,0.75); }
+/* brilho líquido da faixa amarela, sem borda dura */
+.results::before {
+  top: -40%; right: -30%;
+  width: 130%; height: 190%;
+  background:
+    radial-gradient(closest-side at 62% 42%, rgba(255,255,255,0.55), rgba(255,255,255,0) 72%),
+    radial-gradient(closest-side at 88% 78%, rgba(255,255,255,0.28), rgba(255,255,255,0) 70%);
+  filter: blur(8px);
+}
+
+/* Rodapé encosta no fim da página, mas com topo arredondado */
+.site-footer {
+  border-radius: clamp(24px, 3vw, 44px) clamp(24px, 3vw, 44px) 0 0;
+  margin-inline: var(--gutter);
+}
+
+/* =========================================================
+   Fallback: sem suporte a backdrop-filter, volta ao sólido
+   ========================================================= */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .site-header .header-inner,
+  .hero-pills .pill,
+  .xcard,
+  .cv-card,
+  .facts-grid,
+  .icon-btn,
+  .scroll-hint,
+  .case-tag { background: rgba(255,255,255,0.94); }
+  .marquee,
+  .t-stage { background: rgba(26,26,26,0.94); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-header .header-inner,
+  .site-header.scrolled .header-inner { transition: none; }
+}
+
+/* =========================================================
+   MOTION
+   Tese: a luz chega através do vidro.
+   Um momento focal na entrada; o resto é feedback e estado.
+   ========================================================= */
+
+:root {
+  --ease-arrive: cubic-bezier(0.16, 1, 0.3, 1);
+  --t-feedback: 140ms;
+  --t-state: 240ms;
+  --t-view: 420ms;
+}
+
+/* ---------------------------------------------------------
+   1. Momento focal — a entrada, uma vez só
+   --------------------------------------------------------- */
+
+/* A cápsula de vidro desce e assenta */
+@keyframes gm-capsule-arrive {
+  from { transform: translateY(-22px); opacity: 0; }
+  to   { transform: none; opacity: 1; }
+}
+.site-header .header-inner {
+  animation: gm-capsule-arrive 620ms var(--ease-arrive) both;
+}
+
+/* O realce especular atravessa o vidro uma vez e para em repouso */
+@keyframes gm-specular-sweep {
+  0%   { transform: translateX(-62%); opacity: 0; }
+  22%  { opacity: 0.9; }
+  100% { transform: translateX(62%); opacity: 0.55; }
+}
+.site-header .header-inner::before {
+  animation: gm-specular-sweep 1150ms var(--ease-arrive) 380ms both;
+}
+
+/* A luz do hero floresce */
+@keyframes gm-light-bloom {
+  from { transform: scale(0.72); opacity: 0; }
+  to   { transform: none; opacity: 0.62; }
+}
+.hero-blob {
+  animation:
+    gm-light-bloom 1000ms var(--ease-arrive) 160ms both,
+    float 9s var(--ease-in-out) 1160ms infinite reverse;
+}
+
+/* O avatar sobe para dentro da luz */
+@keyframes gm-avatar-arrive {
+  from { transform: translateY(26px) scale(0.965); opacity: 0; }
+  to   { transform: none; opacity: 1; }
+}
+.hero-avatar {
+  animation:
+    gm-avatar-arrive 760ms var(--ease-arrive) 240ms both,
+    float 6s var(--ease-in-out) 1000ms infinite;
+}
+
+/* ---------------------------------------------------------
+   2. Chegada de conteúdo — quieta fora do momento focal
+   Listas reais mantêm stagger; seções apenas assentam.
+   --------------------------------------------------------- */
+.reveal {
+  transform: translateY(10px);
+  transition:
+    opacity 520ms var(--ease-arrive),
+    transform 520ms var(--ease-arrive);
+}
+.section-head.reveal { transform: translateY(8px); }
+
+/* Cases e depoimentos são listas: o stagger explica a sequência */
+.reveal-stagger > * {
+  transform: translateY(14px);
+  transition:
+    opacity 560ms var(--ease-arrive),
+    transform 560ms var(--ease-arrive);
+}
+
+/* ---------------------------------------------------------
+   3. Estado — o menu diz onde você está
+   --------------------------------------------------------- */
+.nav a::before { transition: opacity var(--t-state) var(--ease-arrive), transform var(--t-state) var(--ease-arrive); }
+.nav a.is-current::before { opacity: 1; transform: scale(1); }
+.nav a.is-current { color: var(--ink); }
+.nav a.is-current::after { width: 18px; transform: translateX(-50%) scaleX(1); }
+
+/* ---------------------------------------------------------
+   4. Continuidade — troca de idioma como um movimento só
+   --------------------------------------------------------- */
+[data-i18n] { transition: opacity 170ms ease; }
+.lang-swapping [data-i18n] { opacity: 0; }
+
+/* ---------------------------------------------------------
+   5. Continuidade — o depoimento entra pelo lado do botão
+   --------------------------------------------------------- */
+.tpanel {
+  transform: translateX(calc(var(--dir, 1) * 26px));
+  transition:
+    opacity var(--t-view) var(--ease-arrive),
+    transform var(--t-view) var(--ease-arrive),
+    visibility var(--t-view);
+}
+.tpanel.is-active { transform: none; }
+
+/* ---------------------------------------------------------
+   6. Feedback — saída mais rápida que entrada
+   --------------------------------------------------------- */
+.btn, .icon-btn, .pill, .xcard, .case-art, .tperson, .t-nav button, .contact-primary {
+  transition-timing-function: var(--ease-arrive);
+}
+.btn:active, .contact-primary:active, .icon-btn:active, .t-nav button:active {
+  transform: translateY(0) scale(0.978);
+  transition-duration: var(--t-feedback);
+}
+
+/* ---------------------------------------------------------
+   7. Superfícies do navegador — pintadas pela paleta
+   --------------------------------------------------------- */
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+.site-header .header-inner :focus-visible,
+.companies :focus-visible,
+.testimonials :focus-visible,
+.site-footer :focus-visible {
+  outline-color: var(--yellow);
+}
+.btn:focus-visible, .contact-primary:focus-visible, .icon-btn:focus-visible { outline-offset: 4px; }
+
+html { caret-color: var(--yellow); scrollbar-color: rgba(10,10,10,0.28) transparent; }
+::selection { background: var(--yellow); color: var(--ink); text-shadow: none; }
+.companies ::selection, .testimonials ::selection, .site-footer ::selection {
+  background: var(--yellow); color: var(--ink);
+}
+::-webkit-scrollbar { width: 11px; height: 11px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: rgba(10,10,10,0.22);
+  border-radius: 999px;
+  border: 3px solid transparent;
+  background-clip: content-box;
+}
+::-webkit-scrollbar-thumb:hover { background: rgba(10,10,10,0.38); background-clip: content-box; }
+
+/* ---------------------------------------------------------
+   8. Orçamento — o campo ambiente não repinta no mobile
+   --------------------------------------------------------- */
+@media (max-width: 880px) {
+  body { background-attachment: scroll; }
+}
+
+/* ---------------------------------------------------------
+   9. Reduced motion — menos deslocamento, feedback preservado
+   --------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .site-header .header-inner,
+  .site-header .header-inner::before,
+  .hero-blob,
+  .hero-avatar {
+    animation: none !important;
+    opacity: 1;
+    transform: none;
+  }
+  .site-header .header-inner::before { opacity: 0.55; }
+  .hero-blob { opacity: 0.62; }
+  .tpanel { transform: none !important; }
+  /* o que carrega significado continua: opacidade, cor e estado */
+  [data-i18n] { transition: opacity 170ms ease; }
+  .nav a::before,
+  .lang-toggle .pill { transition: opacity var(--t-state) ease, background var(--t-state) ease; }
+}
+
+/* ---------------------------------------------------------
+   10. Correção: o e-mail estourava a viewport no mobile e
+   fazia a página inteira rolar na horizontal.
+   --------------------------------------------------------- */
+@media (max-width: 640px) {
+  .contact-email {
+    flex-wrap: wrap;
+    row-gap: 2px;
+    max-width: 100%;
+  }
+  /* o rotulo ocupa a linha de cima, o endereco fica inteiro na de baixo */
+  .contact-email .lbl { flex-basis: 100%; }
+  .contact-email .val {
+    font-size: clamp(16px, 4.4vw, 24px);
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+}
+
+/* =========================================================
+   IMPACTO — reformulação
+   As lajes flutuantes estavam encostadas (gap 0). Os quatro
+   anéis viraram uma lista legível; o aparelho carrega o peso.
+   ========================================================= */
+
+/* As lajes respiram entre si */
+.companies,
+.results,
+.testimonials { margin-block: clamp(14px, 2vw, 28px); }
+
+.results-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) clamp(290px, 30vw, 400px);
+  gap: clamp(28px, 5vw, 76px);
+  align-items: center;
+}
+
+/* ---- A lista: o conteúdo legível ---- */
+.results-list { display: block; }
+
+.stat {
+  display: grid;
+  grid-template-columns: clamp(112px, 12vw, 168px) minmax(0, 1fr);
+  grid-template-areas: "value key" "value label";
+  column-gap: clamp(18px, 2.4vw, 40px);
+  row-gap: 6px;
+  align-items: start;
+  padding: clamp(20px, 2.3vw, 30px) 0;
+  border-top: 1px solid rgba(10, 10, 10, 0.2);
+  text-align: left;
+  min-width: 0;
+}
+.stat:first-child { border-top: 0; padding-top: 0; }
+.stat:first-child::before { display: none; }
+
+.stat .big {
+  grid-area: value;
+  align-self: center;
+  font-size: clamp(32px, 3.9vw, 54px);
+  font-weight: 800;
+  letter-spacing: -0.045em;
+  line-height: 0.92;
+  font-feature-settings: "tnum";
+  white-space: nowrap;
+}
+.stat .key {
+  grid-area: key;
+  align-self: end;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.1em;
+  text-transform: none;
+  color: rgba(10, 10, 10, 0.62);
+}
+.stat .label {
+  grid-area: label;
+  margin: 0;
+  font-size: clamp(14px, 1.05vw, 16px);
+  line-height: 1.45;
+  color: var(--ink-2);
+  max-width: 46ch;
+  text-align: left;
+  text-wrap: pretty;
+}
+
+/* ---- O aparelho: um artefato, não um gráfico para ler ---- */
+.results-device { display: flex; justify-content: center; }
+.device-stage { perspective: 1600px; perspective-origin: 62% 42%; }
+
+.device-phone {
+  position: relative;
+  width: clamp(230px, 25vw, 320px);
+  aspect-ratio: 272 / 552;
+  transform-style: preserve-3d;
+  transform: rotateY(-21deg) rotateX(7deg) rotateZ(1deg);
+}
+
+/* chassi: fica atrás e aparece pela lateral, criando a espessura */
+.device-edge {
+  position: absolute;
+  inset: -3px;
+  border-radius: 42px;
+  background: linear-gradient(100deg, #4a4944 0%, #1b1b19 46%, #0a0a0a 100%);
+  transform: translateZ(-15px);
+}
+
+.device-body {
+  position: absolute;
+  inset: 0;
+  display: block;
+  border-radius: 40px;
+  padding: 9px;
+  background: linear-gradient(155deg, #35342f 0%, #0e0e0d 34%, #171715 72%, #08080a 100%);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.14),
+    inset 0 2px 3px rgba(255, 255, 255, 0.16);
+}
+
+.device-notch {
+  position: absolute;
+  top: 9px; left: 50%;
+  transform: translateX(-50%);
+  width: 30%;
+  height: 19px;
+  border-radius: 0 0 13px 13px;
+  background: #08080a;
+  z-index: 2;
+}
+
+.dv-screen {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 32px;
+  overflow: hidden;
+}
+
+/* sombra de contato no campo amarelo */
+.device-stage::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -6%;
+  width: 74%;
+  height: 46px;
+  transform: translateX(-54%) rotate(-1deg);
+  background: radial-gradient(50% 50% at 50% 50%, rgba(60, 40, 0, 0.5), rgba(60, 40, 0, 0) 72%);
+  filter: blur(10px);
+  z-index: -1;
+}
+.device-stage { position: relative; }
+
+.results-foot { margin-top: clamp(36px, 3.6vw, 56px); }
+
+/* ---- Mobile: sem inclinação forte numa tela estreita ---- */
+@media (max-width: 980px) {
+  .results-layout { grid-template-columns: 1fr; gap: clamp(36px, 6vw, 56px); }
+  .results-device { order: 2; }
+  .device-phone { transform: rotateY(-11deg) rotateX(4deg); }
+}
+@media (max-width: 560px) {
+  .stat {
+    grid-template-columns: 1fr;
+    grid-template-areas: "key" "value" "label";
+    row-gap: 8px;
+  }
+  .stat .big { align-self: start; }
+  .stat .key { align-self: start; }
+  .device-phone { transform: none; width: min(72vw, 260px); }
+  .device-stage { perspective: none; }
+}
+
+/* Coluna esquerda: título, métricas e nota como uma composição só */
+.results-main { min-width: 0; }
+.results-main .section-head {
+  display: block;
+  margin-bottom: clamp(26px, 3.2vw, 44px);
+}
+.results-main .results-foot { justify-content: flex-start; }
+
+/* O ponto do nome: um ponto final, sem piscar */
+.hero-headline h1 .dot {
+  vertical-align: baseline;
+  margin-left: 0.04em;
+  box-shadow: none;
+  animation: none;
+}
+
+/* =========================================================
+   HERO — Background Gradient Animation (branco + amarelo)
+   Blobs num container desfocado que os funde num plasma.
+   O desfoque cresce conforme a página rola.
+   ========================================================= */
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  display: block;
+  background: linear-gradient(38deg, #ffffff 0%, #ffffff 48%, #fffdf4 74%, #fef9e9 100%);
+  --hero-blur: 0px;
+  --hero-fade: 1;
+  opacity: var(--hero-fade);
+}
+.hero > .container { position: relative; z-index: 1; }
+
+/* O desfoque vive aqui: funde os blobs e recebe o incremento do scroll */
+.hero-bg-layer {
+  position: absolute;
+  inset: 0;
+  display: block;
+  filter: blur(calc(66px + var(--hero-blur)));
+}
+
+.hero-bg-blob {
+  position: absolute;
+  display: block;
+  width: 82%;
+  height: 82%;
+  top: calc(50% - 41%);
+  left: calc(50% - 41%);
+  border-radius: 50%;
+  opacity: 1;
+}
+
+/* amarelos multiplicam: onde se cruzam, a cor aprofunda */
+.hb1 {
+  background: radial-gradient(circle at center, rgba(251,188,4,0.30) 0%, rgba(251,188,4,0.07) 40%, rgba(251,188,4,0) 62%);
+  mix-blend-mode: multiply;
+  transform-origin: center center;
+  animation: hb-vertical 30s ease infinite;
+}
+.hb2 {
+  background: radial-gradient(circle at center, rgba(253,229,138,0.34) 0%, rgba(253,229,138,0.08) 42%, rgba(253,229,138,0) 64%);
+  mix-blend-mode: multiply;
+  transform-origin: calc(50% - 380px) center;
+  animation: hb-circle-rev 20s reverse infinite;
+}
+.hb3 {
+  background: radial-gradient(circle at center, rgba(253,229,138,0.28) 0%, rgba(253,229,138,0.06) 44%, rgba(253,229,138,0) 66%);
+  mix-blend-mode: multiply;
+  transform-origin: calc(50% + 380px) calc(50% + 180px);
+  animation: hb-circle 36s linear infinite;
+}
+/* claros entram por cima e abrem poços de luz */
+.hb4 {
+  background: radial-gradient(circle at center, rgba(255,255,255,1) 0%, rgba(255,255,255,0.78) 38%, rgba(255,255,255,0) 70%);
+  transform-origin: calc(50% - 220px) center;
+  animation: hb-horizontal 38s ease infinite;
+}
+.hb5 {
+  background: radial-gradient(circle at center, rgba(255,255,255,0.98) 0%, rgba(255,255,255,0.6) 40%, rgba(255,255,255,0) 72%);
+  width: 64%; height: 64%;
+  top: calc(50% - 32%); left: calc(50% - 32%);
+  transform-origin: calc(50% - 640px) calc(50% + 320px);
+  animation: hb-circle 26s ease infinite;
+}
+/* segue o cursor: movimento que responde a uma ação */
+.hb-pointer {
+  background: radial-gradient(circle at center, rgba(251,188,4,0.20) 0%, rgba(251,188,4,0) 58%);
+  mix-blend-mode: multiply;
+  width: 62%; height: 62%;
+  top: -31%; left: -31%;
+  opacity: 0.75;
+  transform: translate3d(var(--px, 0px), var(--py, 0px), 0);
+}
+
+@keyframes hb-vertical {
+  0%, 100% { transform: translateY(-46%); }
+  50%      { transform: translateY(46%); }
+}
+@keyframes hb-horizontal {
+  0%, 100% { transform: translateX(-46%) translateY(-9%); }
+  50%      { transform: translateX(46%) translateY(9%); }
+}
+@keyframes hb-circle {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+@keyframes hb-circle-rev {
+  0%   { transform: rotate(0deg); }
+  50%  { transform: rotate(180deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* o brilho do avatar não compete com o campo */
+.hero-blob { opacity: 0.3; }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-bg-blob { animation: none !important; }
+  .hb-pointer { display: none; }
+  .hero-bg-layer { filter: blur(66px); }
+}
+
+/* O campo não anima enquanto o hero está fora da tela */
+.hero-bg.is-idle .hero-bg-blob { animation-play-state: paused; }

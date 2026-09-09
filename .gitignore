@@ -4,3 +4,9 @@ Thumbs.db
 
 # Working uploads (assets/ is the canonical source for the site)
 uploads/
+
+# Ferramental de agente (não faz parte do site)
+.agents/
+.claude/
+skills-lock.json
+.vscode/
