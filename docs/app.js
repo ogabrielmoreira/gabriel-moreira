@@ -359,11 +359,10 @@
     if (t) {
       t.dataset.lang = lang;
       t.querySelectorAll('button').forEach((b) => {
-        const on = b.dataset.l === lang;
-        b.classList.toggle('active', on);
-        b.setAttribute('aria-selected', on ? 'true' : 'false');
+        b.classList.toggle('active', b.dataset.l === lang);
       });
     }
+    try { localStorage.setItem('gm-lang', lang); } catch (e) {}
     countHeroNote();
   }
 
@@ -388,8 +387,9 @@
   }
 
   function initLang() {
-    // O site sempre abre em ingles; PT-BR so entra quando a pessoa clica.
-    applyLang('en');
+    let saved = 'pt';
+    try { saved = localStorage.getItem('gm-lang') || 'pt'; } catch (e) {}
+    applyLang(saved);
     // A troca de idioma e uma mudanca de estado: o texto sai e volta junto
     // com a pilula, em vez de trocar seco no meio da frase.
     const reduce = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
