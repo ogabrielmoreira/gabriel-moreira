@@ -891,7 +891,7 @@ blockquote.about-pull {
 .case-lumen {
   background: linear-gradient(135deg, var(--yellow) 0%, #ffd84d 100%);
 }
-.case-grao { background: linear-gradient(135deg, #1d3a2a 0%, #2e5d3f 100%); color: white; }
+.case-vero { background: linear-gradient(135deg, #0f1b33 0%, #24407a 100%); color: white; }
 .case-kyc { background: linear-gradient(135deg, #10151f 0%, #1f2a3d 100%); color: white; }
 .case-soon { background: linear-gradient(135deg, #232323 0%, #2e2e2e 100%); color: white; }
 .case.case--soon, .case--soon.reveal.in { opacity: 0.45; pointer-events: none; }
