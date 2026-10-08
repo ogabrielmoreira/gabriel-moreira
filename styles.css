@@ -2437,3 +2437,14 @@ html { caret-color: var(--yellow); scrollbar-color: rgba(10,10,10,0.28) transpar
 
 /* O campo não anima enquanto o hero está fora da tela */
 .hero-bg.is-idle .hero-bg-blob { animation-play-state: paused; }
+
+/* Content protection: images can't be dragged or long-pressed to save */
+img, picture, video, svg {
+  -webkit-user-drag: none;
+  user-drag: none;
+  -webkit-touch-callout: none;
+}
+img, video {
+  -webkit-user-select: none;
+  user-select: none;
+}

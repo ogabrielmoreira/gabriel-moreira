@@ -683,3 +683,41 @@
     initTestimonials();
   });
 })();
+
+/* Content protection
+   Blocks right click, image drag, long-press save and copy/cut.
+   Text can still be highlighted, but not copied. */
+(function () {
+  var stop = function (e) { e.preventDefault(); };
+
+  ['contextmenu', 'dragstart', 'copy', 'cut'].forEach(function (type) {
+    document.addEventListener(type, stop);
+  });
+
+  // Overwrite whatever lands on the clipboard, in case a copy slips through
+  document.addEventListener('copy', function (e) {
+    if (e.clipboardData) e.clipboardData.setData('text/plain', '');
+  });
+
+  // Long-press on images (mobile "Save to Photos" menu)
+  document.addEventListener('touchstart', function (e) {
+    var t = e.target;
+    if (t && t.closest && t.closest('img, picture, video')) {
+      t.addEventListener('touchend', stop, { once: true });
+    }
+  }, { passive: true });
+
+  // Common shortcuts: copy, cut, save, view-source, print, select-all, devtools
+  document.addEventListener('keydown', function (e) {
+    var k = (e.key || '').toLowerCase();
+    var mod = e.ctrlKey || e.metaKey;
+    if (
+      (mod && ['c', 'x', 's', 'u', 'p', 'a'].indexOf(k) !== -1) ||
+      e.key === 'F12' ||
+      (mod && e.shiftKey && ['i', 'j', 'c'].indexOf(k) !== -1) ||
+      (e.metaKey && e.altKey && ['i', 'j', 'u'].indexOf(k) !== -1)
+    ) {
+      e.preventDefault();
+    }
+  });
+})();
