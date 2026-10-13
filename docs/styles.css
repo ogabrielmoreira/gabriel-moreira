@@ -2513,11 +2513,21 @@ html { caret-color: var(--yellow); scrollbar-color: rgba(10,10,10,0.28) transpar
 .hero-portrait.is-gl .hero-portrait-gl { opacity: 1; }
 .hero-portrait.is-gl .hero-portrait-clean { opacity: 0; }
 
+/* Mobile: texto primeiro, retrato depois, na mesma ordem em que um leitor
+   de tela lê a página. O retrato entra entre o parágrafo e os contadores:
+   saudação, nome, parágrafo, retrato, contadores, CTAs. */
 @media (max-width: 880px) {
+  .hero-grid { row-gap: 10px; }
+  /* os filhos do bloco de texto passam a ser itens do grid do hero,
+     para o retrato poder ficar no meio deles */
+  .hero-headline { display: contents; }
+  .hero-headline > * { order: 1; }
+  .hero-headline > .hero-note,
+  .hero-headline > .hero-ctas { order: 3; }
   .hero-aside {
-    order: -1;
+    order: 2;
     height: clamp(320px, 88vw, 440px);
-    margin-bottom: 0;
+    margin: 18px 0 0;
   }
 }
 
