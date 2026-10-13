@@ -2438,6 +2438,94 @@ html { caret-color: var(--yellow); scrollbar-color: rgba(10,10,10,0.28) transpar
 /* O campo não anima enquanto o hero está fora da tela */
 .hero-bg.is-idle .hero-bg-blob { animation-play-state: paused; }
 
+/* =========================================================
+   HERO — Retrato recortado com revelação sob o cursor
+   (no estilo do landonorris.com)
+   A foto 1 é o estado normal. Um canvas WebGL desenha por cima a
+   foto 1 + a foto 2, que só aparece onde o rastro do cursor ainda
+   está vivo; o rastro se dissolve sozinho. Parado, um cursor
+   virtual varre o rosto de tempos em tempos.
+   Sem WebGL ou com reduced-motion, fica só a foto 1, estática.
+   Trocar fotos: hero/portrait-*.webp|png.
+   ========================================================= */
+
+/* O texto fica sempre por cima do retrato */
+.hero-headline { position: relative; z-index: 2; }
+
+.hero-aside {
+  /* altura do retrato: a coluna inteira, limitada pela largura
+     para não invadir o texto em telas médias */
+  --portrait-h: min(100cqh, 170cqw);
+  container-type: size;
+  z-index: 1;
+  align-self: stretch;
+  height: auto;
+  /* desce até a borda do hero (mesmo valor do padding-bottom do .hero):
+     os ombros saem pela base, como uma foto que continua fora do quadro */
+  margin-bottom: -80px;
+  align-items: flex-end;
+}
+
+/* O brilho amarelo fica atrás da cabeça, não do centro da coluna */
+.hero-aside .hero-blob {
+  --blob: calc(var(--portrait-h) * 0.6);
+  width: var(--blob);
+  height: var(--blob);
+  left: calc(50% - var(--blob) / 2);
+  top: calc(100% - var(--portrait-h) * 0.758 - var(--blob) / 2);
+  pointer-events: none;
+}
+
+.hero-portrait {
+  position: relative;
+  z-index: 2;
+  flex: none;
+  height: var(--portrait-h);
+  aspect-ratio: 1436 / 1600;
+  touch-action: pan-y;
+  -webkit-user-select: none;
+          user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  /* a base do recorte some em transparência, sem corte reto */
+  -webkit-mask-image: linear-gradient(to bottom, #000 80%, transparent 100%);
+          mask-image: linear-gradient(to bottom, #000 80%, transparent 100%);
+}
+.hero-portrait img,
+.hero-portrait-gl {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  pointer-events: none;
+  -webkit-user-select: none;
+          user-select: none;
+}
+.hero-portrait img {
+  object-fit: contain;
+  object-position: center bottom;
+  transform: translateZ(0);
+}
+
+/* O canvas só assume quando já desenhou o primeiro quadro; até lá
+   (e se o WebGL falhar) quem aparece é a foto 1 em <img>. */
+.hero-portrait-gl { opacity: 0; }
+.hero-portrait.is-gl .hero-portrait-gl { opacity: 1; }
+.hero-portrait.is-gl .hero-portrait-clean { opacity: 0; }
+
+@media (max-width: 880px) {
+  .hero-aside {
+    order: -1;
+    height: clamp(320px, 88vw, 440px);
+    margin-bottom: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-portrait-gl { display: none; }
+  .hero-portrait.is-gl .hero-portrait-clean { opacity: 1; }
+}
+
 /* Content protection: images can't be dragged or long-pressed to save */
 img, picture, video, svg {
   -webkit-user-drag: none;
