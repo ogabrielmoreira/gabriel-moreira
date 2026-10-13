@@ -91,9 +91,15 @@
           </div>
         </div>
 
-        <aside class="hero-aside reveal" aria-hidden="true">
-          <div class="hero-blob"></div>
-          <img class="hero-avatar" src="assets/avatar.png" alt="" />
+        <aside class="hero-aside reveal">
+          <div class="hero-blob" aria-hidden="true"></div>
+          <div class="hero-portrait">
+            <picture>
+              <source type="image/webp" srcset="hero/portrait-clean.webp" />
+              <img class="hero-portrait-clean" src="hero/portrait-clean.png" width="1436" height="1600" alt="Gabriel Moreira" data-i18n-alt="hero.name" fetchpriority="high" decoding="async" draggable="false" />
+            </picture>
+            <canvas class="hero-portrait-gl" data-reveal="hero/portrait-reveal.webp" data-reveal-fallback="hero/portrait-reveal.png" aria-hidden="true"></canvas>
+          </div>
         </aside>
       </div>
 

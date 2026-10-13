@@ -357,6 +357,10 @@
       const key = el.getAttribute('data-i18n');
       if (dict[key] !== undefined) el.innerHTML = dict[key];
     });
+    document.querySelectorAll('[data-i18n-alt]').forEach((el) => {
+      const key = el.getAttribute('data-i18n-alt');
+      if (dict[key] !== undefined) el.alt = dict[key];
+    });
     const t = document.querySelector('.lang-toggle');
     if (t) {
       t.dataset.lang = lang;
@@ -476,6 +480,344 @@
       if (!alive) { alive = true; cx = tx; cy = ty; }
       if (!raf) raf = requestAnimationFrame(loop);
     }, { passive: true });
+  }
+
+  // ===== Hero: retrato com revelacao ================================
+  // Mesmo principio do landonorris.com: o cursor deixa um rastro numa
+  // textura pequena que se dissolve a cada quadro; onde o rastro ainda
+  // esta vivo, a foto 2 aparece no lugar da foto 1, com borda organica e
+  // um contorno amarelo. Mouse parado por 2s: um cursor virtual varre o
+  // rosto em zigue-zague (desce, pausa, sobe, pausa). A cabeca acompanha
+  // o mouse com uma leve inclinacao. WebGL puro, sem biblioteca; sem
+  // WebGL ou com reduced-motion fica so a foto 1, estatica.
+  function initHeroPortrait() {
+    const box = document.querySelector('.hero-portrait');
+    const canvas = box && box.querySelector('.hero-portrait-gl');
+    const cleanImg = box && box.querySelector('.hero-portrait-clean');
+    if (!canvas || !cleanImg) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const CFG = {
+      head: [0.50, 0.24],   // centro da cabeca no retrato (fracao de largura/altura)
+      brush: 0.10,          // espessura do rastro (fracao da altura do retrato)
+      decay: 0.975,         // quanto do rastro sobra a cada quadro (60fps)
+      threshold: 0.28,      // onde a foto 2 corta
+      outline: 1.6,         // espessura do contorno amarelo (px)
+      tilt: 0.012,          // inclinacao da cabeca seguindo o mouse
+      idleAfter: 2000,      // ms sem mexer o mouse ate o cursor virtual assumir
+      accent: [251 / 255, 188 / 255, 4 / 255], // --yellow
+    };
+    const TRAIL_W = 192;
+
+    const opts = { alpha: true, premultipliedAlpha: true, antialias: false, preserveDrawingBuffer: false };
+    const gl = canvas.getContext('webgl2', opts) || canvas.getContext('webgl', opts);
+    if (!gl) return;
+    const isGL2 = typeof WebGL2RenderingContext !== 'undefined' && gl instanceof WebGL2RenderingContext;
+
+    // ---------- shaders ----------
+    const VERT = 'attribute vec2 p;varying vec2 v;void main(){v=vec2(p.x*.5+.5,.5-p.y*.5);gl_Position=vec4(p,0.,1.);}';
+    const NOISE = `
+      float hash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
+      float vnoise(vec2 p){vec2 i=floor(p),f=fract(p);vec2 u=f*f*(3.-2.*f);
+        return mix(mix(hash(i),hash(i+vec2(1.,0.)),u.x),mix(hash(i+vec2(0.,1.)),hash(i+vec2(1.,1.)),u.x),u.y);}`;
+    // Rastro: le o quadro anterior com uma deriva organica e um leve blur,
+    // aplica o decaimento e pinta uma capsula do ponto anterior ao atual.
+    const SIM = `precision mediump float;
+      uniform sampler2D uPrev;uniform vec2 uTexel,uA,uB;uniform float uAspect,uR,uStrength,uDecay,uFloor,uTime;
+      ${NOISE}
+      void main(){
+        vec2 tc=gl_FragCoord.xy*uTexel;
+        vec2 drift=(vec2(vnoise(tc*4.+uTime*.25),vnoise(tc*4.+17.-uTime*.25))-.5)*uTexel*2.4;
+        vec2 uv=tc-drift;
+        float c=texture2D(uPrev,uv).r*.5
+          +(texture2D(uPrev,uv+vec2(uTexel.x,0.)).r+texture2D(uPrev,uv-vec2(uTexel.x,0.)).r
+           +texture2D(uPrev,uv+vec2(0.,uTexel.y)).r+texture2D(uPrev,uv-vec2(0.,uTexel.y)).r)*.125;
+        c=max(c*uDecay-uFloor,0.);
+        vec2 q=vec2(tc.x*uAspect,tc.y),a=vec2(uA.x*uAspect,uA.y),b=vec2(uB.x*uAspect,uB.y),ab=b-a;
+        float h=clamp(dot(q-a,ab)/max(dot(ab,ab),1e-6),0.,1.);
+        float d=length(q-a-ab*h);
+        c=max(c,uStrength*smoothstep(uR,uR*.2,d));
+        gl_FragColor=vec4(c,0.,0.,1.);
+      }`;
+    // Composicao: foto 1 e foto 2 alinhadas; a 2 entra onde o rastro passa
+    // do limiar (borda quebrada por ruido), com contorno amarelo e linhas
+    // finas de varredura. A cabeca "vira" de leve para o cursor.
+    const COMP = `precision mediump float;
+      varying vec2 v;
+      uniform sampler2D uClean,uReveal,uTrail;
+      uniform vec2 uTilt,uHead,uRes;uniform vec3 uAccent;
+      uniform float uAspect,uTime,uThreshold,uOutline,uTiltAmt,uDpr;
+      ${NOISE}
+      float field(vec2 p){
+        float t=texture2D(uTrail,vec2(p.x,1.-p.y)).r;
+        float n=vnoise(p*vec2(uAspect,1.)*9.+vec2(uTime*.12,-uTime*.08));
+        return t*(.72+.56*n);
+      }
+      void main(){
+        vec2 q=(v-uHead)*vec2(uAspect,1.);
+        float fall=1.-smoothstep(0.,.6,length(q));
+        vec2 uv=v-uTilt*uTiltAmt*fall;
+        vec4 c1=texture2D(uClean,uv),c2=texture2D(uReveal,uv);
+        // distancia ate a borda em pixels: o contorno fica com espessura
+        // constante, mesmo quando o rastro esta se dissolvendo
+        vec2 px=1.5/uRes;
+        float e=field(v);
+        float gx=field(v+vec2(px.x,0.))-field(v-vec2(px.x,0.));
+        float gy=field(v+vec2(0.,px.y))-field(v-vec2(0.,px.y));
+        float d=(e-uThreshold)/(length(vec2(gx,gy))/3.+1e-5);
+        float m=clamp(d+.5,0.,1.);
+        float w=uOutline*uDpr;
+        float ring=clamp(d+w+.5,0.,1.)*(1.-m);
+        c2.rgb*=1.-.07*step(.5,fract(gl_FragCoord.y/(3.*uDpr)));
+        vec4 p1=vec4(c1.rgb*c1.a,c1.a),p2=vec4(c2.rgb*c2.a,c2.a);
+        vec4 col=mix(p1,p2,m);
+        float body=max(c1.a,c2.a);
+        col=mix(col,vec4(uAccent*body,body),ring*body);
+        gl_FragColor=col;
+      }`;
+
+    const compile = (type, src) => {
+      const sh = gl.createShader(type);
+      gl.shaderSource(sh, src); gl.compileShader(sh);
+      if (!gl.getShaderParameter(sh, gl.COMPILE_STATUS)) throw new Error(gl.getShaderInfoLog(sh));
+      return sh;
+    };
+    const program = (frag) => {
+      const pr = gl.createProgram();
+      gl.attachShader(pr, compile(gl.VERTEX_SHADER, VERT));
+      gl.attachShader(pr, compile(gl.FRAGMENT_SHADER, frag));
+      gl.bindAttribLocation(pr, 0, 'p');
+      gl.linkProgram(pr);
+      if (!gl.getProgramParameter(pr, gl.LINK_STATUS)) throw new Error(gl.getProgramInfoLog(pr));
+      const u = {};
+      const n = gl.getProgramParameter(pr, gl.ACTIVE_UNIFORMS);
+      for (let i = 0; i < n; i++) { const name = gl.getActiveUniform(pr, i).name; u[name] = gl.getUniformLocation(pr, name); }
+      return { pr, u };
+    };
+    let sim, comp;
+    try { sim = program(SIM); comp = program(COMP); } catch (err) { return; }
+
+    const quad = gl.createBuffer();
+    gl.bindBuffer(gl.ARRAY_BUFFER, quad);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]), gl.STATIC_DRAW);
+    gl.enableVertexAttribArray(0);
+    gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0);
+
+    // ---------- texturas ----------
+    const tex = (w, h) => {
+      const t = gl.createTexture();
+      gl.bindTexture(gl.TEXTURE_2D, t);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+      if (w) gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, w, h, 0, gl.RGBA, gl.UNSIGNED_BYTE, null);
+      return t;
+    };
+    const imageTex = (img) => {
+      const t = tex();
+      gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL, false);
+      gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, img);
+      // WebGL2 gera mipmaps em textura nao-potencia-de-2: sem serrilhado ao reduzir
+      if (isGL2) { gl.generateMipmap(gl.TEXTURE_2D); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR_MIPMAP_LINEAR); }
+      return t;
+    };
+
+    const aspect = (cleanImg.width || 1436) / (cleanImg.height || 1600);
+    const TRAIL_H = Math.round(TRAIL_W / aspect);
+    const fbo = [0, 1].map(() => {
+      const t = tex(TRAIL_W, TRAIL_H);
+      const f = gl.createFramebuffer();
+      gl.bindFramebuffer(gl.FRAMEBUFFER, f);
+      gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, t, 0);
+      gl.clearColor(0, 0, 0, 1); gl.clear(gl.COLOR_BUFFER_BIT);
+      return { t, f };
+    });
+    gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+    let ping = 0;
+
+    let cleanTex = null, revealTex = null;
+
+    // ---------- estado ----------
+    let dpr = 1, raf = 0, visible = true, lastT = 0, started = false;
+    let lastMove = -1e9;                 // ultimo movimento real (mouse ou toque)
+    const t0 = performance.now() + 2500 - CFG.idleAfter; // como no Lando: o idle comeca ~2.5s apos carregar
+    let ptr = null, prevPtr = null;      // ponto atual/anterior do pincel (fracao, y para baixo)
+    let tilt = [0, 0], tiltTarget = [0, 0];
+    let idleStart = 0, wasIdle = false;
+
+    const resize = () => {
+      const r = box.getBoundingClientRect();
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = Math.max(1, Math.round(r.width * dpr));
+      canvas.height = Math.max(1, Math.round(r.height * dpr));
+    };
+
+    const toUv = (x, y) => {
+      const r = box.getBoundingClientRect();
+      return [(x - r.left) / r.width, (y - r.top) / r.height];
+    };
+    const pointAt = (uv, now) => {
+      lastMove = now;
+      tiltTarget = [
+        Math.max(-1, Math.min(1, (uv[0] - CFG.head[0]) * 2)),
+        Math.max(-1, Math.min(1, (uv[1] - CFG.head[1]) * 2)),
+      ];
+      const inside = uv[0] > -0.1 && uv[0] < 1.1 && uv[1] > -0.1 && uv[1] < 1.1;
+      ptr = inside ? uv : null;
+    };
+
+    // Cursor virtual do idle, mesma curva do landonorris.com:
+    // desce em 2.5s fazendo dois zigue-zagues, pausa 1.5s, sobe em 2.5s, pausa 3s.
+    const easeInOut = (t) => (t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2);
+    const idlePoint = (ms) => {
+      const T = ms / 1000 % 9.5;
+      let px, py;
+      if (T < 2.5) { py = T / 2.5; px = easeInOut(T / 2.5); }
+      else if (T < 4) { py = 1; px = 1; }
+      else if (T < 6.5) { py = 1 - (T - 4) / 2.5; px = 1 - easeInOut((T - 4) / 2.5); }
+      else { py = 0; px = 0; }
+      const nx = -Math.cos(px * Math.PI * 4) * 0.75;
+      const ny = Math.cos(py * Math.PI) * 0.5;
+      return [CFG.head[0] + nx * 0.28, CFG.head[1] + 0.06 - ny * 0.40];
+    };
+
+    const frame = (now) => {
+      raf = requestAnimationFrame(frame);
+      const dt = Math.min((now - (lastT || now)) / 1000, 0.05) || 1 / 60;
+      lastT = now;
+
+      // quem guia o pincel: o usuario, ou o cursor virtual depois de 2s parado
+      const idle = now - Math.max(lastMove, t0) > CFG.idleAfter;
+      if (idle) {
+        if (!wasIdle) { idleStart = now; prevPtr = null; }
+        ptr = idlePoint(now - idleStart);
+        tiltTarget = [(ptr[0] - CFG.head[0]) * 0.6, (ptr[1] - CFG.head[1]) * 0.6];
+      } else if (wasIdle) {
+        prevPtr = null; // o mouse voltou: nao liga o rastro do cursor virtual ao mouse
+      }
+      wasIdle = idle;
+
+      // forca do pincel vem da velocidade: parado nao revela nada
+      let a = prevPtr || ptr, b = ptr, strength = 0, radius = CFG.brush;
+      if (a && b) {
+        const dx = (b[0] - a[0]) * aspect, dy = b[1] - a[1];
+        const speed = Math.hypot(dx, dy) / dt;          // alturas do retrato por segundo
+        if (speed > 0.02) {
+          strength = Math.min(1, 0.45 + speed * 0.6);
+          radius = CFG.brush * (0.85 + Math.min(speed, 1.5) * 0.25);
+        }
+      }
+      prevPtr = ptr;
+
+      tilt[0] += (tiltTarget[0] - tilt[0]) * 0.06;
+      tilt[1] += (tiltTarget[1] - tilt[1]) * 0.06;
+
+      // passo 1: rastro (ping-pong)
+      const src = fbo[ping], dst = fbo[1 - ping];
+      gl.bindFramebuffer(gl.FRAMEBUFFER, dst.f);
+      gl.viewport(0, 0, TRAIL_W, TRAIL_H);
+      gl.useProgram(sim.pr);
+      gl.activeTexture(gl.TEXTURE0); gl.bindTexture(gl.TEXTURE_2D, src.t);
+      gl.uniform1i(sim.u.uPrev, 0);
+      gl.uniform2f(sim.u.uTexel, 1 / TRAIL_W, 1 / TRAIL_H);
+      const A = a || [-9, -9], B = b || [-9, -9];
+      gl.uniform2f(sim.u.uA, A[0], 1 - A[1]);
+      gl.uniform2f(sim.u.uB, B[0], 1 - B[1]);
+      gl.uniform1f(sim.u.uAspect, aspect);
+      gl.uniform1f(sim.u.uR, radius);
+      gl.uniform1f(sim.u.uStrength, strength);
+      gl.uniform1f(sim.u.uDecay, Math.pow(CFG.decay, dt * 60));
+      gl.uniform1f(sim.u.uFloor, 0.003 * dt * 60);
+      gl.uniform1f(sim.u.uTime, now / 1000);
+      gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+      ping = 1 - ping;
+
+      // passo 2: composicao na tela
+      gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+      gl.viewport(0, 0, canvas.width, canvas.height);
+      gl.clearColor(0, 0, 0, 0); gl.clear(gl.COLOR_BUFFER_BIT);
+      gl.useProgram(comp.pr);
+      gl.activeTexture(gl.TEXTURE0); gl.bindTexture(gl.TEXTURE_2D, cleanTex);
+      gl.activeTexture(gl.TEXTURE1); gl.bindTexture(gl.TEXTURE_2D, revealTex);
+      gl.activeTexture(gl.TEXTURE2); gl.bindTexture(gl.TEXTURE_2D, dst.t);
+      gl.uniform1i(comp.u.uClean, 0);
+      gl.uniform1i(comp.u.uReveal, 1);
+      gl.uniform1i(comp.u.uTrail, 2);
+      gl.uniform2f(comp.u.uTilt, tilt[0], tilt[1]);
+      gl.uniform2f(comp.u.uHead, CFG.head[0], CFG.head[1]);
+      gl.uniform2f(comp.u.uRes, canvas.width, canvas.height);
+      gl.uniform3f(comp.u.uAccent, CFG.accent[0], CFG.accent[1], CFG.accent[2]);
+      gl.uniform1f(comp.u.uAspect, aspect);
+      gl.uniform1f(comp.u.uTime, now / 1000);
+      gl.uniform1f(comp.u.uThreshold, CFG.threshold);
+      gl.uniform1f(comp.u.uOutline, CFG.outline);
+      gl.uniform1f(comp.u.uTiltAmt, CFG.tilt);
+      gl.uniform1f(comp.u.uDpr, dpr);
+      gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+
+      if (!started) { started = true; box.classList.add('is-gl'); }
+    };
+
+    const play = () => { if (!raf && visible && cleanTex && revealTex && !document.hidden) { lastT = 0; raf = requestAnimationFrame(frame); } };
+    const pause = () => { cancelAnimationFrame(raf); raf = 0; };
+
+    // ---------- entrada ----------
+    // Mouse em qualquer ponto do hero: a cabeca acompanha; dentro do
+    // retrato, o rastro pinta.
+    const hero = box.closest('.hero') || box;
+    hero.addEventListener('pointermove', (e) => {
+      if (e.pointerType !== 'mouse') return;
+      pointAt(toUv(e.clientX, e.clientY), performance.now());
+    }, { passive: true });
+    hero.addEventListener('pointerleave', () => { ptr = null; tiltTarget = [0, 0]; });
+    // Toque: arrastar o dedo sobre o retrato pinta, sem travar a rolagem
+    const onTouch = (e) => {
+      const t = e.touches[0];
+      if (t) pointAt(toUv(t.clientX, t.clientY), performance.now());
+    };
+    box.addEventListener('touchstart', (e) => { onTouch(e); prevPtr = null; }, { passive: true });
+    box.addEventListener('touchmove', onTouch, { passive: true });
+    box.addEventListener('touchend', () => { ptr = null; }, { passive: true });
+
+    canvas.addEventListener('webglcontextlost', () => { pause(); box.classList.remove('is-gl'); });
+
+    if ('ResizeObserver' in window) new ResizeObserver(resize).observe(box);
+    else window.addEventListener('resize', resize);
+    resize();
+
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver((es) => {
+        visible = es[0].isIntersecting;
+        if (visible) play(); else pause();
+      }).observe(box);
+    }
+    document.addEventListener('visibilitychange', () => { if (document.hidden) pause(); else play(); });
+
+    // ---------- carga ----------
+    // A foto 2 so carrega em idle, para nao disputar banda com a foto 1.
+    const loadImage = (src, fallback) => new Promise((res, rej) => {
+      const img = new Image();
+      img.decoding = 'async';
+      img.onload = () => res(img);
+      img.onerror = () => (fallback ? loadImage(fallback).then(res, rej) : rej());
+      img.src = src;
+    });
+    const cleanReady = (cleanImg.complete && cleanImg.naturalWidth)
+      ? Promise.resolve(cleanImg)
+      : new Promise((res) => cleanImg.addEventListener('load', () => res(cleanImg), { once: true }));
+    const start = () => {
+      Promise.all([cleanReady, loadImage(canvas.dataset.reveal, canvas.dataset.revealFallback)])
+        .then(([c, r]) => Promise.all([c.decode ? c.decode().catch(() => {}) : 0, r.decode ? r.decode().catch(() => {}) : 0]).then(() => [c, r]))
+        .then(([c, r]) => {
+          cleanTex = imageTex(c);
+          revealTex = imageTex(r);
+          play();
+        })
+        .catch(() => {}); // sem a foto 2, fica a foto 1 estatica
+    };
+    if ('requestIdleCallback' in window) requestIdleCallback(start, { timeout: 2000 });
+    else setTimeout(start, 600);
   }
 
   // ===== Nav: secao atual ===========================================
@@ -676,6 +1018,7 @@
     initHeader();
     initNavState();
     initHeroField();
+    initHeroPortrait();
     initReveal();
     initMotion();
     initCountUp();
