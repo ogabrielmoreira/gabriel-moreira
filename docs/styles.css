@@ -227,7 +227,24 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
   z-index: 1;
   transition: color 0.25s;
 }
+.lang-toggle button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.lang-toggle .lang-ico {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px rgba(10, 10, 10, 0.12);
+  filter: saturate(0.55);
+  opacity: 0.7;
+  transition: filter 0.25s, opacity 0.25s;
+}
 .lang-toggle button.active { color: var(--ink); }
+.lang-toggle button.active .lang-ico,
+.lang-toggle button:hover .lang-ico { filter: none; opacity: 1; }
 .lang-toggle .pill {
   position: absolute;
   top: 3px; bottom: 3px;
@@ -238,7 +255,7 @@ button { font: inherit; cursor: pointer; border: 0; background: none; color: inh
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
   transition: transform 0.35s var(--ease-out);
 }
-.lang-toggle[data-lang="en"] .pill { transform: translateX(100%); }
+.lang-toggle[data-lang="pt"] .pill { transform: translateX(100%); }
 
 .menu-toggle { display: none; }
 

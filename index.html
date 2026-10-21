@@ -47,10 +47,16 @@
       </nav>
 
       <div class="header-actions">
-        <div class="lang-toggle" data-lang="pt" role="tablist" aria-label="Idioma">
+        <div class="lang-toggle" data-lang="en" role="tablist" aria-label="Language">
           <span class="pill" aria-hidden="true"></span>
-          <button data-l="pt" class="active" role="tab" aria-selected="true">PT</button>
-          <button data-l="en" role="tab" aria-selected="false">EN</button>
+          <button data-l="en" class="active" role="tab" aria-selected="true" aria-label="English" title="English">
+            <svg class="lang-ico" viewBox="0 0 20 20" aria-hidden="true"><defs><clipPath id="flag-us"><circle cx="10" cy="10" r="10"/></clipPath></defs><g clip-path="url(#flag-us)"><rect width="20" height="20" fill="#fff"/><path d="M0 0h20v1.54H0zM0 3.08h20v1.54H0zM0 6.15h20v1.54H0zM0 9.23h20v1.54H0zM0 12.31h20v1.54H0zM0 15.38h20v1.54H0zM0 18.46h20V20H0z" fill="#b22234"/><rect width="10" height="10.77" fill="#3c3b6e"/><g fill="#fff"><circle cx="2" cy="2" r=".6"/><circle cx="5" cy="2" r=".6"/><circle cx="8" cy="2" r=".6"/><circle cx="3.5" cy="4.2" r=".6"/><circle cx="6.5" cy="4.2" r=".6"/><circle cx="2" cy="6.4" r=".6"/><circle cx="5" cy="6.4" r=".6"/><circle cx="8" cy="6.4" r=".6"/><circle cx="3.5" cy="8.6" r=".6"/><circle cx="6.5" cy="8.6" r=".6"/></g></g></svg>
+            <span>EN</span>
+          </button>
+          <button data-l="pt" role="tab" aria-selected="false" aria-label="Português" title="Português">
+            <svg class="lang-ico" viewBox="0 0 20 20" aria-hidden="true"><defs><clipPath id="flag-br"><circle cx="10" cy="10" r="10"/></clipPath></defs><g clip-path="url(#flag-br)"><rect width="20" height="20" fill="#009c3b"/><path d="M10 3.2 18 10l-8 6.8L2 10z" fill="#ffdf00"/><circle cx="10" cy="10" r="3.6" fill="#002776"/><path d="M6.5 9.3c2.4-.5 4.9-.2 7 .9" stroke="#fff" stroke-width=".6" fill="none"/></g></svg>
+            <span>PT</span>
+          </button>
         </div>
         <a class="btn btn--yellow btn--sm btn--cta" href="https://wa.me/5511947672575" target="_blank" rel="noopener">
           <span data-i18n="cta.talk">Falar comigo</span>
