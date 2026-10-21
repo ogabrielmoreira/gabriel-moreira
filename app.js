@@ -877,6 +877,31 @@
     onScroll();
   }
 
+  // ===== Menu mobile ================================================
+  // No mobile a navegacao, o idioma e o CTA moram dentro da capsula; o
+  // botao abre e fecha. Fecha ao escolher um link, no Esc, ao tocar fora
+  // e quando a tela volta a ser desktop.
+  function initMenu() {
+    const h = document.querySelector('.site-header');
+    const btn = h && h.querySelector('.menu-toggle');
+    if (!btn) return;
+    const set = (open) => {
+      h.classList.toggle('menu-open', open);
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    };
+    const isOpen = () => h.classList.contains('menu-open');
+    btn.addEventListener('click', () => set(!isOpen()));
+    h.querySelectorAll('.nav a').forEach((a) => a.addEventListener('click', () => set(false)));
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && isOpen()) { set(false); btn.focus(); }
+    });
+    document.addEventListener('click', (e) => {
+      if (isOpen() && !h.contains(e.target)) set(false);
+    });
+    const mq = window.matchMedia('(max-width: 880px)');
+    if (mq.addEventListener) mq.addEventListener('change', (e) => { if (!e.matches) set(false); });
+  }
+
   // ===== Reveal on scroll ===========================================
   function initReveal() {
     const io = new IntersectionObserver((entries) => {
@@ -1018,6 +1043,7 @@
   document.addEventListener('DOMContentLoaded', () => {
     initLang();
     initHeader();
+    initMenu();
     initNavState();
     initHeroField();
     initHeroPortrait();
@@ -1030,13 +1056,20 @@
 })();
 
 /* Content protection
-   Blocks right click, image drag, long-press save and copy/cut.
+   Right click works on the page, but not on images (no "Save image as").
+   Also blocks image drag, long-press save and copy/cut.
    Text can still be highlighted, but not copied. */
 (function () {
   var stop = function (e) { e.preventDefault(); };
+  var MEDIA = 'img, picture, video, canvas';
 
-  ['contextmenu', 'dragstart', 'copy', 'cut'].forEach(function (type) {
+  ['dragstart', 'copy', 'cut'].forEach(function (type) {
     document.addEventListener(type, stop);
+  });
+
+  document.addEventListener('contextmenu', function (e) {
+    var t = e.target;
+    if (t && t.closest && t.closest(MEDIA)) e.preventDefault();
   });
 
   // Overwrite whatever lands on the clipboard, in case a copy slips through
@@ -1047,7 +1080,7 @@
   // Long-press on images (mobile "Save to Photos" menu)
   document.addEventListener('touchstart', function (e) {
     var t = e.target;
-    if (t && t.closest && t.closest('img, picture, video')) {
+    if (t && t.closest && t.closest(MEDIA)) {
       t.addEventListener('touchend', stop, { once: true });
     }
   }, { passive: true });

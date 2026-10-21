@@ -1693,6 +1693,124 @@ body {
   .site-header.scrolled .header-inner { max-width: calc(var(--max) - var(--gutter) * 2); }
 }
 
+/* =========================================================
+   Menu mobile — a cápsula se abre e vira o menu
+   No desktop os wrappers somem do layout (display: contents) e
+   nav + ações seguem como itens diretos da cápsula.
+   ========================================================= */
+.header-menu,
+.header-menu-inner { display: contents; }
+.site-header .header-menu-inner > * { position: relative; z-index: 2; }
+
+@media (max-width: 880px) {
+  .site-header .header-inner {
+    flex-wrap: wrap;
+    gap: 0;
+    border-radius: 28px;
+  }
+  .brand { margin-right: auto; }
+  /* Aberta, a cápsula fica mais densa: o título do hero não vaza pelo vidro */
+  .site-header.menu-open .header-inner { background: var(--glass-bg-strong); }
+
+  /* Botão hambúrguer em vidro, mesmo material do toggle de idioma */
+  .menu-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 999px;
+    color: var(--ink);
+    background: linear-gradient(155deg, rgba(255,255,255,0.55), rgba(255,255,255,0.18));
+    box-shadow:
+      0 0 0 1px rgba(255,255,255,0.55),
+      inset 0 1px 0 rgba(255,255,255,0.7),
+      inset 0 -1px 2px rgba(10,10,10,0.05);
+  }
+  .menu-toggle-bars {
+    position: relative;
+    width: 18px;
+    height: 12px;
+  }
+  .menu-toggle-bars span {
+    position: absolute;
+    left: 0; right: 0;
+    height: 2px;
+    border-radius: 2px;
+    background: currentColor;
+    transition: top var(--t-state) var(--ease-arrive), transform var(--t-state) var(--ease-arrive);
+  }
+  .menu-toggle-bars span:first-child { top: 2px; }
+  .menu-toggle-bars span:last-child  { top: 8px; }
+  .menu-open .menu-toggle-bars span:first-child { top: 5px; transform: rotate(45deg); }
+  .menu-open .menu-toggle-bars span:last-child  { top: 5px; transform: rotate(-45deg); }
+
+  /* O painel cresce dentro da própria cápsula (0fr → 1fr) */
+  .header-menu {
+    display: grid;
+    flex-basis: 100%;
+    grid-template-rows: 0fr;
+    visibility: hidden;
+    transition:
+      grid-template-rows var(--t-view) var(--ease-arrive),
+      visibility 0s linear var(--t-view);
+  }
+  .header-menu-inner {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    overflow: hidden;
+    padding-right: 6px;
+    opacity: 0;
+    transform: translateY(-6px);
+    transition:
+      opacity var(--t-state) var(--ease-arrive),
+      transform var(--t-view) var(--ease-arrive);
+  }
+  .site-header.menu-open .header-menu {
+    grid-template-rows: 1fr;
+    visibility: visible;
+    transition: grid-template-rows var(--t-view) var(--ease-arrive), visibility 0s;
+  }
+  .site-header.menu-open .header-menu-inner {
+    opacity: 1;
+    transform: none;
+    transition-delay: 60ms;
+  }
+
+  .header-menu .nav {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2px;
+    padding: 14px 0 10px;
+  }
+  .header-menu .nav a {
+    font-size: 17px;
+    padding: 12px 14px;
+  }
+  .header-menu .nav a::after {
+    left: 14px;
+    bottom: 6px;
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  .header-menu .nav a:hover::after,
+  .header-menu .nav a.is-current::after { transform: scaleX(1); }
+
+  .header-menu .header-actions {
+    justify-content: space-between;
+    margin: 0 0 4px 6px;
+    padding: 14px 0 6px;
+    border-top: 1px solid rgba(10,10,10,0.08);
+  }
+  .header-menu .header-actions .btn--cta { display: inline-flex; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .header-menu-inner { transform: none !important; }
+}
+
 /* Barra de progresso amarela do topo: removida */
 .scroll-progress { display: none !important; }
 
