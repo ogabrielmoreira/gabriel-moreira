@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>SimpleApp prototype · GaYa | Gabriel Moreira</title>
+  <meta name="description" content="Clickable SimpleApp built with the rebuilt GaYa components: login, home, showcase, bag and notification, in three generic themes with light and dark modes." />
+  <meta name="theme-color" content="#0f4a3a" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="icon" href="../../favicon.ico" sizes="any" />
+  <link rel="stylesheet" href="../ui/gaya.css" />
+  <link rel="stylesheet" href="prototype.css" />
+</head>
+<body>
+  <header class="pp-header">
+    <a class="pp-brand" href="../" data-keep-lang><i class="pp-mark">G</i><b data-t="title">SimpleApp prototype</b></a>
+    <nav class="pp-top">
+      <a href="../" data-keep-lang data-t="case">Case study</a>
+      <a href="../storybook/" data-keep-lang>Storybook</a>
+    </nav>
+    <div class="pp-lang" role="group" aria-label="Language">
+      <button type="button" data-l="en" aria-pressed="true">EN</button>
+      <button type="button" data-l="pt" aria-pressed="false">PT</button>
+    </div>
+  </header>
+
+  <main class="pp-layout">
+    <section class="pp-stage" aria-label="Prototype">
+      <div class="pp-device gy" id="pp-device" data-theme="t1" data-mode="light">
+        <div class="pp-island" aria-hidden="true"></div>
+        <div class="pp-status" aria-hidden="true"><span>12:00</span><span>●●● ▮</span></div>
+        <div class="pp-screen" id="pp-screen"></div>
+      </div>
+      <p class="pp-note" data-t="note">Tap what looks tappable. Change the theme and mode on the right: the components stay the same, only tier 2 tokens change.</p>
+    </section>
+
+    <aside class="pp-panel">
+      <span class="pp-eyebrow" data-t="eyebrow">Interactive</span>
+      <h1 data-t="h1">SimpleApp, built with GaYa</h1>
+      <p class="pp-lead" data-t="lead">A small app to test the components in context, the same idea as the SimpleApp library I launched for prototyping inside the team.</p>
+      <p class="pp-notice"><b data-t="noticeTag">Independent recreation</b> <span data-t="notice"></span></p>
+
+      <div class="pp-group"><span data-t="theme">Theme</span>
+        <div class="pp-seg" id="pp-themes"><button type="button" data-v="t1" aria-pressed="true">1</button><button type="button" data-v="t2" aria-pressed="false">2</button><button type="button" data-v="t3" aria-pressed="false">3</button></div>
+      </div>
+      <div class="pp-group"><span data-t="mode">Mode</span>
+        <div class="pp-seg" id="pp-modes"><button type="button" data-v="light" aria-pressed="true" data-t="light">Light</button><button type="button" data-v="dark" aria-pressed="false" data-t="dark">Dark</button></div>
+      </div>
+
+      <ol class="pp-steps" id="pp-steps"></ol>
+    </aside>
+  </main>
+
+  <script src="../ui/gaya.js"></script>
+  <script src="prototype.js"></script>
+</body>
+</html>
