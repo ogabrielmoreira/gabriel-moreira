@@ -1,0 +1,184 @@
+/* OTTO Vigilant · "VW Safety" mini design system (recriação independente).
+   Tokens em duas camadas: primitivos (--p-*) e semânticos (--ot-*), mais o nível de risco (--lv)
+   que cada componente lê de data-level. Modo "contrast" é o alto contraste dos cenários críticos. */
+
+.ot {
+  --p-black: #000000;
+  --p-card: #111317;
+  --p-row: #34363b;
+  --p-row-hover: #3d3f44;
+  --p-gray: #969696;
+  --p-light: #e3e3e3;
+  --p-green: #00b374;
+  --p-orange: #ff9500;
+  --p-red: #e63946;
+  --p-blue: #7da2ff;
+
+  --ot-bg: var(--p-black);
+  --ot-card: var(--p-card);
+  --ot-row: var(--p-row);
+  --ot-row-h: var(--p-row-hover);
+  --ot-text: #ffffff;
+  --ot-sub: var(--p-gray);
+  --ot-line: #2b2e34;
+  --ot-l0: var(--p-blue);
+  --ot-l1: var(--p-green);
+  --ot-l2: var(--p-orange);
+  --ot-l3: var(--p-red);
+  --ot-edge: transparent;
+
+  font-family: "Outfit", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: var(--ot-text);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.25;
+}
+.ot[data-mode="contrast"] {
+  --ot-card: #000000;
+  --ot-row: #000000;
+  --ot-row-h: #15171b;
+  --ot-sub: var(--p-light);
+  --ot-line: #ffffff;
+  --ot-edge: #ffffff;
+  --ot-l0: #a9c0ff;
+  --ot-l1: #2dffb0;
+  --ot-l2: #ffb347;
+  --ot-l3: #ff6b78;
+}
+.ot *, .ot *::before, .ot *::after { box-sizing: border-box; }
+:where(.ot) button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; padding: 0; }
+.ot svg { display: block; }
+.ot [data-level="0"], .ot[data-level="0"] { --lv: var(--ot-l0); }
+.ot [data-level="1"], .ot[data-level="1"] { --lv: var(--ot-l1); }
+.ot [data-level="2"], .ot[data-level="2"] { --lv: var(--ot-l2); }
+.ot [data-level="3"], .ot[data-level="3"] { --lv: var(--ot-l3); }
+.ot :focus-visible { outline: 3px solid #fff; outline-offset: 3px; border-radius: 10px; }
+
+/* ---------- Botão ---------- */
+.ot-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 0.5em;
+  padding: 0.75em 1.7em; border-radius: 999px; border: 2px solid var(--lv, #fff);
+  background: var(--lv, #fff); color: #000; font-size: 1em; font-weight: 400; line-height: 1;
+  transition: filter 0.15s, background 0.15s;
+}
+.ot-btn:hover { filter: brightness(1.1); }
+.ot-btn--outline { background: transparent; color: var(--lv, #fff); }
+.ot-btn--outline:hover { background: rgba(255, 255, 255, 0.08); filter: none; }
+
+/* ---------- Selo de nível ---------- */
+.ot-badge {
+  display: inline-flex; align-items: center; gap: 0.5em; padding: 0.35em 0.9em 0.35em 0.7em;
+  border-radius: 999px; font-size: 1em; color: var(--lv); border: 1.5px solid var(--lv);
+}
+.ot-badge i { width: 0.7em; height: 0.7em; border-radius: 50%; background: var(--lv); }
+
+/* ---------- Onda de voz ---------- */
+.ot-wave { display: flex; align-items: flex-end; justify-content: center; gap: 0.4em; height: 5em; color: var(--lv, #fff); }
+.ot-wave i { width: 0.5em; border-radius: 99px; background: var(--lv, #fff); transform-origin: bottom; }
+.ot-wave.is-live i { animation: ot-pulse 0.8s ease-in-out infinite alternate; animation-delay: calc(var(--n) * 0.07s); }
+@keyframes ot-pulse { from { transform: scaleY(0.35); } to { transform: scaleY(1); } }
+
+/* ---------- Alerta do OTTO ---------- */
+.ot-alert {
+  width: 56em; max-width: 100%; background: var(--ot-card); border-radius: 0.8em; padding: 2.2em 2.4em;
+  display: flex; flex-direction: column; align-items: center; gap: 1.5em; text-align: center;
+  border: 2px solid var(--ot-edge);
+}
+.ot[data-mode="contrast"] .ot-alert { border-color: var(--lv); border-width: 3px; }
+.ot-alert h2 { margin: 0; font-weight: 400; font-size: 2em; }
+.ot-alert p { margin: 0; font-size: 2em; line-height: 1.3; white-space: pre-line; max-width: 25em; }
+.ot-alert .ot-acts { display: flex; gap: 1.2em; flex-wrap: wrap; justify-content: center; margin-top: 0.2em; }
+.ot-alert .ot-btn { font-size: 1.5em; }
+
+/* ---------- Linha de evento ---------- */
+.ot-ev {
+  display: flex; align-items: center; gap: 1.1em; width: 100%; text-align: left; padding: 1em 1.3em;
+  border-radius: 1.4em; background: var(--ot-row); border: 2px solid var(--ot-edge);
+  transition: background 0.15s;
+}
+button.ot-ev:hover { background: var(--ot-row-h); }
+.ot-ev .ico { flex: none; width: 3em; height: 3em; color: var(--lv); }
+.ot-ev b { display: block; font-size: 1.5em; font-weight: 400; }
+.ot-ev span { display: block; font-size: 1.15em; color: var(--ot-sub); margin-top: 0.2em; }
+
+/* ---------- Medidor de risco ---------- */
+.ot-gauge { position: relative; width: 100%; max-width: 22em; }
+.ot-gauge svg { width: 100%; height: auto; overflow: visible; }
+.ot-gauge .seg { fill: none; stroke-width: 9; stroke-linecap: butt; }
+.ot-gauge .needle { transform-origin: 60px 60px; transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1); }
+.ot-gauge .read { position: static; margin-top: 0.5em; text-align: center; }
+.ot-gauge .read b { display: block; font-size: 3em; font-weight: 300; line-height: 1; color: var(--lv, #fff); }
+.ot-gauge .read span { font-size: 1.1em; color: var(--ot-sub); }
+
+/* ---------- Sinal (barra) ---------- */
+.ot-sig { display: grid; grid-template-columns: 2em minmax(0, 1fr) auto; gap: 0.2em 0.8em; align-items: center; }
+.ot-sig svg { color: var(--ot-sub); }
+.ot-sig label { font-size: 1.05em; }
+.ot-sig output { font-size: 1.05em; color: var(--ot-sub); font-variant-numeric: tabular-nums; }
+.ot-sig .bar { grid-column: 2 / 4; height: 0.5em; border-radius: 99px; background: var(--ot-line); overflow: hidden; }
+.ot-sig .bar i { display: block; height: 100%; border-radius: 99px; background: var(--lv, var(--ot-l0)); transition: width 0.5s cubic-bezier(0.22, 1, 0.36, 1); }
+
+/* ---------- Escada de intervenção ---------- */
+.ot-ladder { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.6em; }
+.ot-step { padding: 0.8em 0.6em; border-radius: 1em; background: var(--ot-row); border: 2px solid var(--ot-edge); text-align: center; opacity: 0.45; transition: opacity 0.3s, background 0.3s; }
+.ot-step svg { margin: 0 auto 0.4em; }
+.ot-step b { display: block; font-size: 1em; font-weight: 400; }
+.ot-step small { display: block; font-size: 0.8em; color: var(--ot-sub); margin-top: 0.15em; }
+.ot-step.on { opacity: 1; color: var(--lv); box-shadow: inset 0 0 0 2px var(--lv); }
+.ot-step.on small { color: var(--ot-text); }
+
+/* ---------- Controle ativo (tomada de controle) ---------- */
+.ot-take { display: grid; gap: 0.55em; }
+.ot-take li { list-style: none; display: grid; grid-template-columns: 2.1em minmax(0, 1fr); gap: 0.8em; align-items: center; padding: 0.7em 1em; border-radius: 1em; background: var(--ot-row); opacity: 0.4; transition: opacity 0.3s; border: 2px solid var(--ot-edge); }
+.ot-take li .n { width: 2.1em; height: 2.1em; border-radius: 50%; display: grid; place-items: center; border: 2px solid var(--ot-sub); font-size: 0.9em; }
+.ot-take li.on { opacity: 1; }
+.ot-take li.on .n { border-color: var(--ot-l3); background: var(--ot-l3); color: #000; }
+.ot-take li.done .n { border-color: var(--ot-l1); background: var(--ot-l1); color: #000; }
+.ot-take li.done { opacity: 0.85; }
+
+/* ---------- Tile de app ---------- */
+.ot-tile { display: flex; align-items: center; gap: 1em; width: 100%; padding: 0.9em 1.1em; border-radius: 0.8em; background: var(--ot-card); text-align: left; border: 2px solid var(--ot-edge); transition: background 0.15s, transform 0.15s; }
+button.ot-tile:hover { background: #1a1d22; transform: translateY(-1px); }
+.ot-tile .mk { flex: none; width: 3.4em; height: 3.4em; border-radius: 0.55em; display: grid; place-items: center; color: #fff; }
+.ot-tile b { display: block; font-size: 1.6em; font-weight: 400; }
+.ot-tile span { display: block; font-size: 1.1em; color: var(--ot-sub); margin-top: 0.15em; }
+
+/* ---------- Interruptor ---------- */
+.ot-sw { display: flex; align-items: center; justify-content: space-between; gap: 1em; width: 100%; padding: 0.9em 1.1em; border-radius: 1em; background: var(--ot-row); border: 2px solid var(--ot-edge); text-align: left; }
+.ot-sw b { display: block; font-weight: 400; font-size: 1.2em; }
+.ot-sw small { display: block; color: var(--ot-sub); font-size: 0.9em; margin-top: 0.15em; }
+.ot-sw .trk { flex: none; width: 3em; height: 1.7em; border-radius: 99px; background: #55585f; position: relative; transition: background 0.2s; }
+.ot-sw .trk::after { content: ""; position: absolute; top: 0.2em; left: 0.2em; width: 1.3em; height: 1.3em; border-radius: 50%; background: #fff; transition: transform 0.2s; }
+.ot-sw[aria-pressed="true"] .trk { background: var(--ot-l1); }
+.ot-sw[aria-pressed="true"] .trk::after { transform: translateX(1.3em); background: #000; }
+
+/* ---------- Toast ---------- */
+.ot-toast { display: flex; align-items: center; gap: 0.9em; padding: 0.9em 1.2em; border-radius: 1em; background: var(--ot-row); border-left: 0.4em solid var(--lv); border-top: 2px solid var(--ot-edge); }
+.ot-toast svg { color: var(--lv); flex: none; }
+.ot-toast b { display: block; font-weight: 400; font-size: 1.15em; }
+.ot-toast span { display: block; color: var(--ot-sub); font-size: 0.95em; }
+
+/* ---------- Tela do VW Play (moldura 1333 x 620) ---------- */
+.ot-fit { width: 100%; position: relative; overflow: hidden; border-radius: 14px; background: #000; }
+.ot-dash { position: absolute; left: 0; top: 0; width: 1333px; height: 620px; transform-origin: 0 0; background: var(--ot-bg); display: grid; grid-template-columns: 96px minmax(0, 1fr) 96px; grid-template-rows: 54px minmax(0, 1fr); overflow: hidden; font-size: 16px; }
+.ot-status { grid-area: 1 / 1 / 2 / 4; display: flex; align-items: center; justify-content: flex-end; gap: 14px; padding: 0 22px 0 0; color: #fff; font-size: 17px; }
+.ot-status .home { margin-right: auto; margin-left: 50%; transform: translateX(-12px); color: #fff; }
+.ot-status .av { width: 24px; height: 24px; border-radius: 50%; background: #2a7de1; }
+.ot-side { grid-area: 2 / 1; display: flex; flex-direction: column; align-items: center; justify-content: space-around; padding: 14px 0 26px; color: #fff; }
+.ot-side button { width: 56px; height: 56px; display: grid; place-items: center; border-radius: 14px; color: #fff; opacity: 0.9; }
+.ot-side button:hover { background: rgba(255, 255, 255, 0.08); }
+.ot-side button[aria-current="true"] { background: rgba(255, 255, 255, 0.14); }
+.ot-rside { grid-area: 2 / 3; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; padding: 14px 0 26px; gap: 18px; color: #fff; }
+.ot-rside .ps { font-size: 20px; font-weight: 500; border: 2px solid #fff; border-radius: 6px; padding: 0 6px; }
+.ot-main { grid-area: 2 / 2; position: relative; min-width: 0; padding: 0 0 20px; }
+.ot-panel { height: 100%; background: var(--ot-card); border-radius: 12px; border: 2px solid var(--ot-edge); padding: 34px 42px; position: relative; overflow: hidden; }
+.ot-title { margin: 0; font-weight: 400; font-size: 64px; line-height: 1.1; }
+.ot-sec { margin: 14px 0 22px; font-weight: 300; font-size: 26px; color: var(--ot-sub); }
+.ot-over { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; background: rgba(0, 0, 0, 0.72); padding: 18px; opacity: 0; pointer-events: none; transition: opacity 0.3s; z-index: 5; }
+.ot-over.on { opacity: 1; pointer-events: auto; }
+.ot-over .ot-alert { transform: scale(0.96); transition: transform 0.3s; }
+.ot-over.on .ot-alert { transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .ot-wave.is-live i { animation: none; transform: none; }
+  .ot * { transition: none !important; }
+}

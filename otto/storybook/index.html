@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Storybook OTTO Vigilant · Gabriel Moreira</title>
+  <meta name="description" content="Component explorer for the OTTO Vigilant concept: the VW Safety mini design system, alert levels, risk engine and intervention components rebuilt in HTML and CSS." />
+  <meta name="theme-color" content="#0a2a66" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Manrope:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="icon" href="../../favicon.ico" sizes="any" />
+  <link rel="stylesheet" href="../ui/otto.css" />
+  <link rel="stylesheet" href="storybook.css" />
+</head>
+<body>
+  <header class="sb-header">
+    <button class="sb-menu" id="sb-menu" type="button" aria-label="Stories"><span></span><span></span><span></span></button>
+    <a class="sb-brand" href="../" data-keep-lang><i class="sb-mark"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M12 22.586c-5.786 0-10.543-4.8-10.543-10.586 0-1.2.214-2.357.6-3.471l6.172 12c.085.171.171.3.385.3.215 0 .3-.129.386-.3l2.871-6.386q.064-.129.129-.129c.086 0 .086.086.129.129l2.914 6.386c.086.171.171.3.386.3.214 0 .3-.129.385-.3l6.172-12c.385 1.071.6 2.228.6 3.471-.043 5.786-4.8 10.586-10.586 10.586m0-13.329c-.086 0-.086-.086-.129-.128l-3.3-7.115a10.12 10.12 0 0 1 6.858 0l-3.3 7.115c-.043.042-.043.128-.129.128m-3.471 7.714c-.086 0-.086-.085-.129-.128L3 6.47c.943-1.542 2.314-2.828 3.9-3.728l3.814 8.228c.086.172.172.215.3.215h1.972c.128 0 .214-.043.3-.215l3.771-8.228c1.586.9 2.957 2.186 3.9 3.728L15.6 16.843q-.065.128-.129.128c-.085 0-.085-.085-.128-.128L13.286 12.3c-.086-.171-.172-.214-.3-.214h-1.972c-.128 0-.214.043-.3.214l-2.057 4.543c-.043.043-.043.128-.128.128M12 24c6.643 0 12-5.357 12-12S18.643 0 12 0 0 5.357 0 12s5.357 12 12 12"/></svg></i><b>Storybook</b><span>OTTO Vigilant</span></a>
+    <nav class="sb-top">
+      <a href="../" data-keep-lang data-t="case">Case study</a>
+      <a href="../prototype/" data-keep-lang data-t="proto">Prototype</a>
+    </nav>
+    <div class="sb-lang" role="group" aria-label="Language">
+      <button type="button" data-l="en" aria-pressed="true">EN</button>
+      <button type="button" data-l="pt" aria-pressed="false">PT</button>
+    </div>
+  </header>
+
+  <div class="sb-shell">
+    <aside class="sb-side">
+      <input id="sb-search" class="sb-search" type="search" placeholder="Find components" aria-label="Find components" />
+      <div id="sb-nav" class="sb-nav"></div>
+    </aside>
+
+    <main class="sb-main">
+      <aside class="sb-notice" role="note">
+        <span class="sb-notice-tag" data-t="noticeTag">Independent concept</span>
+        <p data-t="notice"></p>
+      </aside>
+
+      <div class="sb-head">
+        <span class="sb-eyebrow" id="sb-group"></span>
+        <h1 id="sb-title"></h1>
+        <p id="sb-desc"></p>
+      </div>
+
+      <section class="sb-canvas" id="sb-canvas" aria-label="Preview">
+        <div class="sb-bgbar">
+          <div class="sb-seg" role="group" aria-label="Risk level" id="sb-levels">
+            <button type="button" data-level="0" aria-pressed="false">0</button>
+            <button type="button" data-level="1" aria-pressed="true">1</button>
+            <button type="button" data-level="2" aria-pressed="false">2</button>
+            <button type="button" data-level="3" aria-pressed="false">3</button>
+          </div>
+          <div class="sb-seg" role="group" aria-label="Mode" id="sb-modes">
+            <button type="button" data-mode="night" aria-pressed="true" data-t="night">Night</button>
+            <button type="button" data-mode="contrast" aria-pressed="false" data-t="contrast">High contrast</button>
+          </div>
+        </div>
+        <div id="sb-stage" class="sb-stage ot" data-mode="night"></div>
+      </section>
+
+      <section class="sb-dock">
+        <div class="sb-tabs" role="tablist">
+          <button type="button" role="tab" data-tab="controls" aria-selected="true" data-t="controls">Controls</button>
+          <button type="button" role="tab" data-tab="usage" aria-selected="false" data-t="usage">Usage</button>
+          <button type="button" role="tab" data-tab="specs" aria-selected="false" data-t="specs">Tokens</button>
+        </div>
+        <div id="sb-panel" class="sb-panel"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="../ui/otto.js"></script>
+  <script src="storybook.js"></script>
+</body>
+</html>
