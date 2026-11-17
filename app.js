@@ -149,6 +149,8 @@
       'case.bradesco.tag5': '29 componentes',
       'case.bradesco.tag6': 'Wireframe e UI final',
       'case.bradesco.tag7': 'Projeto de 2022, reconstruído em 2026',
+      'case.gaya.cover': 'assets/cases/gaya-pt.jpg',
+      'case.gaya.alt': 'GaYa Design System, Grupo Natura: capa com o perfume Essencial sobre fundo verde',
       'case.bradesco.alt': 'App Bradesco, informes de rendimento: telas de seleção de ano e de informe gerado',
       'case.bradesco.cover': 'assets/cases/bradesco-pt.jpg',
 
@@ -364,6 +366,8 @@
       'case.bradesco.tag5': '29 components',
       'case.bradesco.tag6': 'Wireframe and final UI',
       'case.bradesco.tag7': '2022 project, rebuilt in 2026',
+      'case.gaya.cover': 'assets/cases/gaya-en.jpg',
+      'case.gaya.alt': 'GaYa Design System, Natura Group: cover with the Essencial perfume on a green background',
       'case.bradesco.alt': 'Bradesco app, income tax statements: year selection and statement generated screens',
       'case.bradesco.cover': 'assets/cases/bradesco-en.jpg',
 
