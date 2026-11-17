@@ -122,6 +122,19 @@
       'case.gaya.tag7': 'Theming multimarca',
       'case.gaya.tag8': 'Governança distribuída',
       'case.gaya.tag9': 'WCAG 2.2 AA/AAA',
+      'case.bradesco.cat': 'Banco · App mobile · UX/UI',
+      'case.bradesco.title': 'Bradesco. O informe de rendimentos saiu da agência e foi para o app.',
+      'case.bradesco.body': 'Em 2022, para declarar o Imposto de Renda, o cliente precisava ir à agência ou ligar para o gerente para receber o informe de rendimentos. Desenhei a jornada que levou esse documento para dentro do app: atalho na home, escolha do ano e um único PDF pronto para o contador, testada com gerentes do banco. O projeto ficou alguns anos parado por razões contratuais. Em 2026 reconstruí as telas no Figma e agora posso mostrar, com o que eu faria melhor hoje.',
+      'case.bradesco.cta1': 'Ver case completo',
+      'case.bradesco.tag1': 'App Bradesco',
+      'case.bradesco.tag2': 'Imposto de Renda',
+      'case.bradesco.tag3': 'Testes com gerentes',
+      'case.bradesco.tag4': '15 telas',
+      'case.bradesco.tag5': '29 componentes',
+      'case.bradesco.tag6': 'Wireframe e UI final',
+      'case.bradesco.tag7': 'Projeto de 2022, reconstruído em 2026',
+      'case.bradesco.alt': 'App Bradesco, informes de rendimento: telas de seleção de ano e de informe gerado',
+      'case.bradesco.cover': 'assets/cases/bradesco-pt.jpg',
       'case.lumen.cat': 'Design System · Storybook · Projeto autoral',
       'case.lumen.year': '2025',
       'case.lumen.title': 'Lumen. Design system autoral, token-first, documentado em Storybook.',
@@ -289,6 +302,19 @@
       'case.gaya.tag7': 'Multi-brand theming',
       'case.gaya.tag8': 'Distributed governance',
       'case.gaya.tag9': 'WCAG 2.2 AA/AAA',
+      'case.bradesco.cat': 'Banking · Mobile app · UX/UI',
+      'case.bradesco.title': 'Bradesco. The income tax statement moved from the branch into the app.',
+      'case.bradesco.body': 'In 2022, to file their income tax, customers had to go to the branch or call their account manager to get the income statement. I designed the journey that brought the document into the app: a home shortcut, year selection and a single PDF ready for the accountant, tested with the bank’s managers. The project sat for a few years for contractual reasons. In 2026 I rebuilt the screens in Figma and can now show it, along with what I would do better today.',
+      'case.bradesco.cta1': 'See the full case',
+      'case.bradesco.tag1': 'Bradesco App',
+      'case.bradesco.tag2': 'Income tax',
+      'case.bradesco.tag3': 'Tested with managers',
+      'case.bradesco.tag4': '15 screens',
+      'case.bradesco.tag5': '29 components',
+      'case.bradesco.tag6': 'Wireframe and final UI',
+      'case.bradesco.tag7': '2022 project, rebuilt in 2026',
+      'case.bradesco.alt': 'Bradesco app, income tax statements: year selection and statement generated screens',
+      'case.bradesco.cover': 'assets/cases/bradesco-en.jpg',
       'case.lumen.cat': 'Design System · Storybook · Personal project',
       'case.lumen.year': '2025',
       'case.lumen.title': 'Lumen. A personal design system, token-first, documented in Storybook.',
@@ -361,6 +387,15 @@
       const key = el.getAttribute('data-i18n-alt');
       if (dict[key] !== undefined) el.alt = dict[key];
     });
+    // Capas com texto (ex.: Bradesco) trocam de imagem junto com o idioma.
+    document.querySelectorAll('[data-i18n-src]').forEach((el) => {
+      const key = el.getAttribute('data-i18n-src');
+      if (dict[key] !== undefined && el.getAttribute('src') !== dict[key]) el.setAttribute('src', dict[key]);
+    });
+    // Paginas de case internas abrem no mesmo idioma da landing.
+    document.querySelectorAll('[data-lang-href]').forEach((el) => {
+      el.setAttribute('href', el.getAttribute('data-lang-href') + (lang === 'pt' ? '?lang=pt' : ''));
+    });
     const t = document.querySelector('.lang-toggle');
     if (t) {
       t.dataset.lang = lang;
@@ -397,7 +432,8 @@
     // O site sempre abre em ingles; o portugues e escolha da visita, nao
     // fica salvo. Limpa a preferencia antiga para quem ja tinha 'pt' gravado.
     try { localStorage.removeItem('gm-lang'); } catch (e) {}
-    applyLang('en');
+    // Excecao: quem volta de uma pagina de case em portugues (?lang=pt) continua em portugues.
+    applyLang(/[?&]lang=pt\b/.test(location.search) ? 'pt' : 'en');
     // A troca de idioma e uma mudanca de estado: o texto sai e volta junto
     // com a pilula, em vez de trocar seco no meio da frase.
     const reduce = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;

@@ -1,0 +1,409 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Bradesco · Income Tax Statements in the app | Gabriel Moreira</title>
+  <meta name="description" content="Case study: taking the income tax statement from the Bradesco branch counter to a PDF in a few taps inside the app. 2022 project, rebuilt in 2026." />
+  <meta name="theme-color" content="#cc092f" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Bradesco · Income Tax Statements in the app | Gabriel Moreira" />
+  <meta property="og:description" content="Case study: taking the income tax statement from the Bradesco branch counter to a PDF in a few taps inside the app. 2022 project, rebuilt in 2026." />
+  <meta property="og:image" content="assets/og.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="icon" href="../favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png" />
+
+  <link rel="stylesheet" href="case.css" />
+  <script>document.documentElement.classList.add('js');</script>
+
+  <!-- Microsoft Clarity -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "yx8kvpy7zn");
+  </script>
+</head>
+<body>
+
+  <header class="case-header">
+    <div class="case-header-inner">
+      <a class="brand" href="../" data-home aria-label="Gabriel Moreira"><img src="../assets/logo-header.png" width="1050" height="438" alt="Gabriel Moreira" /></a>
+      <div class="case-header-actions">
+        <a class="back-link" href="../#projects" data-home><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg><span data-i18n="k342">Portfolio</span></a>
+        <div class="lang-switch" role="group" aria-label="Language">
+          <button type="button" data-l="en" aria-pressed="true" aria-label="English">EN</button>
+          <button type="button" data-l="pt" aria-pressed="false" aria-label="Português">PT</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+<section class="hero" id="top">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <img class="hero-logo" src="assets/bradesco-white.svg" width="492" height="93" alt="Bradesco" />
+        <span class="eyebrow" data-i18n="k1">UX/UI Design · Bradesco App · 2022</span>
+        <h1 data-i18n="k2">Income Tax<br>Statements</h1>
+        <p class="hero-sub" data-i18n="k3">From the branch counter to a PDF in a few taps, right in the app.</p>
+      </div>
+      <div class="hero-phones">
+        <div class="phone"><img src="assets/screens/08-statements.webp" width="402" height="874" data-i18n-alt="k4" alt="Income tax statements screen with year chips and the Generate button" fetchpriority="high" /></div>
+        <div class="phone"><img src="assets/screens/11-generated.webp" width="402" height="874" data-i18n-alt="k5" alt="Statement generated screen with save and share options" fetchpriority="high" /></div>
+      </div>
+    </div>
+    <dl class="hero-meta">
+      <div><dt data-i18n="k6">Role</dt><dd data-i18n="k7">UX/UI Design, as a contractor</dd></div>
+      <div><dt data-i18n="k8">When</dt><dd data-i18n="k9">2022, about 7 months</dd></div>
+      <div><dt data-i18n="k10">Validation</dt><dd data-i18n="k11">Test rounds with Bradesco managers</dd></div>
+      <div><dt data-i18n="k12">This version</dt><dd data-i18n="k13">Rebuilt in 2026, in Figma</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="sec" style="padding-bottom:0">
+  <div class="container">
+    <div class="note reveal">
+      <span class="note-tag" data-i18n="k14">Published in 2026</span>
+      <p data-i18n="k15"><strong>This project sat in a drawer for a few years.</strong> For contractual reasons I could not publish it. Now, at the end of 2026, the feature is public in the app and I can show it. The original files were lost, so I rebuilt the screens, components and journey in Figma, and added what I would do better today.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec"><div class="container">
+
+<header class="reveal"><span class="eyebrow" data-i18n="k16">Context · 2022</span><h2 class="h2" data-i18n="k17">Where the idea came from</h2><p class="lead" data-i18n="k18">In 2022 the income tax statement (informe de rendimentos) was not available in the app. To file their income tax, customers depended on the branch.</p></header>
+
+<div class="grid grid--4 sec-body reveal"><article class="card"><span class="num">01</span><h3 data-i18n="k19">Go to the branch or call the account manager</h3><p data-i18n="k20">The request only moved forward with human assistance.</p></article><article class="card"><span class="num">02</span><h3 data-i18n="k21">Wait for the export</h3><p data-i18n="k22">The manager generated the document and sent it back to the customer.</p></article><article class="card"><span class="num">03</span><h3 data-i18n="k23">Receive the statement</h3><p data-i18n="k24">Each customer received it however the manager chose to send it.</p></article><article class="card"><span class="num">04</span><h3 data-i18n="k25">Forward it to the accountant</h3><p data-i18n="k26">Only then did the document reach the person who would use it.</p></article></div>
+
+<p class="callout reveal" data-i18n="k27">An outdated process for a document customers need every year.</p>
+
+</div></section>
+
+<section class="sec sec--tint"><div class="container">
+
+<header class="reveal"><span class="eyebrow" data-i18n="k28">Context · up to 2022</span><h2 class="h2" data-i18n="k29">The landscape up to 2022</h2></header>
+
+<div class="grid grid--3 sec-body reveal">
+  <article class="card stat"><span class="big" data-i18n="k30">36.3 M</span><p data-i18n="k31">income tax returns received by the Receita Federal in 2022 (base year 2021).</p></article>
+  <article class="card stat"><span class="big">43%</span><p data-i18n="k32">of US core banking systems ran on COBOL, per a 2017 estimate cited by Reuters.</p></article>
+  <article class="card card--tick"><h3 data-i18n="k33">No public figure</h3><p data-i18n="k34">How many statements each bank issued through service channels is not public data. I used the national tax-return total as a scale reference.</p></article>
+</div>
+
+<h3 class="h3 sub-title reveal" data-i18n="k35">The bottlenecks</h3>
+
+<div class="grid grid--3 reveal"><article class="card card--tick"><h4 data-i18n="k36">Legacy systems</h4><p data-i18n="k37">The core was coded in older languages such as COBOL, common in large banks. Changing it took specialized programming.</p></article><article class="card card--tick"><h4 data-i18n="k38">Development queue</h4><p data-i18n="k39">Every new feature competed for priority in the IT queue, so the statement stayed with human service.</p></article><article class="card card--tick"><h4 data-i18n="k40">No AI in the workflow</h4><p data-i18n="k41">Prototyping, testing and coding were slow, separate stages, with no tools connecting them.</p></article></div>
+
+<p class="fine reveal" data-i18n="k42">Sources: Receita Federal (IRPF 2022); Reuters (2017), cited by DXC. Market data, not Bradesco data.</p>
+
+</div></section>
+
+<section class="sec"><div class="container">
+
+<header class="reveal"><span class="eyebrow" data-i18n="k43">Process</span><h2 class="h2" data-i18n="k44">Double diamond</h2><p class="lead" data-i18n="k45">How the project went from the problem at the branch to delivery in the app.</p></header>
+
+<div class="diamond sec-body reveal">
+  <svg viewBox="0 0 1000 132" role="img" data-i18n-label="k46" aria-label="Double diamond diagram: discover, define, develop, deliver"><g fill="#fde9ed" stroke="#cc092f" stroke-width="1.6" stroke-linejoin="round"><polygon points="2,66 250,4 498,66 250,128"/><polygon points="502,66 750,4 998,66 750,128"/></g><g stroke="#cc092f" stroke-width="1.2" stroke-dasharray="5 5"><line x1="250" y1="4" x2="250" y2="128"/><line x1="750" y1="4" x2="750" y2="128"/></g></svg>
+  <div class="diamond-cols">
+
+<div><h3 data-i18n="k47">Discover</h3><ul><li data-i18n="k48">Understand how the statement was requested and exported at the branch.</li><li data-i18n="k49">Listen to the managers who did the export.</li><li data-i18n="k50">Benchmark how other apps delivered the statement.</li></ul></div>
+
+<div><h3 data-i18n="k51">Define</h3><ul><li data-i18n="k52">Problem: customers depended on the manager for a yearly document.</li><li data-i18n="k53">Solution hypotheses.</li><li data-i18n="k54">End-to-end journey.</li></ul></div>
+
+<div><h3 data-i18n="k55">Develop</h3><ul><li data-i18n="k56">Flow wireframes.</li><li data-i18n="k57">Notification and home shortcut.</li><li data-i18n="k58">Illustration and waiting screens.</li></ul></div>
+
+<div><h3 data-i18n="k59">Deliver</h3><ul><li data-i18n="k60">Tests with managers from different squads.</li><li data-i18n="k61">Adjustments to the illustration and animations.</li><li data-i18n="k62">Final version in the app.</li></ul></div>
+
+</div></div></div></section>
+
+<section class="sec sec--tint"><div class="container">
+
+<header class="reveal"><span class="eyebrow" data-i18n="k63">Discover</span><h2 class="h2" data-i18n="k64">Research and benchmark</h2></header>
+
+<div class="grid grid--2 sec-body reveal"><article class="card card--tick"><h3 data-i18n="k65">Who we listened to</h3><p data-i18n="k66">The managers who exported income tax statements for customers. They received the request, generated the document and sent it back.</p></article><article class="card card--tick"><h3 data-i18n="k67">What we wanted to understand</h3><p data-i18n="k68">How the request arrived, how much effort it took and what customers did with the document afterwards.</p></article><article class="card card--tick"><h3 data-i18n="k69">What we looked at in the benchmark</h3><p data-i18n="k70">Where the statement lives in other apps, how many steps to the file, the delivered format and how to share it.</p></article><article class="card card--tick"><h3 data-i18n="k71">What we took into the project</h3><p data-i18n="k72">A short path from the home screen, a single PDF file and direct sharing.</p></article></div>
+
+</div></section>
+
+<section class="sec"><div class="container">
+
+<header class="reveal"><span class="eyebrow" data-i18n="k73">Define</span><h2 class="h2" data-i18n="k74">Hypotheses</h2></header>
+
+<div class="grid grid--2 sec-body reveal"><article class="card"><span class="num">H1</span><h3 data-i18n="k75">Autonomy</h3><p data-i18n="k76">If the statement lives inside the account in the app, customers no longer depend on the branch or the manager.</p></article><article class="card"><span class="num">H2</span><h3 data-i18n="k77">Discovery</h3><p data-i18n="k78">If everyone gets a notification showing the way, the question “where is this feature?” goes away.</p></article><article class="card"><span class="num">H3</span><h3 data-i18n="k79">Single file</h3><p data-i18n="k80">If the statements come out as a single PDF, forwarding them to the accountant becomes simple.</p></article><article class="card"><span class="num">H4</span><h3 data-i18n="k81">Availability</h3><p data-i18n="k82">If the feature is available all year, customers export whenever they need, not only during tax season.</p></article></div>
+
+</div></section>
+
+<section class="sec sec--tint"><div class="container">
+
+<header class="reveal"><span class="eyebrow" data-i18n="k83">Deliver</span><h2 class="h2" data-i18n="k84">Testing with managers</h2><p class="lead" data-i18n="k85">The journey was tested with Bradesco managers, the team that exported the statements, in rounds with different squads and about 5 participants each.</p></header>
+
+<div class="grid grid--3 sec-body reveal"><article class="card card--tick"><h3 data-i18n="k86">“Where will the statement feature be?”</h3><p data-i18n="k87">A simple journey from the home screen and a notification to all users showing the way.</p></article><article class="card card--tick"><h3 data-i18n="k88">“Will it be available all year?”</h3><p data-i18n="k89">Yes. Customers export and forward it to their accountant whenever they need.</p></article><article class="card card--tick"><h3 data-i18n="k90">The illustration caused confusion</h3><p data-i18n="k91">At first it left people unsure. It was the main adjustment after the tests.</p></article></div>
+
+<p class="callout reveal" data-i18n="k92">Using the flow itself raised no doubts.</p>
+
+</div></section>
+
+<section class="sec"><div class="container"><div class="split">
+
+<div><header class="reveal"><span class="eyebrow" data-i18n="k93">Iteration after testing</span><h2 class="h2" data-i18n="k94">The income tax lion</h2><p class="lead" data-i18n="k95">The first illustration was confusing. With the team, we brought in the lion, the symbol of income tax in Brazil.</p></header>
+
+<div class="stack reveal">
+
+<article class="card"><h3 data-i18n="k96">Fewer elements</h3><p data-i18n="k97">The illustration was simplified to be understood at a glance.</p></article>
+
+<article class="card"><h3 data-i18n="k98">Waiting screen</h3><p data-i18n="k99">The lion shows up while the app fetches and generates the statements, as a loading state.</p></article>
+
+<article class="card"><h3 data-i18n="k100">Simple animation</h3><p data-i18n="k101">Subtle motion, just to show that something is happening.</p></article>
+
+</div></div>
+
+<div class="duo reveal"><div class="phone"><img src="assets/screens/07-fetching.webp" width="402" height="874" data-i18n-alt="k102" alt="Waiting screen with the lion while statements are fetched" loading="lazy" decoding="async" /></div><div class="phone"><img src="assets/screens/10-generating.webp" width="402" height="874" data-i18n-alt="k103" alt="Waiting screen with the lion while the file is generated" loading="lazy" decoding="async" /></div></div>
+
+</div></div></section>
+
+<section class="sec sec--tint"><div class="container">
+
+<header class="reveal"><span class="eyebrow" data-i18n="k104">What changed</span><h2 class="h2" data-i18n="k105">Before × after</h2></header>
+
+<div class="ba sec-body reveal"><div style="background:#fff"><h3 data-i18n="k106">Before</h3><ul><li data-i18n="k107">Depended on the branch or the account manager</li><li data-i18n="k108">Limited to business hours</li><li data-i18n="k109">Waiting for someone to export the document</li><li data-i18n="k110">The customer was the go-between for bank and accountant</li></ul></div><div class="after"><h3 data-i18n="k111">After</h3><ul><li data-i18n="k112">Right in the account, inside the app</li><li data-i18n="k113">Available at any time</li><li data-i18n="k114">Statement generated in a few taps</li><li data-i18n="k115">A single PDF, ready to save or send to the accountant</li></ul></div></div>
+
+</div></section>
+
+<section class="sec"><div class="container">
+
+<header class="reveal"><span class="eyebrow" data-i18n="k116">The solution</span><h2 class="h2" data-i18n="k117">Income tax statements inside the app</h2><p class="lead" data-i18n="k118">The customer finds the shortcut on the home screen, picks the year, generates a single file and shares it.</p></header>
+
+<div class="steps5 sec-body reveal">
+
+<figure><div class="phone"><img src="assets/screens/04-home.webp" width="402" height="874" data-i18n-alt="k119" alt="App home with the income statement shortcut in Quick access" loading="lazy" decoding="async" /></div><figcaption data-i18n="k120">1. Home shortcut</figcaption></figure>
+
+<figure><div class="phone"><img src="assets/screens/08-statements.webp" width="402" height="874" data-i18n-alt="k121" alt="Year selection with chips and account checkbox" loading="lazy" decoding="async" /></div><figcaption data-i18n="k122">2. Pick the year</figcaption></figure>
+
+<figure><div class="phone"><img src="assets/screens/10-generating.webp" width="402" height="874" data-i18n-alt="k123" alt="Loading screen while the file is generated" loading="lazy" decoding="async" /></div><figcaption data-i18n="k124">3. File generation</figcaption></figure>
+
+<figure><div class="phone"><img src="assets/screens/11-generated.webp" width="402" height="874" data-i18n-alt="k125" alt="Statement generated confirmation" loading="lazy" decoding="async" /></div><figcaption data-i18n="k126">4. Statement ready</figcaption></figure>
+
+<figure><div class="phone"><img src="assets/screens/12-share.webp" width="402" height="874" data-i18n-alt="k127" alt="System share sheet with the PDF" loading="lazy" decoding="async" /></div><figcaption data-i18n="k128">5. Save or share</figcaption></figure>
+
+</div></div></section>
+
+<section class="sec sec--tint"><div class="container">
+
+<header class="reveal"><span class="eyebrow" data-i18n="k129">Benefits</span><h2 class="h2" data-i18n="k130">Why it makes things easier</h2></header>
+
+<div class="grid grid--3 sec-body reveal"><article class="card card--tick"><h3 data-i18n="k131">Autonomy</h3><p data-i18n="k132">Customers do it themselves, with no need for a branch or manager.</p></article><article class="card card--tick"><h3 data-i18n="k133">Speed</h3><p data-i18n="k134">From tapping the shortcut to the PDF in a few steps.</p></article><article class="card card--tick"><h3 data-i18n="k135">A single file</h3><p data-i18n="k136">The selected statements are merged into one PDF.</p></article><article class="card card--tick"><h3 data-i18n="k137">History</h3><p data-i18n="k138">Statements from the last 5 years available in one place.</p></article><article class="card card--tick"><h3 data-i18n="k139">Ready for the accountant</h3><p data-i18n="k140">The file goes from the app straight to email, messages or files.</p></article><article class="card card--tick"><h3 data-i18n="k141">Less demand on branches</h3><p data-i18n="k142">Export requests no longer take up service time.</p></article></div>
+
+</div></section>
+
+<section class="sec sec--tint" style="padding-top:0"><div class="container">
+
+<header class="reveal"><span class="eyebrow" data-i18n="k143">Journey</span><h2 class="h2" data-i18n="k144">End-to-end journey</h2><p class="lead" data-i18n="k145">From the notification that the statement is available to the saved file and the experience rating.</p></header>
+
+<div class="rail journey sec-body reveal" tabindex="0" role="region" data-i18n-label="k146" aria-label="End-to-end journey, scroll horizontally">
+
+<article class="stage"><span class="stage-tag"><span>01</span><b data-i18n="k147">Discovery</b></span><div class="phone"><img src="assets/screens/00-push.webp" width="402" height="874" data-i18n-alt="k148" alt="Discovery stage screen" loading="lazy" decoding="async" /></div><dl><div><dt data-i18n="k149">User action</dt><dd data-i18n="k150">Gets the notification announcing income tax statements in the app.</dd></div><div><dt data-i18n="k151">Thinking / feeling</dt><dd data-i18n="k152">“I need this to file my taxes. Where do I find it?”</dd></div><div class="opp"><dt data-i18n="k153">Design opportunity</dt><dd data-i18n="k154">Contextual push during tax season, leading straight to the feature.</dd></div></dl></article>
+
+<article class="stage"><span class="stage-tag"><span>02</span><b data-i18n="k155">Access</b></span><div class="phone"><img src="assets/screens/02-login.webp" width="402" height="874" data-i18n-alt="k156" alt="Access stage screen" loading="lazy" decoding="async" /></div><dl><div><dt data-i18n="k157">User action</dt><dd data-i18n="k158">Opens the app and signs in.</dd></div><div><dt data-i18n="k159">Thinking / feeling</dt><dd data-i18n="k160">“I want to get this done quickly.”</dd></div><div class="opp"><dt data-i18n="k161">Design opportunity</dt><dd data-i18n="k162">Keep the notification destination after sign-in.</dd></div></dl></article>
+
+<article class="stage"><span class="stage-tag"><span>03</span><b data-i18n="k163">Entry</b></span><div class="phone"><img src="assets/screens/04-home.webp" width="402" height="874" data-i18n-alt="k164" alt="Entry stage screen" loading="lazy" decoding="async" /></div><dl><div><dt data-i18n="k165">User action</dt><dd data-i18n="k166">Taps “Informe de rendimentos” in Quick access.</dd></div><div><dt data-i18n="k167">Thinking / feeling</dt><dd data-i18n="k168">“Found it without digging through menus.”</dd></div><div class="opp"><dt data-i18n="k169">Design opportunity</dt><dd data-i18n="k170">Featured shortcut on the home screen during tax season.</dd></div></dl></article>
+
+<article class="stage"><span class="stage-tag"><span>04</span><b data-i18n="k171">Lookup</b></span><div class="phone"><img src="assets/screens/07-fetching.webp" width="402" height="874" data-i18n-alt="k172" alt="Lookup stage screen" loading="lazy" decoding="async" /></div><dl><div><dt data-i18n="k173">User action</dt><dd data-i18n="k174">Waits while the available statements are fetched.</dd></div><div><dt data-i18n="k175">Thinking / feeling</dt><dd data-i18n="k176">“Did it freeze?”</dd></div><div class="opp"><dt data-i18n="k177">Design opportunity</dt><dd data-i18n="k178">Illustration and a time expectation (up to 30 s) ease the wait.</dd></div></dl></article>
+
+<article class="stage"><span class="stage-tag"><span>05</span><b data-i18n="k179">Selection</b></span><div class="phone"><img src="assets/screens/08-statements.webp" width="402" height="874" data-i18n-alt="k180" alt="Selection stage screen" loading="lazy" decoding="async" /></div><dl><div><dt data-i18n="k181">User action</dt><dd data-i18n="k182">Picks the year and which statements to merge.</dd></div><div><dt data-i18n="k183">Thinking / feeling</dt><dd data-i18n="k184">“I only need 2021, for my account.”</dd></div><div class="opp"><dt data-i18n="k185">Design opportunity</dt><dd data-i18n="k186">Year chips, a pre-selected item and help for statements from other products.</dd></div></dl></article>
+
+<article class="stage"><span class="stage-tag"><span>06</span><b data-i18n="k187">Generation</b></span><div class="phone"><img src="assets/screens/10-generating.webp" width="402" height="874" data-i18n-alt="k188" alt="Generation stage screen" loading="lazy" decoding="async" /></div><dl><div><dt data-i18n="k189">User action</dt><dd data-i18n="k190">Waits while everything is merged into one file.</dd></div><div><dt data-i18n="k191">Thinking / feeling</dt><dd data-i18n="k192">“A single file is easier to send to my accountant.”</dd></div><div class="opp"><dt data-i18n="k193">Design opportunity</dt><dd data-i18n="k194">Progress feedback in a friendly tone.</dd></div></dl></article>
+
+<article class="stage"><span class="stage-tag"><span>07</span><b data-i18n="k195">Delivery</b></span><div class="phone"><img src="assets/screens/11-generated.webp" width="402" height="874" data-i18n-alt="k196" alt="Delivery stage screen" loading="lazy" decoding="async" /></div><dl><div><dt data-i18n="k197">User action</dt><dd data-i18n="k198">Saves or shares the generated PDF.</dd></div><div><dt data-i18n="k199">Thinking / feeling</dt><dd data-i18n="k200">“Done, that was it.”</dd></div><div class="opp"><dt data-i18n="k201">Design opportunity</dt><dd data-i18n="k202">Clear next steps: save, generate others, back to home.</dd></div></dl></article>
+
+<article class="stage"><span class="stage-tag"><span>08</span><b data-i18n="k203">Rating</b></span><div class="phone"><img src="assets/screens/13-rating.webp" width="402" height="874" data-i18n-alt="k204" alt="Rating stage screen" loading="lazy" decoding="async" /></div><dl><div><dt data-i18n="k205">User action</dt><dd data-i18n="k206">Rates the experience with stars and an optional comment.</dd></div><div><dt data-i18n="k207">Thinking / feeling</dt><dd data-i18n="k208">“That was easier than I expected.”</dd></div><div class="opp"><dt data-i18n="k209">Design opportunity</dt><dd data-i18n="k210">Satisfaction survey at the end of the flow to improve the service.</dd></div></dl></article>
+
+</div></div></section>
+
+<section class="sec"><div class="container"><div class="flow" data-mode="final">
+
+<div class="flow-head reveal"><div><span class="eyebrow" data-i18n="k211">Screens</span><h2 class="h2" data-i18n="k212">From wireframe to final UI</h2><p class="lead" data-i18n="k213">The same 14 screens in low fidelity and in the final version. Switch between the two.</p></div>
+
+<div class="seg" role="group" data-i18n-label="k214" aria-label="Screen fidelity"><button type="button" data-mode="wire" aria-pressed="false" data-i18n="k215">Wireframe</button><button type="button" data-mode="final" aria-pressed="true" data-i18n="k216">Final UI</button></div></div>
+
+<div class="rail sec-body reveal" tabindex="0" role="region" data-i18n-label="k217" aria-label="All screens of the flow, scroll horizontally">
+
+<figure><div class="phone"><img class="final" src="assets/screens/00-push.webp" width="402" height="874" loading="lazy" decoding="async" data-i18n-alt="k218" alt="Push notification screen" /><img class="wire" src="assets/wires/00-push.webp" width="402" height="874" loading="lazy" decoding="async" alt="" aria-hidden="true" /></div><figcaption><small>00</small><span data-i18n="k219">Push notification</span></figcaption></figure>
+
+<figure><div class="phone"><img class="final" src="assets/screens/01-splash.webp" width="402" height="874" loading="lazy" decoding="async" data-i18n-alt="k220" alt="Splash screen" /><img class="wire" src="assets/wires/01-splash.webp" width="402" height="874" loading="lazy" decoding="async" alt="" aria-hidden="true" /></div><figcaption><small>01</small><span data-i18n="k221">Splash</span></figcaption></figure>
+
+<figure><div class="phone"><img class="final" src="assets/screens/02-login.webp" width="402" height="874" loading="lazy" decoding="async" data-i18n-alt="k222" alt="Login screen" /><img class="wire" src="assets/wires/02-login.webp" width="402" height="874" loading="lazy" decoding="async" alt="" aria-hidden="true" /></div><figcaption><small>02</small><span data-i18n="k223">Login</span></figcaption></figure>
+
+<figure><div class="phone"><img class="final" src="assets/screens/03-home-open-finance.webp" width="402" height="874" loading="lazy" decoding="async" data-i18n-alt="k224" alt="Home · Open Finance screen" /><img class="wire" src="assets/wires/03-home-open-finance.webp" width="402" height="874" loading="lazy" decoding="async" alt="" aria-hidden="true" /></div><figcaption><small>03</small><span data-i18n="k225">Home · Open Finance</span></figcaption></figure>
+
+<figure><div class="phone"><img class="final" src="assets/screens/04-home.webp" width="402" height="874" loading="lazy" decoding="async" data-i18n-alt="k226" alt="Home screen" /><img class="wire" src="assets/wires/04-home.webp" width="402" height="874" loading="lazy" decoding="async" alt="" aria-hidden="true" /></div><figcaption><small>04</small><span data-i18n="k227">Home</span></figcaption></figure>
+
+<figure><div class="phone"><img class="final" src="assets/screens/05-intro.webp" width="402" height="874" loading="lazy" decoding="async" data-i18n-alt="k228" alt="Income tax · Intro screen" /><img class="wire" src="assets/wires/05-intro.webp" width="402" height="874" loading="lazy" decoding="async" alt="" aria-hidden="true" /></div><figcaption><small>05</small><span data-i18n="k229">Income tax · Intro</span></figcaption></figure>
+
+<figure><div class="phone"><img class="final" src="assets/screens/06-season-closed.webp" width="402" height="874" loading="lazy" decoding="async" data-i18n-alt="k230" alt="Income tax · Season closed screen" /><img class="wire" src="assets/wires/06-season-closed.webp" width="402" height="874" loading="lazy" decoding="async" alt="" aria-hidden="true" /></div><figcaption><small>06</small><span data-i18n="k231">Income tax · Season closed</span></figcaption></figure>
+
+<figure><div class="phone"><img class="final" src="assets/screens/07-fetching.webp" width="402" height="874" loading="lazy" decoding="async" data-i18n-alt="k232" alt="Income tax · Fetching screen" /><img class="wire" src="assets/wires/07-fetching.webp" width="402" height="874" loading="lazy" decoding="async" alt="" aria-hidden="true" /></div><figcaption><small>07</small><span data-i18n="k233">Income tax · Fetching</span></figcaption></figure>
+
+<figure><div class="phone"><img class="final" src="assets/screens/08-statements.webp" width="402" height="874" loading="lazy" decoding="async" data-i18n-alt="k234" alt="Income tax · Statements screen" /><img class="wire" src="assets/wires/08-statements.webp" width="402" height="874" loading="lazy" decoding="async" alt="" aria-hidden="true" /></div><figcaption><small>08</small><span data-i18n="k235">Income tax · Statements</span></figcaption></figure>
+
+<figure><div class="phone"><img class="final" src="assets/screens/09-other-statements.webp" width="402" height="874" loading="lazy" decoding="async" data-i18n-alt="k236" alt="Other statements (expanded) screen" /><img class="wire" src="assets/wires/09-other-statements.webp" width="402" height="874" loading="lazy" decoding="async" alt="" aria-hidden="true" /></div><figcaption><small>09</small><span data-i18n="k237">Other statements (expanded)</span></figcaption></figure>
+
+<figure><div class="phone"><img class="final" src="assets/screens/10-generating.webp" width="402" height="874" loading="lazy" decoding="async" data-i18n-alt="k238" alt="Generating file screen" /><img class="wire" src="assets/wires/10-generating.webp" width="402" height="874" loading="lazy" decoding="async" alt="" aria-hidden="true" /></div><figcaption><small>10</small><span data-i18n="k239">Generating file</span></figcaption></figure>
+
+<figure><div class="phone"><img class="final" src="assets/screens/11-generated.webp" width="402" height="874" loading="lazy" decoding="async" data-i18n-alt="k240" alt="Statement generated screen" /><img class="wire" src="assets/wires/11-generated.webp" width="402" height="874" loading="lazy" decoding="async" alt="" aria-hidden="true" /></div><figcaption><small>11</small><span data-i18n="k241">Statement generated</span></figcaption></figure>
+
+<figure><div class="phone"><img class="final" src="assets/screens/12-share.webp" width="402" height="874" loading="lazy" decoding="async" data-i18n-alt="k242" alt="Share · Save file screen" /><img class="wire" src="assets/wires/12-share.webp" width="402" height="874" loading="lazy" decoding="async" alt="" aria-hidden="true" /></div><figcaption><small>12</small><span data-i18n="k243">Share · Save file</span></figcaption></figure>
+
+<figure><div class="phone"><img class="final" src="assets/screens/13-rating.webp" width="402" height="874" loading="lazy" decoding="async" data-i18n-alt="k244" alt="Experience rating screen" /><img class="wire" src="assets/wires/13-rating.webp" width="402" height="874" loading="lazy" decoding="async" alt="" aria-hidden="true" /></div><figcaption><small>13</small><span data-i18n="k245">Experience rating</span></figcaption></figure>
+
+</div></div></div></section>
+
+<section class="sec sec--tint"><div class="container">
+
+<header class="reveal"><span class="eyebrow" data-i18n="k246">Design system</span><h2 class="h2" data-i18n="k247">How the components were built</h2></header>
+
+<ol class="ds-steps grid grid--4 reveal" style="gap:24px">
+
+<li><span class="dot">1</span><div><h3 data-i18n="k248">Tokens</h3><p data-i18n="k249">Colors, typography and radii taken from the app screens.</p></div></li>
+
+<li><span class="dot">2</span><div><h3 data-i18n="k250">Material 3 base components</h3><p data-i18n="k251">Buttons, chips, checkbox, top app bar, navigation bar, bottom sheet and list items.</p></div></li>
+
+<li><span class="dot">3</span><div><h3 data-i18n="k252">Wireframes</h3><p data-i18n="k253">The same components in low fidelity, to validate structure and flow.</p></div></li>
+
+<li><span class="dot">4</span><div><h3 data-i18n="k254">Final version</h3><p data-i18n="k255">Brand tokens applied on top of the same structure.</p></div></li>
+
+</ol>
+
+<p class="ds-sum reveal" data-i18n="k256">29 components · wireframe and final version · 15 screens</p>
+
+<h3 class="h3 sub-title reveal" style="color:var(--ink)" data-i18n="k257">Color tokens</h3>
+
+<div class="swatches reveal">
+
+<div class="swatch"><i style="background:#CC092F"></i><span><b>primary</b>#CC092F</span></div>
+
+<div class="swatch"><i style="background:#F4205D"></i><span><b>header</b>#F4205D</span></div>
+
+<div class="swatch"><i style="background:#B5126E"></i><span><b>magenta</b>#B5126E</span></div>
+
+<div class="swatch"><i style="background:#3B69FF"></i><span><b>blue</b>#3B69FF</span></div>
+
+<div class="swatch"><i style="background:#1A1A1A"></i><span><b>text</b>#1A1A1A</span></div>
+
+<div class="swatch"><i style="background:#4D4D4D"></i><span><b>sub</b>#4D4D4D</span></div>
+
+<div class="swatch"><i style="background:#E3E3E3"></i><span><b>line</b>#E3E3E3</span></div>
+
+<div class="swatch"><i style="background:#1E2749"></i><span><b>navy</b>#1E2749</span></div>
+
+<div class="swatch"><i style="background:#6EC1E4"></i><span><b>sky</b>#6EC1E4</span></div>
+
+<div class="swatch"><i style="background:#84BD2B"></i><span><b>green</b>#84BD2B</span></div>
+
+</div>
+
+<h3 class="h3 sub-title reveal" style="color:var(--ink)" data-i18n="k258">Components: wireframe and final</h3>
+
+<div class="comp-grid reveal">
+
+<article class="comp"><h4 data-i18n="k259">Top app bar</h4><div class="comp-row"><span>Wireframe</span><div><img src="assets/ui/wire-topappbar.webp" width="402" height="100" loading="lazy" decoding="async" alt="" /></div></div><div class="comp-row"><span>Final</span><div><img src="assets/ui/final-topappbar.webp" width="402" height="100" loading="lazy" decoding="async" alt="" /></div></div></article>
+
+<article class="comp"><h4 data-i18n="k260">Navigation bar</h4><div class="comp-row"><span>Wireframe</span><div><img src="assets/ui/wire-bottomnav.webp" width="402" height="86" loading="lazy" decoding="async" alt="" /></div></div><div class="comp-row"><span>Final</span><div><img src="assets/ui/final-bottomnav.webp" width="402" height="86" loading="lazy" decoding="async" alt="" /></div></div></article>
+
+<article class="comp"><h4 data-i18n="k261">Buttons</h4><div class="comp-row"><span>Wireframe</span><div><img src="assets/ui/wire-button-primary.webp" width="352" height="50" loading="lazy" decoding="async" alt="" /><img src="assets/ui/wire-button-outline.webp" width="352" height="50" loading="lazy" decoding="async" alt="" /></div></div><div class="comp-row"><span>Final</span><div><img src="assets/ui/final-button-primary.webp" width="352" height="50" loading="lazy" decoding="async" alt="" /><img src="assets/ui/final-button-outline.webp" width="352" height="50" loading="lazy" decoding="async" alt="" /></div></div></article>
+
+<article class="comp"><h4 data-i18n="k262">List items</h4><div class="comp-row"><span>Wireframe</span><div><img src="assets/ui/wire-listitem-save.webp" width="354" height="58" loading="lazy" decoding="async" alt="" /><img src="assets/ui/wire-listitem-search.webp" width="354" height="58" loading="lazy" decoding="async" alt="" /></div></div><div class="comp-row"><span>Final</span><div><img src="assets/ui/final-listitem-save.webp" width="354" height="58" loading="lazy" decoding="async" alt="" /><img src="assets/ui/final-listitem-search.webp" width="354" height="58" loading="lazy" decoding="async" alt="" /></div></div></article>
+
+<article class="comp"><h4 data-i18n="k263">Chips and checkbox</h4><div class="comp-row"><span>Wireframe</span><div><img src="assets/ui/wire-chip-selected.webp" width="69" height="34" loading="lazy" decoding="async" alt="" /><img src="assets/ui/wire-chip-default.webp" width="69" height="34" loading="lazy" decoding="async" alt="" /><img src="assets/ui/wire-checkbox-checked.webp" width="72" height="44" loading="lazy" decoding="async" alt="" /></div></div><div class="comp-row"><span>Final</span><div><img src="assets/ui/final-chip-selected.webp" width="66" height="34" loading="lazy" decoding="async" alt="" /><img src="assets/ui/final-chip-default.webp" width="66" height="34" loading="lazy" decoding="async" alt="" /><img src="assets/ui/final-checkbox-checked.webp" width="69" height="44" loading="lazy" decoding="async" alt="" /></div></div></article>
+
+<article class="comp"><h4 data-i18n="k264">Year selector (v2)</h4><div class="comp-row"><span>Wireframe</span><div><img src="assets/ui/wire-yearselector.webp" width="354" height="38" loading="lazy" decoding="async" alt="" /></div></div><div class="comp-row"><span>Final</span><div><img src="assets/ui/final-yearselector.webp" width="354" height="38" loading="lazy" decoding="async" alt="" /></div></div></article>
+
+<article class="comp"><h4 data-i18n="k265">Selectable card (v2)</h4><div class="comp-row"><span>Wireframe</span><div><img src="assets/ui/wire-card-informeselecionavel.webp" width="354" height="89" loading="lazy" decoding="async" alt="" /></div></div><div class="comp-row"><span>Final</span><div><img src="assets/ui/final-card-informeselecionavel.webp" width="354" height="89" loading="lazy" decoding="async" alt="" /></div></div></article>
+
+<article class="comp"><h4 data-i18n="k266">Push notification</h4><div class="comp-row"><span>Wireframe</span><div><img src="assets/ui/wire-pushnotification.webp" width="374" height="126" loading="lazy" decoding="async" alt="" /></div></div><div class="comp-row"><span>Final</span><div><img src="assets/ui/final-pushnotification.webp" width="374" height="126" loading="lazy" decoding="async" alt="" /></div></div></article>
+
+</div></div></section>
+
+<section class="sec"><div class="container">
+
+<div class="sub-block">
+
+<header class="reveal"><span class="eyebrow" data-i18n="k267">What I would improve today</span><h2 class="h2" data-i18n="k268">Year and statement selection</h2></header>
+
+<div class="versus sec-body reveal"><div class="pair"><figure><div class="phone"><img src="assets/screens/08-statements.webp" width="402" height="874" data-i18n-alt="k269" alt="Statement selection, 2022 version" loading="lazy" decoding="async" /></div><figcaption data-i18n="k270">2022 version</figcaption></figure><figure><div class="phone"><img src="assets/screens/08b-statements-v2.webp" width="402" height="874" data-i18n-alt="k271" alt="Statement selection, improved version" loading="lazy" decoding="async" /></div><figcaption data-i18n="k272">Improved version</figcaption></figure></div><div class="stack">
+
+<article class="card"><h3 data-i18n="k273">Years always visible</h3><p data-i18n="k274">All five years fit on screen, with no last chip cut off by scrolling.</p></article>
+
+<article class="card"><h3 data-i18n="k275">Statement as a card</h3><p data-i18n="k276">Type, status and selection sit together in one larger, easier-to-tap element.</p></article>
+
+<article class="card"><h3 data-i18n="k277">Summary before generating</h3><p data-i18n="k278">Shows how many statements are selected and that a single PDF will be generated.</p></article>
+
+<article class="card"><h3 data-i18n="k279">Quieter help</h3><p data-i18n="k280">The other-statements block stays collapsed, with less weight and still reachable.</p></article>
+
+<article class="card"><h3 data-i18n="k281">Action pinned at the bottom</h3><p data-i18n="k282">The Generate button is always within reach, not tied to the end of the page.</p></article>
+
+</div></div></div>
+
+<div class="sub-block">
+
+<header class="reveal"><span class="eyebrow" data-i18n="k283">What I would improve today</span><h2 class="h2" data-i18n="k284">Success metrics</h2><p class="lead" data-i18n="k285">In 2022 validation was qualitative. Today I would define the indicators before launch and instrument the flow from the first version.</p></header>
+
+<div class="grid grid--3 sec-body reveal"><article class="card card--tick"><h3 data-i18n="k286">Flow completion</h3><p data-i18n="k287">Share of people who reach the PDF among those who open the shortcut.</p></article><article class="card card--tick"><h3 data-i18n="k288">Time to PDF</h3><p data-i18n="k289">From tapping the shortcut to the generated file.</p></article><article class="card card--tick"><h3 data-i18n="k290">Errors and retries</h3><p data-i18n="k291">Failures in lookup and generation, and how often users retry.</p></article><article class="card card--tick"><h3 data-i18n="k292">Adoption by channel</h3><p data-i18n="k293">Statements generated in the app versus requests made at the branch.</p></article><article class="card card--tick"><h3 data-i18n="k294">Support contacts</h3><p data-i18n="k295">Statement requests that reach customer service.</p></article><article class="card card--tick"><h3 data-i18n="k296">Satisfaction</h3><p data-i18n="k297">Star ratings and comments collected at the end of the flow.</p></article></div>
+
+<p class="fine reveal" data-i18n="k298">These are proposed indicators, not results. Targets depend on baseline data.</p>
+
+</div>
+
+<div class="sub-block">
+
+<header class="reveal"><span class="eyebrow" data-i18n="k299">What I would improve today</span><h2 class="h2" data-i18n="k300">From prototype to code, faster</h2><p class="lead" data-i18n="k301">The project took about 7 months, with many internal validation stages. Today I would shorten the cycle by connecting Claude Code, Codex or another LLM to the pipeline.</p></header>
+
+<div class="grid grid--5 sec-body reveal"><article class="card"><span class="dot">1</span><h3 data-i18n="k302">Research</h3><p data-i18n="k303">The LLM helps synthesize interviews and benchmarks into hypotheses.</p></article><article class="card"><span class="dot">2</span><h3 data-i18n="k304">Prototype</h3><p data-i18n="k305">Screens and components built in Figma in hours, not weeks.</p></article><article class="card"><span class="dot">3</span><h3 data-i18n="k306">Testing</h3><p data-i18n="k307">A clickable prototype and test scripts ready to run with users.</p></article><article class="card"><span class="dot">4</span><h3 data-i18n="k308">Code</h3><p data-i18n="k309">The flow prototyped in code, with human review at each delivery.</p></article><article class="card"><span class="dot">5</span><h3 data-i18n="k310">Internal validation</h3><p data-i18n="k311">Documentation and evidence ready, with fewer back-and-forths.</p></article></div>
+
+<p class="callout reveal" data-i18n="k312">Internal validation is still necessary, especially in a bank. The gain is reaching it with a tested prototype and less rework.</p>
+
+</div></div></section>
+
+<section class="sec sec--tint" id="transparency"><div class="container">
+
+<div class="sub-block">
+
+<header class="reveal"><span class="eyebrow" data-i18n="k313">Transparency</span><h2 class="h2" data-i18n="k314">About this rebuild</h2><p class="lead" data-i18n="k315">The original 2022 files were lost. This case shows how I would structure and deliver the same project today, in Figma.</p></header>
+
+<div class="grid grid--4 sec-body reveal"><article class="card card--tick"><h3 data-i18n="k316">What dates from 2022</h3><p data-i18n="k317">The problem, the flow and the design decisions. At the time, the team was moving from Adobe XD to Figma.</p></article><article class="card card--tick"><h3 data-i18n="k318">What was rebuilt in 2026</h3><p data-i18n="k319">Screens, components, wireframes and journey, redrawn from the published app.</p></article><article class="card card--tick"><h3 data-i18n="k320">How it was rebuilt</h3><p data-i18n="k321">Claude Code operating Figma, with the UI/UX Pro Max skill and Material 3 base components.</p></article><article class="card card--tick"><h3 data-i18n="k322">Approximations</h3><p data-i18n="k323">Redrawn illustrations and Figtree in place of the Bradesco Sans typeface. The logo is the official one.</p></article></div>
+
+</div><div class="sub-block">
+
+<header class="reveal"><span class="eyebrow" data-i18n="k324">Transparency</span><h2 class="h2" data-i18n="k325">Why this case only appears now</h2></header>
+
+<div class="grid grid--2 sec-body reveal"><article class="card card--tick"><h3 data-i18n="k326">Why only in 2026</h3><p data-i18n="k327">Until now I did not have permission to share it. The feature is now public in the app.</p></article><article class="card card--tick"><h3 data-i18n="k328">What I show</h3><p data-i18n="k329">Only what is already visible in the published app.</p></article><article class="card card--tick"><h3 data-i18n="k330">My connection</h3><p data-i18n="k331">I worked as a contractor and ended the contract in 2022. I have not been part of the team for a few years.</p></article><article class="card card--tick"><h3 data-i18n="k332">How it was rebuilt</h3><p data-i18n="k333">The original files were lost. I rebuilt screens and components in 2026, with Claude Code and Figma.</p></article></div>
+
+<p class="callout reveal" data-i18n="k334">Independent, unofficial material. Bradesco and its brand belong to the bank.</p>
+
+</div></div></section>
+
+<section class="end">
+  <div class="container">
+    <span class="eyebrow" style="color:var(--yellow)" data-i18n="k335">Next step</span>
+    <h2 class="h2" data-i18n="k336">Want to talk about this project?</h2>
+    <p data-i18n="k337">I can walk you through the decisions, the tests with managers and how I would run it today with AI in the workflow.</p>
+    <div class="end-actions">
+      <a class="btn btn--yellow" href="https://wa.me/5511947672575" target="_blank" rel="noopener" data-i18n="k338">Talk to me</a>
+      <a class="btn btn--line" href="../#projects" data-home data-i18n="k339">See other projects</a>
+    </div>
+    <div class="legal"><span data-i18n="k340">Income Tax Statements · Bradesco App · 2022 project, rebuilt in 2026</span><span data-i18n="k341">© 2026 Gabriel Moreira</span></div>
+  </div>
+</section>
+  </main>
+
+  <script src="case.js"></script>
+</body>
+</html>
