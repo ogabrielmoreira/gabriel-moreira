@@ -531,7 +531,8 @@ main { transition: opacity 0.25s; }
 }
 
 /* ======================= GaYa · extras ======================= */
-.hero-wordmark { display: block; font-size: clamp(54px, 7vw, 92px); font-weight: 800; letter-spacing: -0.05em; line-height: 1; }
+/* logo GaYa: wordmark vetorial (herda a cor do texto) */
+.hero-wordmark { display: block; height: clamp(46px, 5.6vw, 76px); aspect-ratio: 102 / 32; background: currentColor; -webkit-mask: url(assets/gaya-wordmark.svg) left center / contain no-repeat; mask: url(assets/gaya-wordmark.svg) left center / contain no-repeat; }
 .btn--ink { background: var(--ink); color: #fff; }
 .btn--ink:hover { background: #222; }
 .grid--5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
@@ -543,7 +544,7 @@ main { transition: opacity 0.25s; }
 .hero-phones .lphone:last-child { margin-left: -6%; transform: translateY(clamp(28px, 4vw, 56px)); z-index: 2; }
 .lphone--sm { width: auto; flex: 1; }
 .ls-login { padding: 34px 20px; display: grid; gap: 14px; align-content: start; background: var(--gy-surface); flex: 1; }
-.ls-logo { text-align: center; font-size: 52px; font-weight: 800; letter-spacing: -0.05em; color: var(--gy-primary); margin: 16px 0 10px; }
+.ls-logo { display: block; height: 40px; aspect-ratio: 102 / 32; margin: 18px auto 12px; background: var(--gy-primary); -webkit-mask: url(assets/gaya-wordmark.svg) center / contain no-repeat; mask: url(assets/gaya-wordmark.svg) center / contain no-repeat; }
 .ls-pad { padding: 14px; display: grid; gap: 12px; }
 .ls-pad > b, .ls-row b { font-size: 14px; }
 .ls-row { display: flex; justify-content: space-between; align-items: center; }

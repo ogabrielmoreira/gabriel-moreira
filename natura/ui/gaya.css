@@ -58,6 +58,11 @@
 .gy[data-theme="t2"] { --gy-primary: var(--p-orange-700); --gy-primary-strong: #8f3a08; --gy-accent-soft: var(--p-orange-100); --gy-on-accent-soft: var(--p-orange-900); }
 .gy[data-theme="t3"] { --gy-primary: var(--p-pink-700); --gy-primary-strong: #8c0c4e; --gy-accent-soft: var(--p-pink-100); --gy-on-accent-soft: var(--p-pink-900); }
 
+/* Raio por tema (tier 2): T1 reto, T2 arredondado, T3 oval/pílula */
+.gy, .gy[data-theme="t1"] { --gy-r-xs: 2px; --gy-r-sm: 2px; --gy-r-md: 4px; --gy-r-lg: 6px; --gy-r-chip: 3px; }
+.gy[data-theme="t2"] { --gy-r-xs: 5px; --gy-r-sm: 12px; --gy-r-md: 20px; --gy-r-lg: 28px; --gy-r-chip: 12px; }
+.gy[data-theme="t3"] { --gy-r-xs: 9px; --gy-r-sm: 999px; --gy-r-md: 30px; --gy-r-lg: 40px; --gy-r-chip: 999px; }
+
 .gy[data-mode="dark"] {
   --gy-primary: var(--p-green-300);
   --gy-primary-strong: var(--p-green-500);
@@ -100,7 +105,7 @@
 .gy-btn {
   --btn-bg: var(--gy-primary); --btn-fg: var(--gy-on-primary); --btn-bd: transparent; --btn-h: 44px;
   display: inline-flex; align-items: center; justify-content: center; gap: 8px;
-  height: var(--btn-h); padding: 0 20px; border-radius: var(--p-radius-sm);
+  height: var(--btn-h); padding: 0 20px; border-radius: var(--gy-r-sm);
   background: var(--btn-bg); color: var(--btn-fg); border: 1.5px solid var(--btn-bd);
   font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
   transition: background 0.2s var(--gy-ease), transform 0.12s var(--gy-ease), box-shadow 0.2s;
@@ -129,14 +134,14 @@
 .gy-badge-dot { min-width: 17px; height: 17px; padding: 0 4px; border-radius: 9px; background: var(--gy-danger); color: #fff; font-size: 10px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; border: 2px solid var(--gy-surface); box-sizing: content-box; }
 
 /* Chip */
-.gy-chip { display: inline-flex; align-items: center; height: 32px; padding: 0 14px; border-radius: var(--p-radius-pill); border: 1.5px solid var(--gy-primary); color: var(--gy-primary); font-size: 12px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; white-space: nowrap; transition: background 0.2s, color 0.2s; }
+.gy-chip { display: inline-flex; align-items: center; height: 32px; padding: 0 14px; border-radius: var(--gy-r-chip); border: 1.5px solid var(--gy-primary); color: var(--gy-primary); font-size: 12px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; white-space: nowrap; transition: background 0.2s, color 0.2s; }
 .gy-chip[aria-pressed="true"] { background: var(--gy-primary); color: var(--gy-on-primary); }
 .gy-chip[disabled] { border-color: var(--gy-line); color: var(--gy-disabled-fg); cursor: not-allowed; }
 
 /* Checkbox + Switch */
 .gy-check { display: inline-flex; align-items: center; gap: 10px; font-size: 14px; cursor: pointer; color: var(--gy-text); }
 .gy-check input { position: absolute; opacity: 0; pointer-events: none; }
-.gy-check .box { width: 22px; height: 22px; border-radius: 5px; border: 2px solid var(--gy-line-strong); display: grid; place-items: center; color: transparent; transition: all 0.15s var(--gy-ease); }
+.gy-check .box { width: 22px; height: 22px; border-radius: var(--gy-r-xs); border: 2px solid var(--gy-line-strong); display: grid; place-items: center; color: transparent; transition: all 0.15s var(--gy-ease); }
 .gy-check input:checked + .box { background: var(--gy-primary); border-color: var(--gy-primary); color: var(--gy-on-primary); }
 .gy-check input:focus-visible + .box { outline: 2px solid var(--gy-focus); outline-offset: 2px; }
 .gy-check input:disabled + .box { opacity: 0.4; }
@@ -152,7 +157,7 @@
 /* TextField */
 .gy-field { display: grid; gap: 6px; font-size: 13px; color: var(--gy-sub); }
 .gy-field > span { font-weight: 500; }
-.gy-field .ctl { display: flex; align-items: center; gap: 10px; height: 46px; padding: 0 12px; border-radius: var(--p-radius-sm); border: 1.5px solid var(--gy-line-strong); background: var(--gy-surface); color: var(--gy-muted); transition: border-color 0.2s, box-shadow 0.2s; }
+.gy-field .ctl { display: flex; align-items: center; gap: 10px; height: 46px; padding: 0 12px; border-radius: var(--gy-r-sm); border: 1.5px solid var(--gy-line-strong); background: var(--gy-surface); color: var(--gy-muted); transition: border-color 0.2s, box-shadow 0.2s; }
 .gy-field .ctl:focus-within { border-color: var(--gy-primary); box-shadow: 0 0 0 3px color-mix(in srgb, var(--gy-primary) 22%, transparent); }
 .gy-field input { flex: 1; min-width: 0; border: 0; outline: 0; background: transparent; font: inherit; font-size: 15px; color: var(--gy-text); }
 .gy-field input::placeholder { color: var(--gy-muted); }
@@ -161,7 +166,7 @@
 .gy-field.is-error small { color: var(--gy-danger); }
 
 /* Card */
-.gy-card { border-radius: var(--p-radius-md); background: var(--gy-surface); box-shadow: var(--gy-shadow); overflow: hidden; border: 1px solid var(--gy-line); }
+.gy-card { border-radius: var(--gy-r-md); background: var(--gy-surface); box-shadow: var(--gy-shadow); overflow: hidden; border: 1px solid var(--gy-line); }
 .gy-card .media { height: 120px; background: linear-gradient(135deg, var(--gy-primary-strong), var(--gy-primary)); }
 .gy-card .body { padding: 14px 16px 16px; display: grid; gap: 6px; }
 .gy-card h4 { font-size: 15px; font-weight: 700; }
@@ -174,7 +179,7 @@
 .gy-tabs button[aria-selected="true"]::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 3px; background: var(--gy-primary); border-radius: 3px 3px 0 0; }
 
 /* Alert */
-.gy-alert { --al: var(--gy-info); --al-bg: var(--gy-info-soft); display: flex; gap: 12px; align-items: flex-start; padding: 12px 14px; border-radius: var(--p-radius-md); background: var(--al-bg); border-left: 4px solid var(--al); font-size: 13.5px; line-height: 1.45; }
+.gy-alert { --al: var(--gy-info); --al-bg: var(--gy-info-soft); display: flex; gap: 12px; align-items: flex-start; padding: 12px 14px; border-radius: var(--gy-r-md); background: var(--al-bg); border-left: 4px solid var(--al); font-size: 13.5px; line-height: 1.45; }
 .gy-alert svg { color: var(--al); margin-top: 1px; }
 .gy-alert b { display: block; font-size: 14px; margin-bottom: 2px; }
 .gy-alert--success { --al: var(--gy-success); --al-bg: var(--gy-success-soft); }
@@ -182,7 +187,7 @@
 .gy-alert--error { --al: var(--gy-danger); --al-bg: var(--gy-danger-soft); }
 
 /* Dialog */
-.gy-dialog { width: 100%; border-radius: var(--p-radius-md); background: var(--gy-surface); box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35); overflow: hidden; }
+.gy-dialog { width: 100%; border-radius: var(--gy-r-md); background: var(--gy-surface); box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35); overflow: hidden; }
 .gy-dialog header { display: flex; align-items: center; justify-content: space-between; padding: 16px 16px 8px; }
 .gy-dialog h4 { font-size: 17px; font-weight: 700; }
 .gy-dialog .content { padding: 4px 16px 16px; font-size: 14px; line-height: 1.5; color: var(--gy-sub); }
@@ -190,7 +195,7 @@
 .gy-dialog footer .gy-btn { flex: 1; }
 
 /* Counter */
-.gy-counter { display: inline-flex; align-items: center; border: 1.5px solid var(--gy-line-strong); border-radius: var(--p-radius-sm); height: 34px; overflow: hidden; }
+.gy-counter { display: inline-flex; align-items: center; border: 1.5px solid var(--gy-line-strong); border-radius: var(--gy-r-sm); height: 34px; overflow: hidden; }
 .gy-counter button { width: 34px; height: 100%; display: grid; place-items: center; color: var(--gy-text); }
 .gy-counter button:hover { background: var(--gy-surface-2); }
 .gy-counter button[disabled] { color: var(--gy-disabled-fg); cursor: not-allowed; }
@@ -210,7 +215,7 @@
 .gy-li .t { flex: 1; min-width: 0; }
 .gy-li .t b { display: block; font-weight: 600; }
 .gy-li .t span { font-size: 12.5px; color: var(--gy-muted); }
-.gy-li .lead { width: 40px; height: 40px; border-radius: 8px; background: var(--gy-surface-2); display: grid; place-items: center; color: var(--gy-muted); flex: none; }
+.gy-li .lead { width: 40px; height: 40px; border-radius: var(--gy-r-sm); background: var(--gy-surface-2); display: grid; place-items: center; color: var(--gy-muted); flex: none; }
 
 /* AppBar + BottomNav */
 .gy-appbar { display: flex; align-items: center; gap: 4px; height: 56px; padding: 0 8px; background: var(--gy-surface); border-bottom: 1px solid var(--gy-line); }

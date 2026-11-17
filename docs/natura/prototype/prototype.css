@@ -5,7 +5,7 @@ a { color: inherit; text-decoration: none; }
 button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; padding: 0; }
 .pp-header { position: sticky; top: 0; z-index: 20; height: 56px; display: flex; align-items: center; gap: 20px; padding: 0 20px; border-bottom: 1px solid var(--pp-line); background: rgba(255,255,255,.92); backdrop-filter: blur(10px); }
 .pp-brand { display: flex; align-items: center; gap: 10px; font-size: 16px; font-weight: 800; }
-.pp-mark { width: 28px; height: 28px; border-radius: 8px; background: var(--pp-brand); color: #fff; font-style: normal; display: grid; place-items: center; }
+.pp-mark { width: 32px; height: 32px; border-radius: 9px; display: block; }
 .pp-top { margin-left: auto; display: flex; gap: 4px; }
 .pp-top a { padding: 8px 14px; border-radius: 999px; font-size: 14px; font-weight: 600; color: var(--pp-body); }
 .pp-top a:hover { background: var(--pp-side); }
@@ -39,8 +39,8 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 .pp-steps button[aria-current="true"]::before { background: rgba(255,255,255,.2); }
 
 /* telas */
-.sc-login { padding: 28px 22px; display: grid; gap: 16px; align-content: start; flex: 1; background: var(--gy-surface); }
-.sc-logo { text-align: center; font-size: 54px; font-weight: 800; letter-spacing: -0.04em; color: var(--gy-primary); margin: 30px 0 14px; font-family: var(--pp-font); }
+.sc-login { padding: 28px 22px 22px; display: grid; gap: 16px; align-content: start; flex: 1; background: var(--gy-surface); }
+.sc-logo { height: 48px; aspect-ratio: 102 / 32; width: auto; margin: 34px auto 22px; background: var(--gy-primary); -webkit-mask: url(../assets/gaya-wordmark.svg) center / contain no-repeat; mask: url(../assets/gaya-wordmark.svg) center / contain no-repeat; }
 .sc-row { display: flex; align-items: center; justify-content: space-between; }
 .sc-pad { padding: 16px; display: grid; gap: 14px; }
 .sc-h { font-size: 15px; font-weight: 700; }

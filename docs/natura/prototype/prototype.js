@@ -25,7 +25,7 @@
 
   var VIEWS = {
     login: function () {
-      return '<div class="sc-login"><div class="sc-logo">GaYa</div>' +
+      return '<div class="sc-login"><div class="sc-logo" role="img" aria-label="GaYa"></div>' +
         C.textField({ label: L('Username (*)', 'Usuário (*)'), placeholder: L('Type your username', 'Digite seu usuário'), icon: 'user' }) +
         C.textField({ label: L('Password (*)', 'Senha (*)'), placeholder: L('Type your password', 'Digite sua senha'), icon: 'lock', password: true }) +
         '<div class="sc-row">' + C.checkbox({ label: L('Remember me', 'Lembrar senha'), checked: true }) + C.button({ label: L('Recover', 'Recuperar'), variant: 'text', size: 'sm' }) + '</div>' +
