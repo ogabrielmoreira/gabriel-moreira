@@ -4,13 +4,13 @@
   'use strict';
   var COPY = {
  "en": {
-  "k1": "UX/UI Design · Bradesco App · 2022",
+  "k1": "Product Design · Bradesco App · 2022",
   "k2": "Income Tax<br>Statements",
   "k3": "From the branch counter to a PDF in a few taps, right in the app.",
   "k4": "Income tax statements screen with year chips and the Generate button",
   "k5": "Statement generated screen with save and share options",
   "k6": "Role",
-  "k7": "UX/UI Design, as a contractor",
+  "k7": "Senior Product Designer",
   "k8": "When",
   "k9": "2022, about 7 months",
   "k10": "Validation",
@@ -18,7 +18,7 @@
   "k12": "This version",
   "k13": "Rebuilt in 2026, in Figma",
   "k14": "Published in 2026",
-  "k15": "<strong>This project sat in a drawer for a few years.</strong> For contractual reasons I could not publish it. Now, at the end of 2026, the feature is public in the app and I can show it. The original files were lost, so I rebuilt the screens, components and journey in Figma, and added what I would do better today.",
+  "k15": "<strong>This project sat in a drawer for a few years.</strong> I only have the release to publish it now, and I waited for it. The original files were lost and, now that the feature is public in the app, I recreated the interfaces as I had made them back then. They are now documented in my Figma, with the improvements I would make today.",
   "k16": "Context · 2022",
   "k17": "Where the idea came from",
   "k18": "In 2022 the income tax statement (informe de rendimentos) was not available in the app. To file their income tax, customers depended on the branch.",
@@ -283,7 +283,7 @@
   "k277": "Summary before generating",
   "k278": "Shows how many statements are selected and that a single PDF will be generated.",
   "k279": "Quieter help",
-  "k280": "The other-statements block stays collapsed, with less weight and still reachable.",
+  "k280": "The other-statements block stays collapsed, with less weight, and opens in place when needed.",
   "k281": "Action pinned at the bottom",
   "k282": "The Generate button is always within reach, not tied to the end of the page.",
   "k283": "What I would improve today",
@@ -347,16 +347,32 @@
   "k341": "© 2026 Gabriel Moreira",
   "meta.title": "Bradesco · Income Tax Statements in the app | Gabriel Moreira",
   "meta.desc": "Case study: taking the income tax statement from the Bradesco branch counter to a PDF in a few taps inside the app. 2022 project, rebuilt in 2026.",
-  "k342": "Portfolio"
+  "k342": "Portfolio",
+  "x1": "Open the Storybook",
+  "x2": "Try the prototype",
+  "x3": "Prototype",
+  "x4": "New in this version",
+  "x5": "What I would deliver today",
+  "x6": "In 2022 I did the Figma and the handoff, and delivered only the Figma. Today I would hand over more than pretty screens: a built Storybook and a fully navigable prototype on the web. Both are new in this version, along with the improvements in this case.",
+  "x7": "Storybook Bradesco",
+  "x8": "21 stories: colors, typography, icons and 18 components, each with live controls and the specs. Buttons ripple, chips switch, sheets slide.",
+  "x9": "Open the Storybook",
+  "x10": "Prototype",
+  "x11": "Journey prototype",
+  "x12": "The eight stages of the journey as a navigable prototype you can test, not just pretty screens: notification, sign in, home shortcut, the lion waiting state, selection, the PDF, the share sheet and the rating. Tap through it or press play.",
+  "x13": "Try the prototype",
+  "x14": "New",
+  "x15": "Improved · help open",
+  "x16": "Statement selection, improved version with the help block open"
  },
  "pt": {
-  "k1": "UX/UI Design · App Bradesco · 2022",
+  "k1": "Product Design · App Bradesco · 2022",
   "k2": "Informes de<br>Rendimento",
   "k3": "Do balcão da agência para um PDF em poucos toques, direto no app.",
   "k4": "Tela de informes de rendimentos com chips de ano e o botão Gerar informes",
   "k5": "Tela de informe gerado com opções de salvar e compartilhar",
   "k6": "Papel",
-  "k7": "UX/UI Design, como contractor",
+  "k7": "Product Designer Sênior",
   "k8": "Quando",
   "k9": "2022, cerca de 7 meses",
   "k10": "Validação",
@@ -364,7 +380,7 @@
   "k12": "Esta versão",
   "k13": "Reconstruída em 2026, no Figma",
   "k14": "Publicado em 2026",
-  "k15": "<strong>Este projeto ficou alguns anos parado.</strong> Por razões contratuais, eu não podia publicar. Agora, no fim de 2026, a funcionalidade é pública no app e eu posso mostrar. Os arquivos originais se perderam, então refiz telas, componentes e jornada no Figma, e incluí o que eu faria melhor hoje.",
+  "k15": "<strong>Este projeto ficou alguns anos parado.</strong> Só agora eu tenho a liberação para publicar, e esperei por ela. Os arquivos originais se perderam e, agora que a funcionalidade é pública no app, recriei as interfaces como eu havia feito na época. Elas estão documentadas no meu Figma, com as melhorias que eu faria hoje.",
   "k16": "Contexto · 2022",
   "k17": "De onde veio a ideia",
   "k18": "Em 2022 o informe de rendimentos ainda não existia no aplicativo. Para declarar o Imposto de Renda, o cliente dependia da agência.",
@@ -629,7 +645,7 @@
   "k277": "Resumo antes de gerar",
   "k278": "Mostra quantos informes estão marcados e que sairá um único PDF.",
   "k279": "Ajuda mais discreta",
-  "k280": "O bloco de outros informes fica recolhido, com menos peso e ainda acessível.",
+  "k280": "O bloco de outros informes fica recolhido, com menos peso, e abre no lugar quando preciso.",
   "k281": "Ação fixa na base",
   "k282": "O botão Gerar informe fica sempre à mão, sem depender do fim da página.",
   "k283": "O que eu melhoraria hoje",
@@ -693,7 +709,23 @@
   "k341": "© 2026 Gabriel Moreira",
   "meta.title": "Bradesco · Informes de Rendimento no app | Gabriel Moreira",
   "meta.desc": "Case: como o informe de rendimentos saiu do balcão da agência Bradesco para um PDF em poucos toques dentro do app. Projeto de 2022, reconstruído em 2026.",
-  "k342": "Portfólio"
+  "k342": "Portfólio",
+  "x1": "Abrir o Storybook",
+  "x2": "Testar o protótipo",
+  "x3": "Protótipo",
+  "x4": "Novo nesta versão",
+  "x5": "O que eu entregaria hoje",
+  "x6": "Em 2022 eu fiz o Figma e o handoff, e entreguei somente o Figma. Hoje eu entregaria mais do que telas bonitas: um Storybook montado e um protótipo totalmente navegável na internet. Os dois são novidade desta versão, junto com as melhorias deste case.",
+  "x7": "Storybook Bradesco",
+  "x8": "21 histórias: cores, tipografia, ícones e 18 componentes, cada um com controles ao vivo e as specs. Botões reagem ao toque, chips alternam, sheets deslizam.",
+  "x9": "Abrir o Storybook",
+  "x10": "Protótipo",
+  "x11": "Protótipo da jornada",
+  "x12": "As oito etapas da jornada como um protótipo navegável que você pode testar, e não só telas bonitas: notificação, login, atalho na home, espera com o leão, seleção, PDF, share sheet e avaliação. Toque ou aperte play.",
+  "x13": "Testar o protótipo",
+  "x14": "Novo",
+  "x15": "Melhorada · ajuda aberta",
+  "x16": "Seleção de informes, versão melhorada com o bloco de ajuda aberto"
  }
 };
 
@@ -717,6 +749,10 @@
     });
     document.querySelectorAll('.lang-switch button').forEach(function (b) {
       b.setAttribute('aria-pressed', b.dataset.l === lang ? 'true' : 'false');
+    });
+    // Storybook e protótipo abrem no mesmo idioma.
+    document.querySelectorAll('a[data-lang-href]').forEach(function (a) {
+      a.setAttribute('href', a.getAttribute('data-lang-href') + (lang === 'pt' ? '?lang=pt' : ''));
     });
     // Mantém o idioma ao voltar para o portfólio.
     document.querySelectorAll('a[data-home]').forEach(function (a) {
