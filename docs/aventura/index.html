@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Aventura Católica · A free 3D game for catechesis | Gabriel Moreira</title>
+  <meta name="description" content="Case study: a free 3D browser game that teaches the Catholic faith to children, built as a volunteer project with Three.js, Blender and Claude Code. iOS and Android in development." />
+  <meta name="theme-color" content="#2a1a10" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Aventura Católica · A free 3D game for catechesis | Gabriel Moreira" />
+  <meta property="og:description" content="Case study: a free 3D browser game that teaches the Catholic faith to children, built as a volunteer project with Three.js, Blender and Claude Code. iOS and Android in development." />
+  <meta property="og:image" content="assets/og.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="icon" href="../favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png" />
+  <link rel="stylesheet" href="case.css" />
+  <script>document.documentElement.classList.add('js');</script>
+  <!-- Microsoft Clarity -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "yx8kvpy7zn");
+  </script>
+</head>
+<body>
+  <div class="xp" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" data-i18n-label="nav.progress" aria-label="Reading progress"><span class="xp-fill"></span></div>
+
+  <header class="case-header">
+    <div class="case-header-inner">
+      <a class="brand" href="../" data-home aria-label="Gabriel Moreira"><img src="../assets/logo-header.png" width="1050" height="438" alt="Gabriel Moreira" /></a>
+      <div class="case-header-actions">
+        <a class="back-link hide-sm" href="https://aventuracatolica.com.br/" target="_blank" rel="noopener"><span data-i18n="nav.play">Play the game</span><svg class="arrow" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+        <a class="back-link" href="../#projects" data-home><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 18l-6-6 6-6"/></svg><span data-i18n="nav.projects">Projects</span></a>
+        <div class="lang-switch" role="group" aria-label="Language">
+          <button type="button" data-l="en" aria-pressed="true" aria-label="English">EN</button>
+          <button type="button" data-l="pt" aria-pressed="false" aria-label="Português">PT</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ================= HERO ================= -->
+    <section class="hero" id="top">
+      <img class="hero-bg" src="assets/hero.webp" width="1600" height="813" alt="" fetchpriority="high" />
+      <div class="hero-shade"></div>
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow eyebrow--on" data-i18n="hero.eyebrow">Game design · Three.js · Volunteer project · 2026</span>
+          <h1>Aventura<br>Católica</h1>
+          <p class="hero-sub" data-i18n="hero.sub">A free 3D game that teaches children the Catholic faith, through play.</p>
+          <div class="hero-ctas">
+            <a class="btn btn--gold" href="https://aventuracatolica.com.br/" target="_blank" rel="noopener"><span data-i18n="hero.cta1">Play now</span><svg class="arrow" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+            <a class="btn btn--glass" href="#como"><span data-i18n="hero.cta2">How it was made</span><svg class="arrow" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+          <p class="status"><span class="dot" aria-hidden="true"></span><span data-i18n="hero.status">Live on the web · iOS and Android in development</span></p>
+        </div>
+        <div class="hero-phone reveal">
+          <div class="phone-land"><img src="assets/mobile-praca.webp" width="1400" height="711" data-i18n-alt="hero.phone.alt" alt="The game running on a phone held sideways, with on-screen controls" fetchpriority="high" /></div>
+        </div>
+      </div>
+      <div class="container">
+        <dl class="hero-meta">
+          <div><dt data-i18n="meta.role.k">Role</dt><dd data-i18n="meta.role.v">Idea, art direction, design and development, with Claude Code</dd></div>
+          <div><dt data-i18n="meta.aud.k">For</dt><dd data-i18n="meta.aud.v">Children aged 6 to 12 in catechesis</dd></div>
+          <div><dt data-i18n="meta.cost.k">Price</dt><dd data-i18n="meta.cost.v">Free. No ads, purchases or data collection</dd></div>
+          <div><dt data-i18n="meta.when.k">Started</dt><dd data-i18n="meta.when.v">November 2026 · started on the 12th</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- ================= NOTA ================= -->
+    <section class="sec sec--tight">
+      <div class="container">
+        <div class="note reveal">
+          <span class="note-tag" data-i18n="note.tag">Why it is here</span>
+          <p data-i18n="note.p"><strong>This is not the kind of project I usually show.</strong> I made it public to prove a point: when I connect years of experience in technology and design with AI like Claude Code, I can venture into very different stacks. Lately that includes game development. It began as a volunteer project and it is where two things I love meet: my Catholic faith and my gamer side.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= POR QUE ================= -->
+    <section class="sec" id="porque">
+      <div class="container">
+        <header class="sec-head reveal">
+          <span class="eyebrow" data-i18n="why.eyebrow">Where it came from</span>
+          <h2 class="h2" data-i18n="why.h">Faith, volunteering and a gamer’s itch</h2>
+          <p class="lead" data-i18n="why.lead">I am a Roman Catholic and I serve in the Pascom (communications ministry) of the Diocese of Santo André: I take photos, help with the live broadcasts of Mass and enjoy making VFX for diocesan projects. One day the question came up: what if I built a game to evangelize the kids in catechesis in a playful, simple way?</p>
+        </header>
+        <div class="grid grid--3 sec-body reveal">
+          <article class="card"><span class="num">01</span><h3 data-i18n="why.c1.h">The mission</h3><p data-i18n="why.c1.p">Evangelize catechesis children in a playful, simple way, with a 3D world they actually want to explore.</p></article>
+          <article class="card"><span class="num">02</span><h3 data-i18n="why.c2.h">The source</h3><p data-i18n="why.c2.p">Every text comes from the Catechism of the Catholic Church and the Vatican website, and the source is recorded in the game.</p></article>
+          <article class="card"><span class="num">03</span><h3 data-i18n="why.c3.h">The rules</h3><p data-i18n="why.c3.p">Free. No ads, purchases, sign-up or data collection. Volunteer work, made to be shared with the diocese and beyond.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CONCEITO ================= -->
+    <section class="sec sec--tint" id="conceito">
+      <div class="container">
+        <header class="sec-head reveal">
+          <span class="eyebrow" data-i18n="concept.eyebrow">Concept</span>
+          <h2 class="h2" data-i18n="concept.h">A Catholic village inspired by Chaves</h2>
+          <p class="lead" data-i18n="concept.lead">The world is a small village where everybody knows everybody, like the neighborhood of Chaves. There is a square, a parish church, neighbors and characters who each carry a piece of knowledge. I dressed it in Brazilian colonial architecture and aimed for a warm, animated-film look.</p>
+        </header>
+        <div class="compare sec-body reveal">
+          <div class="compare-row">
+            <div class="compare-k"><span class="tag tag--ref" data-i18n="concept.refs.k">The target</span><p data-i18n="concept.refs.p">Three reference images I put in the project folder on day one.</p></div>
+            <div class="compare-imgs">
+              <div class="shot shot--ref"><img src="assets/ref-1.webp" width="1400" height="788" data-i18n-alt="concept.ref1.alt" alt="Reference image: village square with a fountain, a small church and a catechist" loading="lazy" decoding="async" /></div>
+              <div class="shot shot--ref"><img src="assets/ref-2.webp" width="1400" height="788" data-i18n-alt="concept.ref2.alt" alt="Reference image: church interior with altar, crucifix and children" loading="lazy" decoding="async" /></div>
+              <div class="shot shot--ref"><img src="assets/ref-3.webp" width="1400" height="788" data-i18n-alt="concept.ref3.alt" alt="Reference image: garden with altar servers and a priest" loading="lazy" decoding="async" /></div>
+            </div>
+          </div>
+          <div class="compare-row">
+            <div class="compare-k"><span class="tag tag--res" data-i18n="concept.res.k">The result</span><p data-i18n="concept.res.p">The same ideas running in real time, in the browser.</p></div>
+            <div class="compare-imgs">
+              <div class="shot"><img src="assets/praca.webp" width="1600" height="813" data-i18n-alt="concept.res1.alt" alt="In the game: the square in front of the church" loading="lazy" decoding="async" /></div>
+              <div class="shot"><img src="assets/igreja.webp" width="1600" height="900" data-i18n-alt="concept.res2.alt" alt="In the game: inside the church, with the aisle, pews and altar" loading="lazy" decoding="async" /></div>
+              <div class="shot"><img src="assets/caminho-santos.webp" width="1600" height="900" data-i18n-alt="concept.res3.alt" alt="In the game: the Path of the Saints with its chapels" loading="lazy" decoding="async" /></div>
+            </div>
+          </div>
+        </div>
+        <p class="callout reveal" data-i18n="concept.honest"><strong>It did not start pretty.</strong> The first playable had a Roblox-like look with little doll characters, and I said so: the graphics were rough and I did not want that style. That feedback is what pushed the project into Blender.</p>
+      </div>
+    </section>
+
+    <!-- ================= MUNDO ================= -->
+    <section class="sec" id="mundo">
+      <div class="container">
+        <header class="sec-head reveal">
+          <span class="eyebrow" data-i18n="world.eyebrow">The world</span>
+          <h2 class="h2" data-i18n="world.h">The village from above</h2>
+          <p class="lead" data-i18n="world.lead">One connected map you walk on foot: the square in the middle, the parish church to the north and the gardens around it. The game has a minimap and a full village map, with a dotted trail to your current mission.</p>
+        </header>
+        <div class="world sec-body reveal">
+          <div class="world-map">
+            <div class="shot shot--map"><img src="assets/topografia.webp" width="1600" height="813" data-i18n-alt="world.img.alt" alt="Aerial view of the whole village: church, square, gardens and the toy train track" loading="lazy" decoding="async" /><button type="button" class="pin" data-pin="1" style="left:57%;top:34%" aria-label="1"><span>1</span></button><button type="button" class="pin" data-pin="2" style="left:49%;top:71%" aria-label="2"><span>2</span></button><button type="button" class="pin" data-pin="3" style="left:26%;top:41%" aria-label="3"><span>3</span></button><button type="button" class="pin" data-pin="4" style="left:70%;top:39%" aria-label="4"><span>4</span></button><button type="button" class="pin" data-pin="5" style="left:43%;top:47%" aria-label="5"><span>5</span></button><button type="button" class="pin" data-pin="6" style="left:73%;top:61%" aria-label="6"><span>6</span></button><button type="button" class="pin" data-pin="7" style="left:82%;top:70%" aria-label="7"><span>7</span></button></div>
+            <figure class="map-fig"><div class="shot"><img src="assets/mapa.webp" width="1600" height="813" data-i18n-alt="world.map.alt" alt="In-game village map listing the places and showing the player and the mission marker" loading="lazy" decoding="async" /></div><figcaption data-i18n="world.map.cap">The in-game village map, with a dotted trail to the current mission.</figcaption></figure>
+          </div>
+          <ol class="legend"><li data-pin="1"><span class="num">1</span><div><h3 data-i18n="world.p1.h">Parish Church</h3><p data-i18n="world.p1.p">Altar, ambo, tabernacle, baptismal font, crucifix, statues, pews and the 14 Stations of the Cross on the walls.</p></div></li><li data-pin="2"><span class="num">2</span><div><h3 data-i18n="world.p2.h">Community Square</h3><p data-i18n="world.p2.p">The fountain of Our Lady of Graces, the houses and neighbors, and a Saint Francis statue with a Dog and a Cat.</p></div></li><li data-pin="3"><span class="num">3</span><div><h3 data-i18n="world.p3.h">Path of the Saints</h3><p data-i18n="world.p3.p">A round plaza with chapels for 11 saints, plus a corner for the titles of Our Lady.</p></div></li><li data-pin="4"><span class="num">4</span><div><h3 data-i18n="world.p4.h">Rosary Garden</h3><p data-i18n="world.p4.p">A giant rosary on the ground whose beads light up as you pray, and the grotto of Our Lady of Lourdes.</p></div></li><li data-pin="5"><span class="num">5</span><div><h3 data-i18n="world.p5.h">Sacraments Garden</h3><p data-i18n="world.p5.p">Seven stained-glass steles, one for each sacrament, to find and sort into three groups.</p></div></li><li data-pin="6"><span class="num">6</span><div><h3 data-i18n="world.p6.h">Altar Servers’ Porch</h3><p data-i18n="world.p6.p">An open porch with the objects of the Mass, where kids train to be altar servers.</p></div></li><li data-pin="7"><span class="num">7</span><div><h3 data-i18n="world.p7.h">Little Train Station</h3><p data-i18n="world.p7.p">A narrated ride around the whole village, with its own soundtrack.</p></div></li></ol>
+        </div>
+        <div class="gallery sec-body reveal"><figure class="g g-wide"><div class="shot"><img src="assets/praca.webp" width="1600" height="813" data-i18n-alt="world.alt1" alt="The village square with the fountain and houses" loading="lazy" decoding="async" /></div><figcaption data-i18n="world.g1">The square and the fountain of Our Lady of Graces</figcaption></figure><figure class="g g-wide"><div class="shot"><img src="assets/igreja.webp" width="1600" height="900" data-i18n-alt="world.alt2" alt="Church interior with a red carpet down the aisle" loading="lazy" decoding="async" /></div><figcaption data-i18n="world.g2">Inside the church: a walkable interior, not a backdrop</figcaption></figure><figure class="g "><div class="shot"><img src="assets/via-sacra.webp" width="1600" height="813" data-i18n-alt="world.alt3" alt="Stained glass and Stations of the Cross inside the church" loading="lazy" decoding="async" /></div><figcaption data-i18n="world.g3">The Stations of the Cross on the church walls</figcaption></figure><figure class="g "><div class="shot"><img src="assets/caminho-santos.webp" width="1600" height="900" data-i18n-alt="world.alt4" alt="Entrance arch of the Path of the Saints" loading="lazy" decoding="async" /></div><figcaption data-i18n="world.g4">The Path of the Saints</figcaption></figure><figure class="g "><div class="shot"><img src="assets/sacramentos.webp" width="1600" height="900" data-i18n-alt="world.alt5" alt="Garden path lined with stained-glass steles" loading="lazy" decoding="async" /></div><figcaption data-i18n="world.g5">The Sacraments Garden</figcaption></figure><figure class="g "><div class="shot"><img src="assets/rosario.webp" width="1270" height="813" data-i18n-alt="world.alt6" alt="Rosary beads on the ground leading to a grotto" loading="lazy" decoding="async" /></div><figcaption data-i18n="world.g6">The Rosary Garden and the Lourdes grotto</figcaption></figure><figure class="g g-wide"><div class="shot"><img src="assets/estatua.webp" width="1600" height="900" data-i18n-alt="world.alt7" alt="Saint Francis statue in the square" loading="lazy" decoding="async" /></div><figcaption data-i18n="world.g7">Saint Francis statue, with the Dog that roams the square</figcaption></figure></div>
+      </div>
+    </section>
+
+    <!-- ================= PERSONAGENS ================= -->
+    <section class="sec sec--tint" id="personagens">
+      <div class="container">
+        <header class="sec-head reveal">
+          <span class="eyebrow" data-i18n="chars.eyebrow">Characters</span>
+          <h2 class="h2" data-i18n="chars.h">A village full of people with something to teach</h2>
+          <p class="lead" data-i18n="chars.lead">Each character carries a piece of knowledge and talks in short, simple lines, with the source recorded. They have no proper names on purpose: they are roles, like the catechist, the priest and the sister. And the player is always a child, boy or girl, never an adult.</p>
+        </header>
+        <div class="chars sec-body reveal"><article class="char"><div class="portrait"><img src="assets/pers-clara.webp" width="640" height="813" alt="" loading="lazy" decoding="async"/></div><div class="char-body"><span class="role" data-i18n="chars.c1.role">The catechist</span><span class="teach" data-i18n="chars.c1.teach">The church and the sacraments</span><p class="quote" data-i18n="chars.c1.q">“Hi, I am the catechist of our community. How nice to see you here!”</p></div></article><article class="char"><div class="portrait"><img src="assets/pers-padre.webp" width="640" height="813" alt="" loading="lazy" decoding="async"/></div><div class="char-body"><span class="role" data-i18n="chars.c2.role">The priest</span><span class="teach" data-i18n="chars.c2.teach">Prayers and the Way of the Cross</span><p class="quote" data-i18n="chars.c2.q">“The peace of Jesus! I am glad you came.”</p></div></article><article class="char"><div class="portrait"><img src="assets/pers-irma.webp" width="640" height="813" alt="" loading="lazy" decoding="async"/></div><div class="char-body"><span class="role" data-i18n="chars.c3.role">The sister</span><span class="teach" data-i18n="chars.c3.teach">The Rosary</span><p class="quote" data-i18n="chars.c3.q">“Do you see this giant rosary on the floor? Each bead is a prayer.”</p></div></article><article class="char"><div class="portrait"><img src="assets/pers-bento.webp" width="640" height="813" alt="" loading="lazy" decoding="async"/></div><div class="char-body"><span class="role" data-i18n="chars.c4.role">The gardener</span><span class="teach" data-i18n="chars.c4.teach">The saints</span><p class="quote" data-i18n="chars.c4.q">“The saints are God’s friends. They lived as Jesus taught and pray for us from heaven.”</p></div></article><article class="char"><div class="portrait"><img src="assets/pers-zita.webp" width="640" height="813" alt="" loading="lazy" decoding="async"/></div><div class="char-body"><span class="role" data-i18n="chars.c5.role">The sick neighbor</span><span class="teach" data-i18n="chars.c5.teach">Helping others</span><p class="quote" data-i18n="chars.c5.q">“I am a bit under the weather, so I stay at the door watching the square.”</p></div></article><article class="char"><div class="portrait"><img src="assets/pers-ana.webp" width="640" height="813" alt="" loading="lazy" decoding="async"/></div><div class="char-body"><span class="role" data-i18n="chars.c6.role">The kids of the square</span><span class="teach" data-i18n="chars.c6.teach">Company along the way</span><p class="quote" data-i18n="chars.c6.q">Other children share the village with you, so it never feels empty.</p></div></article></div>
+
+        <div class="make" id="como">
+          <header class="sec-head reveal">
+            <span class="eyebrow" data-i18n="make.eyebrow">How the characters were made</span>
+            <h3 class="h2 h2--sm" data-i18n="make.h">Directed by hand, built with Blender and AI</h3>
+            <p class="lead" data-i18n="make.lead">The characters were not downloaded. I directed every one of them, and I connected Blender to Claude Code so the AI could build what I described, round after round, until it looked right.</p>
+          </header>
+          <ol class="steps sec-body reveal">
+            <li class="card"><span class="num">1</span><h4 data-i18n="make.s1.h">Direction</h4><p data-i18n="make.s1.p">I define the look, the roles and the proportions: kid-friendly and cartoon, warm colors, a boy or a girl to play, never an adult.</p></li>
+            <li class="card"><span class="num">2</span><h4 data-i18n="make.s2.h">Blender + AI</h4><p data-i18n="make.s2.p">Python scripts run in Blender 4.5 build one continuous body mesh, with hair, clothes and accessories as separate objects, so the game can swap hair color, shirt, skirts, cassocks and the altar server tunic.</p></li>
+            <li class="card"><span class="num">3</span><h4 data-i18n="make.s3.h">Rig and look</h4><p data-i18n="make.s3.p">The mesh is bound to a CC0 skeleton with 9 animations (idle, walk, jog, run, jump, land, talk, interact, dance). Toon shading and outlines in Three.js give the cartoon look.</p></li>
+          </ol>
+          <div class="make-grid reveal">
+            <figure class="code-card">
+              <div class="code-bar"><i></i><i></i><i></i><span>tools/blender/personagem.py</span></div>
+              <pre><code><span class="c-cm"># Gera assets/models/personagem.glb: um boneco de malha contínua (pele, roupas, cabelos e</span>
+<span class="c-cm"># acessórios como objetos separados) ligado ao esqueleto da Universal Animation Library (CC0).</span>
+<span class="c-kw">import</span> bpy, sys, math, random
+<span class="c-kw">from</span> mathutils <span class="c-kw">import</span> Vector
+
+bpy.ops.wm.read_factory_settings(use_empty=<span class="c-kw">True</span>)
+bpy.ops.import_scene.gltf(filepath=SRC)
+arm = [o <span class="c-kw">for</span> o <span class="c-kw">in</span> bpy.data.objects <span class="c-kw">if</span> o.type == <span class="c-st">'ARMATURE'</span>][0]
+
+KEEP = [<span class="c-st">'Idle_Loop'</span>, <span class="c-st">'Walk_Loop'</span>, <span class="c-st">'Jog_Fwd_Loop'</span>, <span class="c-st">'Sprint_Loop'</span>,
+        <span class="c-st">'Jump_Loop'</span>, <span class="c-st">'Jump_Land'</span>, <span class="c-st">'Idle_Talking_Loop'</span>, <span class="c-st">'Interact'</span>, <span class="c-st">'Dance_Loop'</span>]</code></pre>
+              <figcaption data-i18n="make.code.cap">The start of tools/blender/personagem.py, the script that builds the character.</figcaption>
+            </figure>
+            <div class="cust">
+              <div class="shot"><img src="assets/criar-personagem.webp" width="1600" height="813" data-i18n-alt="make.cust.img.alt" alt="Character creator: choose boy or girl, skin, hair and shirt color" loading="lazy" decoding="async" /></div>
+              <h4 data-i18n="make.cust.h">Your own character</h4>
+              <p data-i18n="make.cust.p">One screen, no steps: boy or girl, skin tone, hairstyle, hair color and shirt, with the character changing live beside the panel.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= JOGABILIDADE ================= -->
+    <section class="sec" id="jogabilidade">
+      <div class="container">
+        <header class="sec-head reveal">
+          <span class="eyebrow" data-i18n="play.eyebrow">Gameplay</span>
+          <h2 class="h2" data-i18n="play.h">Learn by exploring, answer by playing</h2>
+          <p class="lead" data-i18n="play.lead">Nine missions, all playable from start to finish. Characters send you to places, each discovery opens a short text with its source, and small activities check what you learned, with no pressure and unlimited tries.</p>
+        </header>
+        <div class="shots sec-body reveal"><figure class="s"><div class="shot"><img src="assets/dialogo.webp" width="1600" height="813" data-i18n-alt="play.s1.alt" alt="Dialogue box with the catechist speaking" loading="lazy" decoding="async" /></div><figcaption data-i18n="play.s1">Talking: short lines, read aloud, with the speaker’s role</figcaption></figure><figure class="s"><div class="shot"><img src="assets/pergunta.webp" width="1600" height="813" data-i18n-alt="play.s2.alt" alt="Question about Saint Francis with three answer cards" loading="lazy" decoding="async" /></div><figcaption data-i18n="play.s2">Questions with big, clear choices</figcaption></figure><figure class="s"><div class="shot"><img src="assets/santo.webp" width="1600" height="813" data-i18n-alt="play.s3.alt" alt="Card for Saint Carlo Acutis with a portrait and text" loading="lazy" decoding="async" /></div><figcaption data-i18n="play.s3">Saint cards with a painting and a one-line virtue</figcaption></figure><figure class="s"><div class="shot"><img src="assets/mochila.webp" width="1600" height="813" data-i18n-alt="play.s4.alt" alt="Backpack screen listing missions and their locks" loading="lazy" decoding="async" /></div><figcaption data-i18n="play.s4">Backpack: missions, medals, diary and progress</figcaption></figure></div>
+        <div class="quests reveal">
+          <h3 class="h3" data-i18n="play.m.h">The nine missions</h3>
+          <ol class="quest-list"><li class="q"><span class="q-n">01</span><div><h4 data-i18n="play.m1">Getting to know God’s house</h4><p data-i18n="play.m1.p">Find 5 places in the church and answer 3 picture questions.</p></div></li><li class="q"><span class="q-n">02</span><div><h4 data-i18n="play.m2">The objects of the Mass</h4><p data-i18n="play.m2.p">Discover 5 liturgical objects and play “which object is it?”.</p></div></li><li class="q"><span class="q-n">03</span><div><h4 data-i18n="play.m3">Learning to pray</h4><p data-i18n="play.m3.p">The Sign of the Cross and the Our Father, then complete the prayer.</p></div></li><li class="q"><span class="q-n">04</span><div><h4 data-i18n="play.m4">The seven sacraments</h4><p data-i18n="play.m4.p">Find 7 stained glasses and sort the sacraments into 3 groups.</p></div></li><li class="q"><span class="q-n">05</span><div><h4 data-i18n="play.m5">My first day as altar server</h4><p data-i18n="play.m5.p">Pick the garment, set the credence table, order the procession, carry the candle.</p></div></li><li class="q"><span class="q-n">06</span><div><h4 data-i18n="play.m6">Rosary apprentice</h4><p data-i18n="play.m6.p">Find 4 mystery plaques and pray one mystery while the beads light up.</p></div></li><li class="q"><span class="q-n">07</span><div><h4 data-i18n="play.m7">The journey of the saints</h4><p data-i18n="play.m7.p">Visit 11 chapels, from Saint Francis to Saint Carlo Acutis and Our Lady.</p></div></li><li class="q"><span class="q-n">08</span><div><h4 data-i18n="play.m8">Helping others</h4><p data-i18n="play.m8.p">Bring bread to a sick neighbor and think through situations of charity and forgiveness.</p></div></li><li class="q"><span class="q-n">09</span><div><h4 data-i18n="play.m9">The Way of the Cross</h4><p data-i18n="play.m9.p">Walk the 14 stations and end in the joy of Easter.</p></div></li></ol>
+        </div>
+        <div class="grid grid--2 sec-body reveal">
+          <article class="card card--tick"><h3 data-i18n="play.prog.h">Progress that rewards curiosity</h3><p data-i18n="play.prog.p">Learning points, 6 levels, 14 medals, a discovery diary with the sources, saved prayers and an unlockable altar server tunic. There are also invitations to live what was learned outside the game, which on purpose give no points.</p></article>
+          <article class="card card--tick"><h3 data-i18n="play.acc.h">Accessible by default</h3><p data-i18n="play.acc.p">Big buttons, keyboard navigation, large text, high contrast, reduced motion and a light mode for simple devices.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= FÉ ================= -->
+    <section class="sec sec--tint" id="fe">
+      <div class="container">
+        <header class="sec-head reveal">
+          <span class="eyebrow" data-i18n="faith.eyebrow">Faith content</span>
+          <h2 class="h2" data-i18n="faith.h">Every text has a source</h2>
+          <p class="lead" data-i18n="faith.lead">This was the rule from the first prompt: all catechetical material must come from the Catechism of the Catholic Church and the Vatican website. I did not want a game that “sounds Catholic”, I wanted one that can be checked.</p>
+        </header>
+        <div class="grid grid--3 sec-body reveal">
+          <article class="card stat"><span class="big" data-i18n="faith.n1">92</span><p data-i18n="faith.n1.p">sources checked, one by one, listed in the project docs</p></article>
+          <article class="card stat"><span class="big" data-i18n="faith.n2">40</span><p data-i18n="faith.n2.p">Catechism paragraphs read in the full text and compared with the in-game summary</p></article>
+          <article class="card stat"><span class="big big--word" data-i18n="faith.n3">Vulgata</span><p data-i18n="faith.n3.p">Bible passages checked against the Latin Nova Vulgata on the Holy See website</p></article>
+        </div>
+        <div class="faith-row reveal">
+          <article class="card card--tick"><h3 data-i18n="faith.fix.h">The checks found mistakes, and I fixed them</h3><p data-i18n="faith.fix.p">The Glory Be was citing the Catechism, which does not contain that prayer, so it now cites Rosarium Virginis Mariae. The Creed now follows the Catechism text exactly. For Saint Carlo Acutis I removed two details that no consulted source confirmed.</p></article>
+          <div class="warn"><span class="warn-tag" data-i18n="faith.warn.tag">Honest limit</span><p data-i18n="faith.warn.p">The game does not replace Mass, the sacraments or in-person catechesis. The content was written from official sources, but a catechist or priest still has to review it before it is used with children, and I say so on the game’s own “parents and catechists” screen.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CELULAR ================= -->
+    <section class="sec" id="celular">
+      <div class="container">
+        <header class="sec-head reveal">
+          <span class="eyebrow" data-i18n="mob.eyebrow">Mobile</span>
+          <h2 class="h2" data-i18n="mob.h">Built to be played sideways</h2>
+          <p class="lead" data-i18n="mob.lead">The same game opens in a phone’s browser. Round joystick, a jump button and a talk button, controls sized to the screen height and notch-safe, and a layout that never scrolls. The native iOS and Android versions are what I am coding now.</p>
+        </header>
+        <div class="phones sec-body reveal">
+          <figure class="ph"><div class="phone-land"><img src="assets/mobile-titulo.webp" width="1400" height="647" data-i18n-alt="mob.t1.alt" alt="Game title screen on a phone held sideways" loading="lazy" decoding="async" /></div><figcaption data-i18n="mob.t1">Title screen on a phone</figcaption></figure>
+          <figure class="ph"><div class="phone-land"><img src="assets/mobile-praca.webp" width="1400" height="711" data-i18n-alt="mob.t2.alt" alt="Gameplay on a phone with a round joystick, a jump button and a talk button" loading="lazy" decoding="async" /></div><figcaption data-i18n="mob.t2">Joystick, jump and talk buttons</figcaption></figure>
+          <figure class="ph"><div class="phone-land"><img src="assets/mobile-dialogo.webp" width="1400" height="711" data-i18n-alt="mob.t3.alt" alt="Catechist dialogue on a phone" loading="lazy" decoding="async" /></div><figcaption data-i18n="mob.t3">Dialogues sized to the screen</figcaption></figure>
+        </div>
+        <article class="card card--tick card--wide reveal"><h3 data-i18n="mob.perf.h">It adapts to the device</h3><p data-i18n="mob.perf.p">On phones it already starts with fewer effects, and on any device, if it slows down for a few seconds, it lowers the effects by itself, one level at a time. There is also a Light mode in the settings. On my iPhone it runs smoothly.</p></article>
+      </div>
+    </section>
+
+    <!-- ================= TECH ================= -->
+    <section class="sec sec--dark" id="tecnologia">
+      <div class="container">
+        <header class="sec-head reveal">
+          <span class="eyebrow eyebrow--on" data-i18n="tech.eyebrow">Under the hood</span>
+          <h2 class="h2 h2--on" data-i18n="tech.h">Technology and where the assets came from</h2>
+          <p class="lead lead--on" data-i18n="tech.lead">A static site: no build step, no server, no database. Open the page and play.</p>
+        </header>
+        <dl class="specs sec-body reveal"><div class="row"><dt data-i18n="tech.r1.k">Engine</dt><dd data-i18n="tech.r1.v"><b>Three.js r170</b> with plain ES modules, written for the browser, plus the glTF loader and post-processing.</dd></div><div class="row"><dt data-i18n="tech.r2.k">3D art</dt><dd data-i18n="tech.r2.v"><b>Blender 4.5 LTS</b> driven by Python scripts for the characters and the sacred images, plus CC0 packs from <b>Quaternius</b> for nature, buildings, props and animations.</dd></div><div class="row"><dt data-i18n="tech.r3.k">Look</dt><dd data-i18n="tech.r3.v">Toon shading in three light bands, dark outlines on characters and sacred images, warm light and soft shadows.</dd></div><div class="row"><dt data-i18n="tech.r4.k">Performance</dt><dd data-i18n="tech.r4.v">Textures reduced to 1024 px WebP with glTF Transform and sharp, automatic quality steps, Light mode. When I measured on my computer: about 16 ms per frame at 1080p in the square, with roughly 1 million triangles.</dd></div><div class="row"><dt data-i18n="tech.r5.k">Audio</dt><dd data-i18n="tech.r5.v">More than 440 narrated lines with pt-BR neural voices (AI), one voice per character, plus a soundtrack and footsteps that change with the floor. I built a recording studio page so a human voice can replace any line.</dd></div><div class="row"><dt data-i18n="tech.r6.k">Launch</dt><dd data-i18n="tech.r6.v">Hosted on <b>Vercel</b> under <b>aventuracatolica.com.br</b>, with a privacy page covering LGPD and ECA Digital. Progress and nickname stay on the device.</dd></div><div class="row"><dt data-i18n="tech.r7.k">AI workflow</dt><dd data-i18n="tech.r7.v"><b>Claude Code</b> with game-development skills, working inside the project folder, running Blender from the command line and testing in a real browser on every round.</dd></div></dl>
+        <h3 class="h3 h3--on sub-title reveal" data-i18n="assets.h">Where each asset came from</h3>
+        <dl class="specs specs--sm reveal"><div class="row"><dt data-i18n="assets.a1.k">3D models and animations</dt><dd data-i18n="assets.a1.v">Quaternius, CC0: Stylized Nature MegaKit, Medieval Village MegaKit, Fantasy Props MegaKit and Universal Animation Library, downloaded from OpenGameArt.</dd></div><div class="row"><dt data-i18n="assets.a2.k">Characters and sacred images</dt><dd data-i18n="assets.a2.v">Original meshes built in Blender with scripts, on top of the Quaternius skeleton. No third-party character model.</dd></div><div class="row"><dt data-i18n="assets.a3.k">Paintings and prints</dt><dd data-i18n="assets.a3.v">Saints, Our Lady and the Stations of the Cross come from Wikimedia Commons, in public domain or free licenses, with author, license and page recorded in the credits file.</dd></div><div class="row"><dt data-i18n="assets.a4.k">Texts</dt><dd data-i18n="assets.a4.v">Catechism of the Catholic Church, vatican.va and the Nova Vulgata, with each reference stored beside the text that uses it.</dd></div><div class="row"><dt data-i18n="assets.a5.k">Voices</dt><dd data-i18n="assets.a5.v">Neural pt-BR voices (AI), replaceable by human recordings.</dd></div><div class="row"><dt data-i18n="assets.a6.k">Libraries</dt><dd data-i18n="assets.a6.v">three.js (MIT), glTF Transform (MIT) and sharp (Apache-2.0). Blender (GPL) is used only to generate files and is not shipped with the game.</dd></div></dl>
+      </div>
+    </section>
+
+    <!-- ================= PROCESSO ================= -->
+    <section class="sec" id="processo">
+      <div class="container">
+        <header class="sec-head reveal">
+          <span class="eyebrow" data-i18n="proc.eyebrow">Process</span>
+          <h2 class="h2" data-i18n="proc.h">Built with Claude Code, one round at a time</h2>
+          <p class="lead" data-i18n="proc.lead">In its first days the project went through more than twenty rounds. Each round was the same loop: I play, I say what bothers me, Claude changes it, and we test again.</p>
+        </header>
+        <ol class="timeline sec-body"><li class="tl reveal"><span class="tl-d" data-i18n="proc.t1.d">Nov 12</span><div class="tl-b"><h3 data-i18n="proc.t1.h">The brief</h3><p data-i18n="proc.t1.p">I asked Claude Code to act as a full game-development team (designers, developers, 3D artists, kid UX, writers and catechism consultants) and deliver a real, playable game, not a concept. Browser first, architecture ready for mobile, reference images in a folder.</p></div></li><li class="tl reveal"><span class="tl-d" data-i18n="proc.t2.d">Nov 12</span><div class="tl-b"><h3 data-i18n="proc.t2.h">“The graphics are still rough”</h3><p data-i18n="proc.t2.p">The first playable had the structure I liked, but the look was not it. I asked for real saint images, a boy or girl to play (no adults), the Passion of Christ told in a playful way, and a better render.</p></div></li><li class="tl reveal"><span class="tl-d" data-i18n="proc.t3.d">Nov 12</span><div class="tl-b"><h3 data-i18n="proc.t3.h">Blender comes in</h3><p data-i18n="proc.t3.p">I told Claude it could install whatever was needed. Blender 4.5 went on the machine, the characters were rebuilt as a skinned mesh, the village got CC0 packs, and toon shading plus outlines moved the look toward the references.</p></div></li><li class="tl reveal"><span class="tl-d" data-i18n="proc.t4.d">Nov 13</span><div class="tl-b"><h3 data-i18n="proc.t4.h">The official site</h3><p data-i18n="proc.t4.p">The site goes public on Vercel under the custom domain aventuracatolica.com.br. Parents and catechists screen (LGPD, ECA Digital), the 92-source check, soundtrack, a landscape phone layout and automatic graphics quality.</p></div></li><li class="tl reveal"><span class="tl-d" data-i18n="proc.t5.d">Nov 14 to 15</span><div class="tl-b"><h3 data-i18n="proc.t5.h">Roles instead of names</h3><p data-i18n="proc.t5.p">All characters became roles (“Hi, I am the catechist”), and the voices were regenerated. Saint Francis got a statue in the square, with a Dog and a Cat that remind kids animals are God’s creatures (Catechism, n. 2416).</p></div></li><li class="tl reveal"><span class="tl-d" data-i18n="proc.t6.d">Nov 17</span><div class="tl-b"><h3 data-i18n="proc.t6.h">Polish</h3><p data-i18n="proc.t6.p">A better face for the Saint Francis statue, moved away from Our Lady’s fountain; the Cat now sits near a neighbor’s house and the Dog wanders the square. Small things that make the village feel alive.</p></div></li></ol>
+      </div>
+    </section>
+
+    <!-- ================= STATUS ================= -->
+    <section class="sec sec--tint" id="status">
+      <div class="container">
+        <header class="sec-head reveal">
+          <span class="eyebrow" data-i18n="status.eyebrow">Status</span>
+          <h2 class="h2" data-i18n="status.h">Where it stands today</h2>
+          <p class="lead" data-i18n="status.lead">This case is a snapshot of a project that keeps growing. I will keep updating it as the native apps and the new content arrive.</p>
+        </header>
+        <div class="grid grid--3 sec-body reveal">
+          <article class="card status-card status-card--live"><span class="pill pill--live" data-i18n="status.c1.t">Live now</span><ul><li data-i18n="status.c1.l1">Playable on the web, responsive on desktop and phone</li><li data-i18n="status.c1.l2">9 missions, 14 medals, more than 440 narrated lines</li><li data-i18n="status.c1.l3">Free, with no ads and no data collection</li></ul></article>
+          <article class="card status-card status-card--dev"><span class="pill pill--dev" data-i18n="status.c2.t">In development</span><ul><li data-i18n="status.c2.l1">Native iOS and Android versions, which I am coding now</li><li data-i18n="status.c2.l2">One path I am evaluating: wrapping this same game with Capacitor</li><li data-i18n="status.c2.l3">Touch, performance and low-end phones to test on real devices</li></ul></article>
+          <article class="card status-card"><span class="pill" data-i18n="status.c3.t">Next</span><ul><li data-i18n="status.c3.l1">More content: Trinity, creation, the life of Jesus, Bible stories, the liturgical year, the Pope and bishops</li><li data-i18n="status.c3.l2">Human voice recordings and a review by a catechist or priest</li><li data-i18n="status.c3.l3">Tests with children and the public launch</li></ul></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CTA ================= -->
+    <section class="cta">
+      <img class="cta-bg" src="assets/aereo-b.webp" width="1600" height="813" alt="" loading="lazy" />
+      <div class="hero-shade hero-shade--cta"></div>
+      <div class="container cta-inner reveal">
+        <img class="cta-logo" src="assets/logo.webp" width="620" height="444" alt="Aventura Católica" loading="lazy" />
+        <h2 class="h2 h2--on" data-i18n="cta.h">Come explore the village</h2>
+        <p class="lead lead--on" data-i18n="cta.p">Free, in the browser, on your computer or phone. I am recording content about the project and will start announcing it soon, so follow along.</p>
+        <div class="hero-ctas hero-ctas--center">
+          <a class="btn btn--gold" href="https://aventuracatolica.com.br/" target="_blank" rel="noopener"><span data-i18n="cta.play">Play Aventura Católica</span><svg class="arrow" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+          <a class="btn btn--glass" href="https://www.instagram.com/gabrieltechdesign/" target="_blank" rel="noopener"><span data-i18n="cta.ig">Follow @gabrieltechdesign</span><svg class="arrow" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+          <a class="btn btn--glass" href="../#projects" data-home><span data-i18n="cta.back">Back to projects</span><svg class="arrow" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot"><div class="container"><p data-i18n="foot.p">Made with faith, as a volunteer. Ad Maiorem Dei Gloriam.</p></div></footer>
+
+  <script src="case.js" defer></script>
+</body>
+</html>
