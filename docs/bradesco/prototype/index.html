@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Journey prototype · Bradesco | Gabriel Moreira</title>
+  <meta name="description" content="Clickable prototype of the income tax statements journey in the Bradesco app: from the push notification to the saved PDF and the experience rating." />
+  <meta name="theme-color" content="#cc092f" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="icon" href="../../favicon.ico" sizes="any" />
+
+  <link rel="stylesheet" href="../ui/bds.css" />
+  <link rel="stylesheet" href="prototype.css" />
+</head>
+<body>
+  <header class="pp-header">
+    <a class="pp-brand" href="../" data-keep-lang>
+      <img src="../assets/symbol-red.svg" width="28" height="28" alt="" />
+      <b data-t="title">Journey prototype</b>
+    </a>
+    <nav class="pp-top">
+      <a href="../" data-keep-lang data-t="case">Case study</a>
+      <a href="../storybook/" data-keep-lang>Storybook</a>
+    </nav>
+    <div class="pp-lang" role="group" aria-label="Language">
+      <button type="button" data-l="en" aria-pressed="true">EN</button>
+      <button type="button" data-l="pt" aria-pressed="false">PT</button>
+    </div>
+  </header>
+
+  <main class="pp-layout">
+    <section class="pp-stage" id="pp-stage" aria-label="Prototype">
+      <div class="pp-wrap" id="pp-wrap">
+        <div class="pp-scale" id="pp-scale">
+          <div class="pp-device bds" id="pp-device">
+            <div class="pp-island" aria-hidden="true"></div>
+            <div class="pp-screens" id="pp-screens"></div>
+          </div>
+        </div>
+      </div>
+      <p class="pp-note" data-t="note">The app screens stay in Portuguese, as in the real product. Tap what looks tappable.</p>
+    </section>
+
+    <aside class="pp-panel">
+      <span class="pp-eyebrow" data-t="eyebrow">Interactive</span>
+      <h1 data-t="h1">From the notification to the PDF</h1>
+      <p class="pp-lead" data-t="lead">Eight stages, the same ones as the journey in the case. Tap through the app or let it play by itself.</p>
+
+      <p class="pp-notice"><b data-t="noticeTag">Independent recreation</b> <span data-t="notice"></span></p>
+
+      <div class="pp-actions">
+        <button class="pp-btn pp-btn--primary" id="pp-play" type="button"><span data-t="play">Play the journey</span></button>
+        <button class="pp-btn" id="pp-restart" type="button" data-t="restart">Restart</button>
+      </div>
+      <div class="pp-version" role="group" aria-label="Selection screen">
+        <span data-t="version">Selection screen</span>
+        <div class="pp-seg">
+          <button type="button" data-v="2022" aria-pressed="true" data-t="v2022">2022</button>
+          <button type="button" data-v="v2" aria-pressed="false" data-t="v2">Improved</button>
+        </div>
+      </div>
+
+      <ol class="pp-steps" id="pp-steps"></ol>
+
+      <div class="pp-detail" id="pp-detail" aria-live="polite"></div>
+    </aside>
+  </main>
+
+  <script src="../ui/bds-icons.js"></script>
+  <script src="../ui/bds.js" data-assets="../assets/"></script>
+  <script src="prototype.js"></script>
+</body>
+</html>
