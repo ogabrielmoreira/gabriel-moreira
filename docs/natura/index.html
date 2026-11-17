@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>GaYa · Multi-brand design system | Gabriel Moreira</title>
+  <meta name="description" content="Case study: leading GaYa, the multi-brand design system for Natura &Co. Three-tier tokens, WCAG 2.2, AI in the workflow, plus a rebuilt Storybook and a navigable app." />
+  <meta name="theme-color" content="#0f4a3a" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="GaYa · Multi-brand design system | Gabriel Moreira" />
+  <meta property="og:image" content="../assets/cases/gaya.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="icon" href="../favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png" />
+  <link rel="stylesheet" href="ui/gaya.css" />
+  <link rel="stylesheet" href="case.css" />
+  <script>document.documentElement.classList.add('js');</script>
+  <!-- Microsoft Clarity -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "yx8kvpy7zn");
+  </script>
+</head>
+<body>
+  <header class="case-header">
+    <div class="case-header-inner">
+      <a class="brand" href="../" data-home aria-label="Gabriel Moreira"><img src="../assets/logo-header.png" width="1050" height="438" alt="Gabriel Moreira" /></a>
+      <div class="case-header-actions">
+        <a class="back-link hide-sm" href="storybook/" data-lang-href="storybook/" data-i18n="x_sb">Storybook</a>
+        <a class="back-link hide-sm" href="prototype/" data-lang-href="prototype/" data-i18n="x_pr">Prototype</a>
+        <a class="back-link" href="../#projects" data-home><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg><span data-i18n="x_port">Portfolio</span></a>
+        <div class="lang-switch" role="group" aria-label="Language">
+          <button type="button" data-l="en" aria-pressed="true" aria-label="English">EN</button>
+          <button type="button" data-l="pt" aria-pressed="false" aria-label="Português">PT</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+<section class="hero" id="top">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <span class="hero-wordmark">GaYa</span>
+        <span class="eyebrow" data-i18n="h1">Design System · Multi-brand · 2024</span>
+        <h1 data-i18n="h2">Multi-brand<br>design system</h1>
+        <p class="hero-sub" data-i18n="h3">One system for the brands of the Natura &amp;Co Group, across web, iOS and Android.</p>
+        <div class="hero-ctas">
+          <a class="btn btn--white" href="storybook/" data-lang-href="storybook/"><span data-i18n="cta1">Open the Storybook</span><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <a class="btn btn--glass" href="prototype/" data-lang-href="prototype/"><span data-i18n="cta2">Try the SimpleApp</span><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></a>
+        </div>
+      </div>
+      <div class="hero-phones" aria-hidden="true">
+        <div class="lphone gy" data-theme="t1" data-mode="light" data-screen="login"></div>
+        <div class="lphone gy" data-theme="t1" data-mode="dark" data-screen="home"></div>
+      </div>
+    </div>
+    <dl class="hero-meta">
+      <div><dt data-i18n="m1">Role</dt><dd data-i18n="m1v">Design System Lead</dd></div>
+      <div><dt data-i18n="m2">Scope</dt><dd data-i18n="m2v">Web, iOS and Android</dd></div>
+      <div><dt data-i18n="m3">Context</dt><dd data-i18n="m3v">Contractor through a partner company, one year, leading a lean team</dd></div>
+      <div><dt data-i18n="m4">This version</dt><dd data-i18n="m4v">Components rebuilt in 2026</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="sec" style="padding-bottom:0"><div class="container">
+  <div class="note reveal"><span class="note-tag" data-i18n="note.tag">About this case</span><p data-i18n="note.p"><strong>An independent, authorial adaptation.</strong> Years have passed and I no longer work there, so this is a rebuild for portfolio use: generic themes, a few components, no real brand data or third-party material, and details changed on purpose (radii, specs). It is not the delivered result. It shows what I learned, what I would improve and how I work day to day.</p></div>
+</div></section>
+
+<section class="sec"><div class="container">
+<header class="reveal"><span class="eyebrow" data-i18n="c.e">Context</span><h2 class="h2" data-i18n="c.h">A great name, and a lot to rebuild</h2><p class="lead" data-i18n="c.l">I joined in 2024 to lead the design system team. GaYa already had a name, an homage to the tree planted at the company's headquarters, but the foundation still carried the legacy of Adobe XD, a tool Adobe discontinued years ago.</p></header>
+<div class="grid grid--4 sec-body reveal"><article class="card"><span class="num">01</span><h3 data-i18n="c1h">Legacy to migrate</h3><p data-i18n="c1p">Components and styles came from Adobe XD, now discontinued, and had to be rebuilt as a real system in Figma, not just moved.</p></article><article class="card"><span class="num">02</span><h3 data-i18n="c2h">Dozens of themes in one file</h3><p data-i18n="c2p">Each squad and business unit had its own light and dark themes. Every change risked breaking something somewhere else.</p></article><article class="card"><span class="num">03</span><h3 data-i18n="c3h">No shared language</h3><p data-i18n="c3p">Design and code named things differently, so handoff was slow and each platform drifted on its own.</p></article><article class="card"><span class="num">04</span><h3 data-i18n="c4h">A name that had to become a product</h3><p data-i18n="c4p">The goal was to turn GaYa into a system teams actually trust and contribute to.</p></article></div>
+<p class="callout reveal" data-i18n="callout">Part of the job was firefighting: stabilize first, then scale.</p>
+</div></section>
+
+<section class="sec sec--tint"><div class="container">
+<header class="reveal"><span class="eyebrow" data-i18n="n.e">Results</span><h2 class="h2" data-i18n="n.h">What the system delivered</h2></header>
+<div class="grid grid--4 sec-body reveal"><article class="card stat"><span class="big" data-i18n="n1">~144%</span><p data-i18n="n1p">ROI by the end of the year, from reuse, fewer remakes and no need to hire more external specialists.</p></article><article class="card stat"><span class="big" data-i18n="n2">150+</span><p data-i18n="n2p">components, built in the months after connecting Figma to AI.</p></article><article class="card stat"><span class="big" data-i18n="n3">200+</span><p data-i18n="n3p">design tokens in three tiers, synced from Figma Variables to the React repositories.</p></article><article class="card stat"><span class="big" data-i18n="n4">-40%</span><p data-i18n="n4p">accessibility bugs after recalibrating the whole color system to WCAG 2.2 AA/AAA.</p></article></div>
+<div class="grid grid--3 reveal" style="margin-top:14px"><article class="card stat"><span class="big" data-i18n="n5">30%</span><p data-i18n="n5p">more efficient from design to code.</p></article><article class="card stat"><span class="big" data-i18n="n6">25%</span><p data-i18n="n6p">less time spent on handoff.</p></article><article class="card stat"><span class="big" data-i18n="n7">~40%</span><p data-i18n="n7p">faster prototyping with the LogoType, Preview Themes and SimpleApp libraries.</p></article></div>
+<p class="fine reveal" data-i18n="n.f">Measured internally during my contract. Rounded, without baselines.</p>
+</div></section>
+
+<section class="sec"><div class="container">
+<header class="reveal"><span class="eyebrow" data-i18n="p.e">How I led it</span><h2 class="h2" data-i18n="p.h">From stabilizing to scaling</h2><p class="lead" data-i18n="p.l">Each stage unlocked the next one.</p></header>
+<div class="grid grid--5 sec-body reveal"><article class="card"><span class="num">1</span><h3 data-i18n="p1h">Audit and stabilize</h3><p data-i18n="p1p">Mapped what existed, cleaned the main Figma file folder by folder and stopped the breakages.</p></article><article class="card"><span class="num">2</span><h3 data-i18n="p2h">Rebuild the foundations</h3><p data-i18n="p2p">Semantic study of the system and a three-tier token architecture with multi-brand theming. The squad lead feared a major breaking change, and rightly so, but we rolled it out step by step and it worked.</p></article><article class="card"><span class="num">3</span><h3 data-i18n="p3h">Organize the libraries</h3><p data-i18n="p3p">Core, team components, templates and utilities split into clear libraries, with changelog and release notes.</p></article><article class="card"><span class="num">4</span><h3 data-i18n="p4h">Bring AI into the workflow</h3><p data-i18n="p4p">Connected Figma to LLMs and Cursor for documentation, code scaffolding and icons.</p></article><article class="card"><span class="num">5</span><h3 data-i18n="p5h">Open the governance</h3><p data-i18n="p5p">A distributed contribution model so squads could extend the system without waiting on the core team.</p></article></div>
+</div></section>
+
+<section class="sec sec--tint" id="tokens"><div class="container">
+<header class="reveal"><span class="eyebrow" data-i18n="t.e">Tokens</span><h2 class="h2" data-i18n="t.h">Three tiers, one codebase, many brands</h2><p class="lead" data-i18n="t.l">Primitives hold raw values, semantic tokens give them a role and change with theme and mode, component tokens are local decisions. A brand is a mapping of tier 2, not a copy of the system. Try it:</p></header>
+<div class="live sec-body reveal gy" id="live" data-theme="t1" data-mode="light">
+  <div class="live-bar">
+    <div class="seg" role="group" id="live-themes" data-i18n-label="l.theme" aria-label="Theme"><button type="button" data-v="t1" aria-pressed="true">1</button><button type="button" data-v="t2" aria-pressed="false">2</button><button type="button" data-v="t3" aria-pressed="false">3</button></div>
+    <div class="seg" role="group" id="live-modes" data-i18n-label="l.mode" aria-label="Mode"><button type="button" data-v="light" aria-pressed="true" data-i18n="l.light">Light</button><button type="button" data-v="dark" aria-pressed="false" data-i18n="l.dark">Dark</button></div>
+  </div>
+  <div class="live-body">
+    <div class="live-tiers">
+      <div><h5 data-i18n="tt1">1 · Primitive</h5><code>--p-green-700<br>--p-orange-700<br>--p-pink-700</code><p data-i18n="tt1p">Raw values. No meaning.</p></div>
+      <div><h5 data-i18n="tt2">2 · Semantic</h5><code>--gy-primary<br>--gy-surface<br>--gy-text</code><p data-i18n="tt2p">A role. This tier swaps per theme and mode.</p></div>
+      <div><h5 data-i18n="tt3">3 · Component</h5><code>--btn-bg<br>--btn-fg<br>--btn-h</code><p data-i18n="tt3p">Local decisions that read from tier 2.</p></div>
+    </div>
+    <div class="live-comps" id="live-comps"></div>
+  </div>
+</div>
+</div></section>
+
+<section class="sec"><div class="container">
+<header class="reveal"><span class="eyebrow" data-i18n="d.e">In Figma</span><h2 class="h2" data-i18n="d.h">Libraries, organized</h2><p class="lead" data-i18n="d.l">Core components by family, team components, patterns and templates. Figma Variables carry the tokens that sync to React. Details are blurred or removed on purpose.</p></header>
+<div class="sec-body shots reveal">
+  <figure class="shot"><img src="assets/figma-library.png" width="1180" height="940" data-i18n-alt="alt.lib" alt="Overview of the Figma core components page, organized by family" loading="lazy" decoding="async" /><figcaption data-i18n="d.cap1">Core components, grouped by family: buttons, inputs, navigation, layout and feedback.</figcaption></figure>
+  <figure class="shot shot--wide"><img src="assets/figma-templates.png" width="1568" height="501" data-i18n-alt="alt.tpl" alt="Five mobile app templates in Figma: login, home, showcase, notification and order" loading="lazy" decoding="async" /><figcaption data-i18n="d.cap2">App mobile templates: login, home, showcase, notification and order. The base for the SimpleApp library.</figcaption></figure>
+</div>
+</div></section>
+
+<section class="sec sec--tint"><div class="container">
+<header class="reveal"><span class="eyebrow" data-i18n="a.e">AI in the process</span><h2 class="h2" data-i18n="a.h">Figma connected to Claude and Cursor</h2><p class="lead" data-i18n="a.l">I connected Figma to LLMs through MCP, with Claude and Cursor AI. About three months after proposing it, the team was shipping components at a different pace. People reviewed every delivery.</p></header>
+<div class="grid grid--4 sec-body reveal"><article class="card card--tick"><h3 data-i18n="a1h">Documentation</h3><p data-i18n="a1p">Usage and anatomy drafted from the Figma component, then reviewed.</p></article><article class="card card--tick"><h3 data-i18n="a2h">Code scaffolding</h3><p data-i18n="a2p">A first React version generated from tokens and variants, then reviewed.</p></article><article class="card card--tick"><h3 data-i18n="a3h">Icons</h3><p data-i18n="a3p">Icon sets generated and normalized to the grid, then curated by hand.</p></article><article class="card card--tick"><h3 data-i18n="a4h">Shorter handoff</h3><p data-i18n="a4p">Design and code share names and structure, which is where the time savings came from.</p></article></div>
+</div></section>
+
+<section class="sec"><div class="container">
+<header class="reveal"><span class="eyebrow" data-i18n="w.e">Accessibility</span><h2 class="h2" data-i18n="w.h">Color, recalibrated to WCAG 2.2</h2><p class="lead" data-i18n="w.l">Together with the branding team, I recalibrated the color system so text and interface pairs pass AA, and AAA where possible. The semantic tier owns the pairs, so the fix reached every brand at once.</p></header>
+<div class="grid sec-body reveal contrast-row" id="contrast"></div>
+</div></section>
+
+<section class="sec sec--tint"><div class="container">
+<header class="reveal"><span class="eyebrow" data-i18n="g.e">DesignOps and governance</span><h2 class="h2" data-i18n="g.h">A core team that is not the bottleneck</h2></header>
+<div class="grid grid--3 sec-body reveal"><article class="card card--tick"><h3 data-i18n="g1h">Distributed contribution</h3><p data-i18n="g1p">Squads propose and build components under the same rules, with the core team as reviewer.</p></article><article class="card card--tick"><h3 data-i18n="g2h">Versioning and changelog</h3><p data-i18n="g2p">Every release explained, so teams know what changed and why.</p></article><article class="card card--tick"><h3 data-i18n="g3h">Visual QA</h3><p data-i18n="g3p">Storybook as the source of truth, with visual checks before publishing.</p></article></div>
+</div></section>
+
+<section class="sec"><div class="container">
+<header class="reveal"><span class="eyebrow" data-i18n="ld.e">Leadership</span><h2 class="h2" data-i18n="ld.h">A lean team, and a great experience</h2><p class="lead" data-i18n="ld.l">I was a contractor through a partner company, hired for this service for one year. It is not a tech company, which made it more interesting.</p></header>
+<div class="grid grid--3 sec-body reveal"><article class="card card--tick"><h3 data-i18n="ld1h">Meetings and talks</h3><p data-i18n="ld1p">Many alignments and talks along the way, to keep design, engineering and product on the same page.</p></article><article class="card card--tick"><h3 data-i18n="ld2h">Teaching AI to the team</h3><p data-i18n="ld2p">I taught the team to use AI in the workflow, with Cursor AI for development. Engineering supported the idea from the start.</p></article><article class="card card--tick"><h3 data-i18n="ld3h">Results</h3><p data-i18n="ld3p">The support turned into results: the numbers above came from this way of working.</p></article></div>
+<p class="callout reveal" data-i18n="ld.c">It was a great experience. Learnings, mistakes and wins are all part of the process.</p>
+</div></section>
+
+<section class="sec sec--tint" id="build"><div class="container">
+<header class="reveal"><span class="eyebrow" data-i18n="b.e">Explore</span><h2 class="h2" data-i18n="b.h">Try the system, rebuilt</h2><p class="lead" data-i18n="b.l">A smaller set to show how I worked: tokens, three generic themes, light and dark, and 17 components you can try.</p></header>
+<div class="explore sec-body reveal">
+  <a class="xcard xcard--sb" href="storybook/" data-lang-href="storybook/">
+    <div class="xcard-art gy" data-theme="t1" data-mode="light" aria-hidden="true"><div class="xcard-stack" id="xc-stack"></div></div>
+    <div class="xcard-body"><div class="xcard-tags"><span class="xcard-tag">Storybook</span><span class="xcard-new" data-i18n="x.new">New</span></div><h3 data-i18n="x.sb.h">Storybook GaYa</h3><p data-i18n="x.sb.p">Foundations plus 17 components with live controls, a usage snippet and the tokens each one reads. Switch theme and mode to see tier 2 remap.</p><span class="xcard-cta"><span data-i18n="x.sb.c">Open the Storybook</span><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+  </a>
+  <a class="xcard xcard--pt" href="prototype/" data-lang-href="prototype/">
+    <div class="xcard-art" aria-hidden="true"><div class="xcard-phones"><div class="lphone lphone--sm gy" data-theme="t2" data-mode="light" data-screen="showcase"></div><div class="lphone lphone--sm gy" data-theme="t3" data-mode="dark" data-screen="order"></div></div></div>
+    <div class="xcard-body"><div class="xcard-tags"><span class="xcard-tag" data-i18n="x_pr">Prototype</span><span class="xcard-new" data-i18n="x.new">New</span></div><h3 data-i18n="x.pt.h">SimpleApp</h3><p data-i18n="x.pt.p">A small navigable app built with the components: login, home, showcase, bag and notification. Swap theme and mode live.</p><span class="xcard-cta"><span data-i18n="x.pt.c">Try the SimpleApp</span><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+  </a>
+</div>
+</div></section>
+
+<section class="sec"><div class="container">
+<header class="reveal"><span class="eyebrow" data-i18n="td.e">Today</span><h2 class="h2" data-i18n="td.h">The same project, in 2026</h2><p class="lead" data-i18n="td.l">Between 2024 and now, Claude Code got much better and I customized my own setup even more. This is how I would mix what I did then with what I can do today: more performance, same care.</p></header>
+<div class="grid grid--4 sec-body reveal"><article class="card card--tick"><h3 data-i18n="td1h">Components from the spec</h3><p data-i18n="td1p">Claude Code or Codex generating components, tests and stories from Figma tokens and variants, with people reviewing.</p></article><article class="card card--tick"><h3 data-i18n="td2h">Tokens as a pipeline</h3><p data-i18n="td2p">Figma Variables to code in a repeatable script, instead of syncing by hand.</p></article><article class="card card--tick"><h3 data-i18n="td3h">Docs and QA in sync</h3><p data-i18n="td3p">Documentation, stories and visual checks generated and updated with every change.</p></article><article class="card card--tick"><h3 data-i18n="td4h">Less time, a smaller team</h3><p data-i18n="td4p">The same scope in less time and probably with an even smaller team, focused on decisions and review.</p></article></div>
+<p class="callout reveal" data-i18n="td.c">AI does the heavy lifting. People own the decisions.</p>
+</div></section>
+
+<section class="sec sec--tint"><div class="container">
+<header class="reveal"><span class="eyebrow" data-i18n="lr.e">Learnings</span><h2 class="h2" data-i18n="lr.h">Don't cling to legacy</h2><p class="lead" data-i18n="lr.l">What gave the most headaches was holding on to a legacy project. We could not use AI freely or start something fresh, for fear of breaking it.</p></header>
+<div class="grid grid--3 sec-body reveal"><article class="card card--tick"><h3 data-i18n="lr1h">Build new when the base is weak</h3><p data-i18n="lr1p">Some projects have a solid structure. But a legacy that was not well built or organized is more likely to break than a new build is.</p></article><article class="card card--tick"><h3 data-i18n="lr2h">Not a seven-headed beast anymore</h3><p data-i18n="lr2p">A design system is no longer built the old way. Companies need to be open to evolving.</p></article><article class="card card--tick"><h3 data-i18n="lr3h">AI is today, not the future</h3><p data-i18n="lr3p">Projects will get even more robust, almost a snap of the fingers. This is my view as a design engineer, mixing design and code, specialized in AI engineering.</p></article></div>
+<div class="lr-cta reveal"><p data-i18n="lr.c">Want to work together or talk mentoring? Get in touch.</p><a class="btn btn--ink" href="https://wa.me/5511947672575" target="_blank" rel="noopener" data-i18n="lr.b">Talk to me</a></div>
+</div></section>
+
+<section class="sec"><div class="container">
+<header class="reveal"><span class="eyebrow" data-i18n="s.e">Stack</span><h2 class="h2" data-i18n="s.h">What it was built with</h2></header>
+<div class="tags reveal sec-body"><span>Figma Variables</span><span>React</span><span>React Native</span><span>Storybook</span><span>Tailwind CSS</span><span>Design tokens</span><span>WCAG 2.2</span><span>Cursor</span><span>LLMs</span><span>DesignOps</span></div>
+</div></section>
+
+<section class="end">
+  <div class="container">
+    <span class="eyebrow" style="color:var(--yellow)" data-i18n="end.e">Next step</span>
+    <h2 class="h2" data-i18n="end.h">Want to talk about this project?</h2>
+    <p data-i18n="end.p">I can walk you through the decisions and how AI changed the workflow. I am also open to working together or mentoring.</p>
+    <div class="end-actions">
+      <a class="btn btn--yellow" href="https://wa.me/5511947672575" target="_blank" rel="noopener" data-i18n="end.c1">Talk to me</a>
+      <a class="btn btn--line" href="../#projects" data-home data-i18n="end.c2">See other projects</a>
+    </div>
+    <div class="legal"><span data-i18n="end.l1">GaYa Design System · 2024 · components rebuilt in 2026</span><span data-i18n="end.l2">© 2026 Gabriel Moreira</span></div>
+  </div>
+</section>
+  </main>
+
+  <script src="ui/gaya.js"></script>
+  <script src="case.js"></script>
+</body>
+</html>
