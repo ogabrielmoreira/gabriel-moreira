@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>VW Play prototype · OTTO Vigilant | Gabriel Moreira</title>
+  <meta name="description" content="Interactive OTTO Vigilant prototype: simulate a tired driver and watch the risk engine trigger the three alert levels and the active takeover." />
+  <meta name="theme-color" content="#0a2a66" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Manrope:wght@500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="icon" href="../../favicon.ico" sizes="any" />
+  <link rel="stylesheet" href="../ui/otto.css" />
+  <link rel="stylesheet" href="prototype.css" />
+</head>
+<body>
+  <header class="pp-header">
+    <a class="pp-brand" href="../" data-keep-lang><i class="pp-mark"><svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M12 22.586c-5.786 0-10.543-4.8-10.543-10.586 0-1.2.214-2.357.6-3.471l6.172 12c.085.171.171.3.385.3.215 0 .3-.129.386-.3l2.871-6.386q.064-.129.129-.129c.086 0 .086.086.129.129l2.914 6.386c.086.171.171.3.386.3.214 0 .3-.129.385-.3l6.172-12c.385 1.071.6 2.228.6 3.471-.043 5.786-4.8 10.586-10.586 10.586m0-13.329c-.086 0-.086-.086-.129-.128l-3.3-7.115a10.12 10.12 0 0 1 6.858 0l-3.3 7.115c-.043.042-.043.128-.129.128m-3.471 7.714c-.086 0-.086-.085-.129-.128L3 6.47c.943-1.542 2.314-2.828 3.9-3.728l3.814 8.228c.086.172.172.215.3.215h1.972c.128 0 .214-.043.3-.215l3.771-8.228c1.586.9 2.957 2.186 3.9 3.728L15.6 16.843q-.065.128-.129.128c-.085 0-.085-.085-.128-.128L13.286 12.3c-.086-.171-.172-.214-.3-.214h-1.972c-.128 0-.214.043-.3.214l-2.057 4.543c-.043.043-.043.128-.128.128M12 24c6.643 0 12-5.357 12-12S18.643 0 12 0 0 5.357 0 12s5.357 12 12 12"/></svg></i><b data-t="title">VW Play prototype</b></a>
+    <nav class="pp-top">
+      <a href="../" data-keep-lang data-t="case">Case study</a>
+      <a href="../storybook/" data-keep-lang>Storybook</a>
+    </nav>
+    <div class="pp-lang" role="group" aria-label="Language">
+      <button type="button" data-l="en" aria-pressed="true">EN</button>
+      <button type="button" data-l="pt" aria-pressed="false">PT</button>
+    </div>
+  </header>
+
+  <main class="pp-layout">
+    <section class="pp-stage" aria-label="Prototype">
+      <div class="ot pp-host" id="pp-host" data-mode="night"></div>
+      <p class="pp-note" data-t="note">The screen is the car. The panel on the right is the driver: move the sliders and OTTO reacts.</p>
+    </section>
+
+    <aside class="pp-panel">
+      <span class="pp-eyebrow" data-t="eyebrow">Interactive</span>
+      <h1 data-t="h1">Simulate a tired driver</h1>
+      <p class="pp-lead" data-t="lead">The risk engine fuses the camera (50%), voice (20%) and telemetry (30%) into one score. Cross a threshold and OTTO speaks, escalating from a suggestion to active control.</p>
+      <p class="pp-notice"><b data-t="noticeTag">Independent concept</b> <span data-t="notice"></span></p>
+
+      <div class="pp-block">
+        <h2 data-t="presets">Quick scenarios</h2>
+        <div class="pp-presets" id="pp-presets"></div>
+      </div>
+
+      <div class="pp-block">
+        <h2 data-t="inputs">Driver and car signals</h2>
+        <div class="pp-sliders" id="pp-sliders"></div>
+        <div class="pp-score" id="pp-score"></div>
+      </div>
+
+      <div class="pp-block">
+        <h2 data-t="options">Options</h2>
+        <div class="pp-opts" id="pp-opts"></div>
+      </div>
+
+      <div class="pp-block ot" id="pp-ladder-wrap">
+        <h2 data-t="ladder">Intervention ladder</h2>
+        <div id="pp-ladder"></div>
+      </div>
+    </aside>
+  </main>
+
+  <footer class="pp-credit">Voz sintética · Kokoro (Apache 2.0)</footer>
+
+  <script src="../ui/otto.js"></script>
+  <script src="prototype.js"></script>
+</body>
+</html>
