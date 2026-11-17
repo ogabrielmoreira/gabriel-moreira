@@ -8,7 +8,7 @@ button { font: inherit; color: inherit; background: none; border: 0; cursor: poi
 
 .sb-header { height: 56px; display: flex; align-items: center; gap: 20px; padding: 0 20px; border-bottom: 1px solid var(--sb-line); background: #fff; }
 .sb-brand { display: flex; align-items: center; gap: 10px; }
-.sb-mark { width: 28px; height: 28px; border-radius: 8px; background: var(--sb-brand); color: #fff; font-style: normal; font-weight: 800; display: grid; place-items: center; }
+.sb-mark { width: 32px; height: 32px; border-radius: 9px; display: block; }
 .sb-brand b { font-size: 16px; font-weight: 800; }
 .sb-brand span { font-size: 16px; font-weight: 500; color: var(--sb-muted); }
 .sb-top { margin-left: auto; display: flex; gap: 4px; }
