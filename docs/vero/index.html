@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Vero ID · White-label identity verification | Gabriel Moreira</title>
+  <meta name="description" content="Case study: Vero ID, a white-label platform for sending identity verification links with liveness detection (KYC), built with React, Supabase and Cloudflare." />
+  <meta name="theme-color" content="#232c6b" />
+  <meta property="og:type" content="article" />
+  <meta property="og:title" content="Vero ID · White-label identity verification | Gabriel Moreira" />
+  <meta property="og:image" content="../assets/cases/vero.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="icon" href="../favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png" />
+  <link rel="stylesheet" href="ui/vero.css" />
+  <link rel="stylesheet" href="case.css" />
+  <script>document.documentElement.classList.add('js');</script>
+  <!-- Microsoft Clarity -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "yx8kvpy7zn");
+  </script>
+</head>
+<body>
+  <header class="case-header">
+    <div class="case-header-inner">
+      <a class="brand" href="../" data-home aria-label="Gabriel Moreira"><img src="../assets/logo-header.png" width="1050" height="438" alt="Gabriel Moreira" /></a>
+      <div class="case-header-actions">
+        <a class="back-link hide-sm" href="storybook/" data-lang-href="storybook/" data-i18n="x_sb">Storybook</a>
+        <a class="back-link" href="../#projects" data-home><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg><span data-i18n="x_port">Portfolio</span></a>
+        <div class="lang-switch" role="group" aria-label="Language">
+          <button type="button" data-l="en" aria-pressed="true" aria-label="English">EN</button>
+          <button type="button" data-l="pt" aria-pressed="false" aria-label="Português">PT</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+<section class="hero" id="top">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <img class="hero-logo" src="assets/veroid-logo-white.png" width="1461" height="383" alt="Vero ID" />
+        <span class="eyebrow" data-i18n="h1">Product · KYC · 2026</span>
+        <h1 data-i18n="h2">Send a link.<br>Verify who<br>they are.</h1>
+        <p class="hero-sub" data-i18n="h3">A white-label platform for identity verification with liveness detection. Each company sends links under its own brand, and customers verify on their phone.</p>
+        <div class="hero-ctas">
+          <a class="btn btn--white" href="https://ogabrielmoreira.github.io/veroid" target="_blank" rel="noopener"><span data-i18n="cta1">Try the live demo</span><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M7 7h10v10"/></svg></a>
+          <a class="btn btn--glass" href="storybook/" data-lang-href="storybook/"><span data-i18n="cta2">Open the Storybook</span><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+      <div class="hero-phones" aria-hidden="true">
+        <div data-vx="intro" data-org="Aurora Digital|AD"></div>
+        <div data-vx="live"></div>
+      </div>
+    </div>
+    <dl class="hero-meta">
+      <div><dt data-i18n="m1">Role</dt><dd data-i18n="m1v">Product, UX/UI, design system and front-end</dd></div>
+      <div><dt data-i18n="m2">Scope</dt><dd data-i18n="m2v">Company dashboard and mobile flow for the customer</dd></div>
+      <div><dt data-i18n="m3">Context</dt><dd data-i18n="m3v">Inspired by a service project I delivered through Gabriel Tech Design</dd></div>
+      <div><dt data-i18n="m4">Built with</dt><dd data-i18n="m4v">React, Supabase, Cloudflare and Claude Code</dd></div>
+    </dl>
+  </div>
+</section>
+
+<section class="sec" style="padding-bottom:0"><div class="container">
+  <div class="note reveal"><span class="note-tag" data-i18n="note.tag">About this case</span><p data-i18n="note.p"><strong>A new project, inspired by real work.</strong> Vero ID is a new product inspired by a project I delivered as a service provider, through Gabriel Tech Design, for Serasa Experian: a short, project-specific engagement (about two months) redesigning the liveness and facial validation flows of a KYC product. That work was real, with a real client and a real result. Vero ID itself has no connection with the company: the brand is fictional, the data is simulated and every screen was rebuilt from scratch. The only thing carried over is the relative gain from the original A/B test (about 58% fewer camera denials).</p></div>
+</div></section>
+
+<section class="sec" id="como-funciona"><div class="container">
+<header class="reveal"><span class="eyebrow" data-i18n="j.e">How it works</span><h2 class="h2" data-i18n="j.h">One link, three moments</h2><p class="lead" data-i18n="j.l">The company sends a link, the customer proves who they are on their phone, and the analyst reviews the result.</p></header>
+<div class="grid grid--3 sec-body reveal">
+  <article class="card"><span class="num">1</span><h3 data-i18n="j1h">The company sends a link</h3><p data-i18n="j1p">By WhatsApp, SMS, e-mail or QR Code, one by one or in a batch from a CSV. Links expire and can be resent or cancelled.</p>
+    <div class="mini" aria-hidden="true"><div class="mrow"><i>MS</i><span><b>Mariana S.</b><small data-i18n="j1a">Link opened</small></span><em>WhatsApp</em></div><div class="mrow"><i>RC</i><span><b>Rafael C.</b><small data-i18n="j1b">Sent</small></span><em>SMS</em></div><div class="mrow"><i>LP</i><span><b>Letícia P.</b><small data-i18n="j1c">Submitted</small></span><em>QR</em></div></div></article>
+  <article class="card"><span class="num">2</span><h3 data-i18n="j2h">The customer verifies on mobile</h3><p data-i18n="j2p">One decision per screen, under the company’s brand: consent, camera, selfie with liveness, document and a short form.</p>
+    <div class="mini mini--flow" aria-hidden="true"><span class="p done" data-i18n="j2a">Consent</span><span class="p done" data-i18n="j2b">Camera</span><span class="p now" data-i18n="j2c">Selfie</span><span class="p" data-i18n="j2d">Document</span><span class="p" data-i18n="j2e">Form</span></div></article>
+  <article class="card"><span class="num">3</span><h3 data-i18n="j3h">The analyst reviews</h3><p data-i18n="j3p">A queue sorted by risk. Every score comes with its reasons, and a person can always overrule it.</p>
+    <div class="mini" aria-hidden="true"><div class="mrow"><b>#4821</b><span class="bar"><s style="width:84%"></s></span><em class="r hi">84</em></div><div class="mrow"><b>#4817</b><span class="bar"><s style="width:52%"></s></span><em class="r mid">52</em></div><div class="mrow"><b>#4809</b><span class="bar"><s style="width:12%"></s></span><em class="r lo">12</em></div></div></article>
+</div>
+</div></section>
+
+<section class="sec sec--tint" id="white-label"><div class="container">
+<header class="reveal"><span class="eyebrow" data-i18n="w.e">White-label</span><h2 class="h2" data-i18n="w.h">Every company, its own brand</h2><p class="lead" data-i18n="w.l">The customer sees the company, not Vero ID. The Brand Kit turns one color into a full scale and refuses combinations that fail WCAG AA. Pick a company and watch the flow change.</p></header>
+<div class="brandlab sec-body reveal">
+  <div class="brandlab-stage" aria-hidden="true"><div data-vx="intro" data-org="Aurora Digital|AD" id="bl-phone"></div></div>
+  <div class="bl-copy">
+    <h3 data-i18n="bl.h">One system, any tenant</h3>
+    <p data-i18n="bl.p">The company controls the brand layer. Neutrals and risk colors belong to the system, so a score reads the same everywhere.</p>
+    <div class="bl-sw" id="bl-sw" role="group" aria-label="Brand">
+      <button type="button" aria-pressed="true" data-c="#232c6b" data-n="Aurora Digital" data-i="AD" style="--c:#232c6b"><i></i>Aurora Digital</button>
+      <button type="button" aria-pressed="false" data-c="#0b6b4d" data-n="Verde Bank" data-i="VB" style="--c:#0b6b4d"><i></i>Verde Bank</button>
+      <button type="button" aria-pressed="false" data-c="#b4232a" data-n="Brasa Seguros" data-i="BS" style="--c:#b4232a"><i></i>Brasa Seguros</button>
+      <button type="button" aria-pressed="false" data-c="#7a2bd9" data-n="Onda Telecom" data-i="OT" style="--c:#7a2bd9"><i></i>Onda Telecom</button>
+    </div>
+    <p class="bl-contrast"><span data-i18n="bl.c">Contrast with white</span> <b id="bl-ratio">0</b></p>
+  </div>
+</div>
+</div></section>
+
+<section class="sec" id="consent"><div class="container">
+<div class="split">
+  <div class="reveal">
+    <span class="eyebrow" data-i18n="k.e">One design decision</span>
+    <h2 class="h2" data-i18n="k.h">Explain before you ask</h2>
+    <p class="lead" data-i18n="k.l">The camera permission is two taps that can end a verification. So the flow spends one screen showing what will happen and which button to tap, right before the system prompt. In the original project, that screen cut camera denials by about 58%.</p>
+  </div>
+  <div class="duo reveal" aria-hidden="true">
+    <div data-vx="allow" data-org="Aurora Digital|AD"></div>
+    <div data-vx="allow" data-alert data-org="Aurora Digital|AD"></div>
+  </div>
+</div>
+</div></section>
+
+<section class="sec sec--tint" id="build"><div class="container">
+<header class="reveal"><span class="eyebrow" data-i18n="b.e">Explore</span><h2 class="h2" data-i18n="b.h">Try the work</h2></header>
+<div class="explore sec-body reveal">
+  <a class="xcard xcard--dm" href="https://ogabrielmoreira.github.io/veroid" target="_blank" rel="noopener">
+    <div class="xcard-art" aria-hidden="true"><img src="assets/demo-dashboard.jpg" width="1400" height="1060" alt="" loading="lazy" /></div>
+    <div class="xcard-body"><div class="xcard-tags"><span class="xcard-tag" data-i18n="x.dm.t">Live demo</span></div><h3 data-i18n="x.dm.h">The whole product</h3><p data-i18n="x.dm.p">A real app with a database. Explore the dashboard without signing up, or tap “Simulate onboarding” to go through the flow as the customer.</p><span class="xcard-cta"><span data-i18n="x.dm.c">Try the live demo</span><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M7 7h10v10"/></svg></span></div>
+  </a>
+  <a class="xcard xcard--sb" href="storybook/" data-lang-href="storybook/">
+    <div class="xcard-art" aria-hidden="true"><div class="xcard-logo"><img src="assets/veroid-logo.png" width="1461" height="383" alt="" loading="lazy" /><div class="xcard-sw"><i style="background:#232c6b"></i><i style="background:#4756c9"></i><i style="background:#939ee2"></i><i style="background:#dde1f6"></i><i style="background:#0f7a4a"></i><i style="background:#b06a00"></i><i style="background:#b3261e"></i></div></div></div>
+    <div class="xcard-body"><div class="xcard-tags"><span class="xcard-tag">Storybook</span></div><h3 data-i18n="x.sb.h">Design system</h3><p data-i18n="x.sb.p">The logo, tokens, components and white-label rules, with live controls.</p><span class="xcard-cta"><span data-i18n="x.sb.c">Open the Storybook</span><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></div>
+  </a>
+</div>
+</div></section>
+
+<section class="end">
+  <div class="container">
+    <img class="end-logo" src="assets/veroid-logo-white.png" width="1461" height="383" alt="Vero ID" loading="lazy" />
+    <h2 class="h2" data-i18n="end.h">Want to talk about this project?</h2>
+    <p data-i18n="end.p">I can walk you through the decisions, the design system and how I built it with AI.</p>
+    <div class="end-actions">
+      <a class="btn btn--yellow" href="https://wa.me/5511947672575" target="_blank" rel="noopener" data-i18n="end.c1">Talk to me</a>
+      <a class="btn btn--line" href="../#projects" data-home data-i18n="end.c2">See other projects</a>
+    </div>
+    <div class="legal"><span data-i18n="end.l1">Vero ID · concept · demonstration prototype, not certified liveness</span><span data-i18n="end.l2">© 2026 Gabriel Moreira</span></div>
+  </div>
+</section>
+  </main>
+
+  <script src="ui/vero.js"></script>
+  <script src="case.js"></script>
+</body>
+</html>

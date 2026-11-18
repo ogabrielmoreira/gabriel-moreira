@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Storybook Vero ID · Gabriel Moreira</title>
+  <meta name="description" content="Storybook for the Vero ID design system: logo, tokens, 18 components, patterns and the camera consent flow, rebuilt in HTML and CSS." />
+  <meta name="theme-color" content="#232c6b" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@500;600;700&family=Geist:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="icon" href="../../favicon.ico" sizes="any" />
+  <link rel="stylesheet" href="../ui/vero.css" />
+  <link rel="stylesheet" href="storybook.css" />
+</head>
+<body>
+  <header class="sb-header">
+    <button class="sb-menu" id="sb-menu" type="button" aria-label="Stories" aria-controls="sb-side" aria-expanded="false"><span></span><span></span><span></span></button>
+    <a class="sb-brand" href="../" data-keep-lang><img class="sb-mark" src="../assets/veroid-mark.png" alt="Vero ID" width="32" height="26" /><b>Storybook</b><span>· Vero ID</span></a>
+    <nav class="sb-top">
+      <a href="../" data-keep-lang data-t="case">Case study</a>
+    </nav>
+    <div class="sb-lang" role="group" aria-label="Language">
+      <button type="button" data-l="en" aria-pressed="true">EN</button>
+      <button type="button" data-l="pt" aria-pressed="false">PT</button>
+    </div>
+  </header>
+
+  <div class="sb-shell">
+    <aside class="sb-side" id="sb-side">
+      <input id="sb-search" class="sb-search" type="search" placeholder="Find stories" aria-label="Find stories" />
+      <div id="sb-nav" class="sb-nav"></div>
+    </aside>
+
+    <main class="sb-main" id="sb-main">
+
+      <div class="sb-head">
+        <span class="sb-eyebrow" id="sb-group"></span>
+        <h1 id="sb-title"></h1>
+        <p id="sb-desc"></p>
+      </div>
+
+      <section class="sb-canvas" id="sb-canvas" aria-label="Preview">
+        <div class="sb-bgbar">
+          <div class="sb-seg" role="group" aria-label="Background" id="sb-themes">
+            <button type="button" data-theme="light" aria-pressed="true" data-t="light">Light</button>
+            <button type="button" data-theme="dark" aria-pressed="false" data-t="dark">Dark</button>
+          </div>
+          <span class="sb-hint" id="sb-hint"></span>
+        </div>
+        <div id="sb-stage" class="sb-stage" data-theme="light"></div>
+      </section>
+
+      <section class="sb-dock">
+        <div class="sb-tabs" role="tablist">
+          <button type="button" role="tab" data-tab="controls" aria-selected="true" data-t="controls">Controls</button>
+          <button type="button" role="tab" data-tab="usage" aria-selected="false" data-t="usage">Usage</button>
+          <button type="button" role="tab" data-tab="specs" aria-selected="false" data-t="specs">Tokens</button>
+        </div>
+        <div id="sb-panel" class="sb-panel" role="tabpanel"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="../ui/vero.js"></script>
+  <script src="storybook.js"></script>
+</body>
+</html>
